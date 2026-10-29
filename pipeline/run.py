@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from . import controles, modelos, publicar as pub
+from . import controles, modelos, publicar as pub, reporte
 from .preparar import leer_fuente
 from .util import cargar_config, sha256, commit_git
 
@@ -77,6 +77,7 @@ def main(argv=None):
         ctrl, df_ok, series = controles.ejecutar(df, cfg, log)
         ctrl["run_id"], ctrl["timestamp"] = run_id, ts
         ctrl.to_csv(cand / "controles.csv", index=False)
+        reporte.generar(ctrl, run_id, hashes, cand / "reporte_controles.md")
         etapas.append("2_validacion")
         fallos = ctrl[(ctrl["severidad"] == "critico") & (ctrl["estado"] == "FAIL")]
         for _, r in ctrl[ctrl["estado"] == "WARN"].iterrows():

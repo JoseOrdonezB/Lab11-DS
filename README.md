@@ -64,11 +64,18 @@ En los códigos 1, 2 y 3 **no se toca** `published/`: el tablero sigue con la ú
 | C5 valores y denominadores | Negativos, no finitos y ceros en el backtest | ceros observados en el backtest (se excluyen del MAPE) | negativos o no finitos |
 | C6 regla metodológica | Fuente mensual (sin columnas diarias), tipos de viajero conocidos y Total sin «Viajero» = suma de las tres vías | nunca | cualquiera de las tres falla |
 
-Cada ejecución escribe `controles.csv` con control, severidad, estado, n_afectados, detalle, run_id y timestamp.
+Cada ejecución escribe `controles.csv` (control, severidad, estado, n_afectados, detalle, run_id, timestamp) y `reporte_controles.md`
+(qué verifica cada control, cuándo advierte, cuándo detiene y el resultado de esa corrida; lo genera `pipeline/reporte.py`).
+
+Pruebas de los controles y de la detención del pipeline (datos sintéticos, no requieren el dato institucional):
+
+```bash
+python -m pytest tests -q
+```
 
 ## Qué se guarda por ejecución
 
-`runs/<run_id>/`: `controles.csv`, `metricas.csv`, `estimaciones.csv`, `backtest_detalle.csv`, `manifest.json` (commit, hashes, dependencias, períodos),
+`runs/<run_id>/`: `controles.csv`, `reporte_controles.md`, `metricas.csv`, `estimaciones.csv`, `backtest_detalle.csv`, `manifest.json` (commit, hashes, dependencias, períodos),
 `run.log` y `run_summary.json` (inicio, fin, etapas completadas, advertencias y resultado de la publicación).
 Una versión aprobada es una copia inmutable de esos archivos en `published/versions/`.
 
