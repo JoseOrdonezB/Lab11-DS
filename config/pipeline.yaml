@@ -1,0 +1,65 @@
+# Configuración del pipeline del Observatorio de Turismo Sostenible (Lab 11).
+# Todo lo que el pipeline necesita (rutas, períodos, parámetros y umbrales) sale de este archivo.
+# Su hash SHA-256 se guarda en cada ejecución.
+
+destino: Guatemala
+unidad: viajeros/mes
+semilla: 20261029          # no hay componentes aleatorios en ARIMA/Seasonal Naive; se fija por si se agrega alguno
+
+rutas:
+  fuente: data/raw/Base_Migracion_2009-2026jun.xlsx   # dato institucional, se monta o copia; no va en Git ni en la imagen
+  corridas: runs                                       # candidatos y registros de cada ejecución
+  publicacion: published                               # versiones aprobadas + current.json
+
+fuente:
+  columnas:                       # columnas indispensables y tipo esperado
+    Año: entero
+    Mes cod: entero
+    Vía: texto
+    Frontera: texto
+    País: texto
+    Región dos: texto
+    Tipo de Viajero: texto
+    Viajero: numerico
+  clave_unicidad: [Año, Mes cod, Vía, Frontera, País, Región dos, Tipo de Viajero]
+  columnas_nulos_permitidos: [Frontera, País]   # una ausencia aquí no impide estimar
+  columnas_diarias_prohibidas: [Día, Dia, Fecha, Fecha de ingreso]   # señal de que la fuente no es mensual
+  tipos_viajero_validos: [Turista, Excursionista, Viajero, Cruceristas]
+  tipo_excluido: Viajero          # cambio de metodología 2022-2023; se excluye salvo en series con excluir_tipo: false
+
+periodos:
+  cobertura: {inicio: "2009-01", fin: "2026-06"}
+  ajuste_base: {inicio: "2009-01", fin: "2021-03"}         # mismo corte del Lab 1 (referencia histórica)
+  evaluacion_historica: {inicio: "2021-04", fin: "2026-06"}
+  backtest: {inicio: "2025-07", fin: "2026-06"}            # origen expansivo, un paso adelante
+  pronostico: {inicio: "2026-07", fin: "2026-12"}
+
+# Series. Orden ARIMA fijado en el Lab 1 (AIC/BIC); no se reajusta con el período de prueba.
+series:
+  Total:              {arima: [1, 0, 1]}
+  Vía Aérea:          {arima: [1, 0, 1], via: Aérea}
+  Vía Terrestre:      {arima: [2, 1, 0], via: Terrestre}
+  Vía Marítima:       {arima: [2, 0, 3], via: Marítima, excluir_tipo: false}   # excepción documentada en el Lab 1
+  América del Centro: {arima: [1, 0, 0], region: América Del Centro}
+  América del Norte:  {arima: [3, 0, 0], region: América Del Norte}
+  Europa:             {arima: [4, 1, 2], region: Europa}
+
+modelo:
+  nombre: ARIMA
+  referencia: Seasonal Naive      # repite el mismo mes del año anterior
+  transformacion_log:
+    diferencia_cv_min: 0.25       # se aplica si CV anual máx - mín > 0.25 y todos los valores observados > 0
+  max_iter_arima: 200
+
+umbrales:
+  duplicados_pct_advertencia: 0.1   # % de filas con clave repetida: arriba de esto, WARN
+  duplicados_pct_fallo: 1.0         # arriba de esto, FAIL
+  rango_plausible_max_factor: 1.5   # una estimación no puede pasar de 1.5 x el máximo mensual observado de su serie
+
+# Regla de aceptación. VALORES PROVISIONALES: se congelan en la sección 5 antes de la ejecución final
+# y no se modifican después de ver los resultados.
+aceptacion:
+  series_obligatorias: [Total]      # si alguna no cumple, la versión se rechaza
+  mae_rel_max: 0.20                 # MAE <= 20 % del promedio mensual observado en el backtest
+  margen_vs_referencia: 1.25        # MAE del modelo <= 1.25 x MAE de la referencia
+  min_obs_evaluacion: 6             # menos observaciones comparables que esto: no se calcula ni se aprueba por desempeño

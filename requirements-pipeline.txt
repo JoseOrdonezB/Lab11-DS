@@ -1,0 +1,6 @@
+# Dependencias del pipeline, versiones con las que se probó.
+pandas==3.0.5
+numpy==2.5.3
+statsmodels==0.15.0
+PyYAML==6.0.3
+openpyxl==3.1.5

@@ -1,0 +1,7 @@
+# no se sube a Git ni a las imágenes Docker
+data/raw/*
+!data/raw/.gitkeep
+# candidatos y registros de cada ejecución (lo aprobado queda en published/)
+runs/
+__pycache__/
+.DS_Store
