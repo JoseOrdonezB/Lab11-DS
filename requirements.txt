@@ -1,0 +1,8 @@
+streamlit>=1.40
+plotly>=5.24
+pandas>=2.0
+# Solo para regenerar los datos exportados del Lab 1 (scripts/exportar_modelos_lab1.py):
+statsmodels
+prophet
+scikit-learn
+openpyxl

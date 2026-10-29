@@ -1,0 +1,1471 @@
+serie,fecha,real,conjunto
+Total,2009-01-01,162514.02934517286,entrenamiento
+Total,2009-02-01,138039.69220337752,entrenamiento
+Total,2009-03-01,169127.67381860284,entrenamiento
+Total,2009-04-01,179805.46769401644,entrenamiento
+Total,2009-05-01,130036.52435069307,entrenamiento
+Total,2009-06-01,151442.80337827274,entrenamiento
+Total,2009-07-01,137616.9517422195,entrenamiento
+Total,2009-08-01,186869.0418037644,entrenamiento
+Total,2009-09-01,132791.13353560158,entrenamiento
+Total,2009-10-01,153153.6097868689,entrenamiento
+Total,2009-11-01,185663.2729586916,entrenamiento
+Total,2009-12-01,234468.65119713946,entrenamiento
+Total,2010-01-01,175494.26551165638,entrenamiento
+Total,2010-02-01,138730.46022602476,entrenamiento
+Total,2010-03-01,172342.09275954103,entrenamiento
+Total,2010-04-01,176207.90530317114,entrenamiento
+Total,2010-05-01,142480.6089476861,entrenamiento
+Total,2010-06-01,155468.9470746268,entrenamiento
+Total,2010-07-01,199667.83285998116,entrenamiento
+Total,2010-08-01,190192.0306162957,entrenamiento
+Total,2010-09-01,130760.34969839198,entrenamiento
+Total,2010-10-01,162066.1243212268,entrenamiento
+Total,2010-11-01,190166.33569674406,entrenamiento
+Total,2010-12-01,243695.04636668903,entrenamiento
+Total,2011-01-01,175066.55722701532,entrenamiento
+Total,2011-02-01,147433.86559086668,entrenamiento
+Total,2011-03-01,176935.79100865728,entrenamiento
+Total,2011-04-01,207533.76499508988,entrenamiento
+Total,2011-05-01,152587.54778125993,entrenamiento
+Total,2011-06-01,164372.46872590488,entrenamiento
+Total,2011-07-01,200521.00470178176,entrenamiento
+Total,2011-08-01,185255.49370458006,entrenamiento
+Total,2011-09-01,141183.83971974195,entrenamiento
+Total,2011-10-01,155986.08059590787,entrenamiento
+Total,2011-11-01,192802.0779012438,entrenamiento
+Total,2011-12-01,252386.11067073603,entrenamiento
+Total,2012-01-01,183152.95776830107,entrenamiento
+Total,2012-02-01,152954.44219831316,entrenamiento
+Total,2012-03-01,190245.2082521481,entrenamiento
+Total,2012-04-01,189688.2362626656,entrenamiento
+Total,2012-05-01,160850.5120438028,entrenamiento
+Total,2012-06-01,173240.56422688224,entrenamiento
+Total,2012-07-01,200119.37067282858,entrenamiento
+Total,2012-08-01,185350.4032403826,entrenamiento
+Total,2012-09-01,147847.52798648953,entrenamiento
+Total,2012-10-01,170097.4374967636,entrenamiento
+Total,2012-11-01,204295.06831855708,entrenamiento
+Total,2012-12-01,254545.75250727762,entrenamiento
+Total,2013-01-01,179551.696535424,entrenamiento
+Total,2013-02-01,147020.89946159555,entrenamiento
+Total,2013-03-01,231301.5553629627,entrenamiento
+Total,2013-04-01,189244.03722270243,entrenamiento
+Total,2013-05-01,183164.65691496403,entrenamiento
+Total,2013-06-01,197164.99485562296,entrenamiento
+Total,2013-07-01,212346.0172646677,entrenamiento
+Total,2013-08-01,199220.9391696579,entrenamiento
+Total,2013-09-01,164495.0618713466,entrenamiento
+Total,2013-10-01,168762.46888297104,entrenamiento
+Total,2013-11-01,214999.0230046185,entrenamiento
+Total,2013-12-01,274121.4019393584,entrenamiento
+Total,2014-01-01,232058.3466763904,entrenamiento
+Total,2014-02-01,180657.24586474686,entrenamiento
+Total,2014-03-01,211727.3302226692,entrenamiento
+Total,2014-04-01,241438.1331489176,entrenamiento
+Total,2014-05-01,193228.56475260793,entrenamiento
+Total,2014-06-01,200093.47330128693,entrenamiento
+Total,2014-07-01,237558.594805903,entrenamiento
+Total,2014-08-01,226960.63196751618,entrenamiento
+Total,2014-09-01,187684.78059355926,entrenamiento
+Total,2014-10-01,223650.87089512649,entrenamiento
+Total,2014-11-01,259963.60998571018,entrenamiento
+Total,2014-12-01,335756.73464960407,entrenamiento
+Total,2015-01-01,250132.9512092014,entrenamiento
+Total,2015-02-01,204806.24754449064,entrenamiento
+Total,2015-03-01,261163.40803931904,entrenamiento
+Total,2015-04-01,267948.50812161784,entrenamiento
+Total,2015-05-01,234072.60772244775,entrenamiento
+Total,2015-06-01,246517.68691700848,entrenamiento
+Total,2015-07-01,254040.1771321548,entrenamiento
+Total,2015-08-01,252354.15541175148,entrenamiento
+Total,2015-09-01,206700.77080266396,entrenamiento
+Total,2015-10-01,230379.2788234454,entrenamiento
+Total,2015-11-01,251077.0101002201,entrenamiento
+Total,2015-12-01,335888.2385317896,entrenamiento
+Total,2016-01-01,269895.6293521066,entrenamiento
+Total,2016-02-01,225352.7297908925,entrenamiento
+Total,2016-03-01,335131.33266050776,entrenamiento
+Total,2016-04-01,222555.92035013388,entrenamiento
+Total,2016-05-01,232666.92774985195,entrenamiento
+Total,2016-06-01,226925.2952819879,entrenamiento
+Total,2016-07-01,269856.23955853493,entrenamiento
+Total,2016-08-01,269867.9277235241,entrenamiento
+Total,2016-09-01,186819.30831740008,entrenamiento
+Total,2016-10-01,251408.26446227162,entrenamiento
+Total,2016-11-01,266949.98052789876,entrenamiento
+Total,2016-12-01,343309.18866569793,entrenamiento
+Total,2017-01-01,277927.60794906894,entrenamiento
+Total,2017-02-01,246583.22885076454,entrenamiento
+Total,2017-03-01,305656.4751136086,entrenamiento
+Total,2017-04-01,398099.7289698364,entrenamiento
+Total,2017-05-01,249649.78519639446,entrenamiento
+Total,2017-06-01,249313.40796743412,entrenamiento
+Total,2017-07-01,293117.27301642345,entrenamiento
+Total,2017-08-01,274293.5932154499,entrenamiento
+Total,2017-09-01,217964.60197929587,entrenamiento
+Total,2017-10-01,251474.67001993404,entrenamiento
+Total,2017-11-01,290961.4157893119,entrenamiento
+Total,2017-12-01,381672.498921525,entrenamiento
+Total,2018-01-01,333325.2179742683,entrenamiento
+Total,2018-02-01,268157.9915704992,entrenamiento
+Total,2018-03-01,410624.78296043223,entrenamiento
+Total,2018-04-01,327613.861353772,entrenamiento
+Total,2018-05-01,286686.0821155593,entrenamiento
+Total,2018-06-01,313300.3505085109,entrenamiento
+Total,2018-07-01,337300.58994755434,entrenamiento
+Total,2018-08-01,353059.5717399916,entrenamiento
+Total,2018-09-01,274926.06846753834,entrenamiento
+Total,2018-10-01,297036.2126978078,entrenamiento
+Total,2018-11-01,327447.6366610493,entrenamiento
+Total,2018-12-01,414674.4913142119,entrenamiento
+Total,2019-01-01,381158.7498163418,entrenamiento
+Total,2019-02-01,299035.9076318986,entrenamiento
+Total,2019-03-01,380748.9903426129,entrenamiento
+Total,2019-04-01,405931.5481624975,entrenamiento
+Total,2019-05-01,301289.3401131451,entrenamiento
+Total,2019-06-01,333161.55536598404,entrenamiento
+Total,2019-07-01,367299.6909719392,entrenamiento
+Total,2019-08-01,365512.75428666285,entrenamiento
+Total,2019-09-01,299544.07724295655,entrenamiento
+Total,2019-10-01,311507.99136425246,entrenamiento
+Total,2019-11-01,359382.9260785361,entrenamiento
+Total,2019-12-01,458466.0705001674,entrenamiento
+Total,2020-01-01,407250.6026616116,entrenamiento
+Total,2020-02-01,334336.9765175921,entrenamiento
+Total,2020-03-01,161960.5760920644,entrenamiento
+Total,2020-04-01,10039.0,entrenamiento
+Total,2020-05-01,9779.0,entrenamiento
+Total,2020-06-01,11817.0,entrenamiento
+Total,2020-07-01,13484.0,entrenamiento
+Total,2020-08-01,15357.0,entrenamiento
+Total,2020-09-01,12572.49268292683,entrenamiento
+Total,2020-10-01,16680.78434895513,entrenamiento
+Total,2020-11-01,52865.0,entrenamiento
+Total,2020-12-01,55620.0,entrenamiento
+Total,2021-01-01,89960.0,entrenamiento
+Total,2021-02-01,52605.0,entrenamiento
+Total,2021-03-01,85017.39633341735,entrenamiento
+Total,2021-04-01,59743.1902214643,prueba
+Total,2021-05-01,73873.0,prueba
+Total,2021-06-01,95146.0,prueba
+Total,2021-07-01,97594.66433359256,prueba
+Total,2021-08-01,72327.0,prueba
+Total,2021-09-01,67022.99999999996,prueba
+Total,2021-10-01,83528.0,prueba
+Total,2021-11-01,99891.0,prueba
+Total,2021-12-01,226164.1278011966,prueba
+Total,2022-01-01,134979.0,prueba
+Total,2022-02-01,194351.6,prueba
+Total,2022-03-01,228738.0,prueba
+Total,2022-04-01,296550.0,prueba
+Total,2022-05-01,260910.0,prueba
+Total,2022-06-01,269366.0,prueba
+Total,2022-07-01,306246.0,prueba
+Total,2022-08-01,297602.0,prueba
+Total,2022-09-01,246464.0,prueba
+Total,2022-10-01,284913.0,prueba
+Total,2022-11-01,324931.0,prueba
+Total,2022-12-01,410308.0,prueba
+Total,2023-01-01,258166.18821264658,prueba
+Total,2023-02-01,198751.85766927942,prueba
+Total,2023-03-01,251839.50267324003,prueba
+Total,2023-04-01,283179.2556557847,prueba
+Total,2023-05-01,213191.03891840694,prueba
+Total,2023-06-01,224580.17382775573,prueba
+Total,2023-07-01,257626.95044792976,prueba
+Total,2023-08-01,264514.08794636687,prueba
+Total,2023-09-01,218486.4781049799,prueba
+Total,2023-10-01,164499.38846570507,prueba
+Total,2023-11-01,255894.27623440052,prueba
+Total,2023-12-01,327097.61316611955,prueba
+Total,2024-01-01,292731.86680673156,prueba
+Total,2024-02-01,265990.67321318097,prueba
+Total,2024-03-01,322310.39400228957,prueba
+Total,2024-04-01,240988.81729405138,prueba
+Total,2024-05-01,238807.9548151027,prueba
+Total,2024-06-01,234781.22686199367,prueba
+Total,2024-07-01,266974.95506929053,prueba
+Total,2024-08-01,282101.83101094456,prueba
+Total,2024-09-01,215658.8098341591,prueba
+Total,2024-10-01,249665.70083733913,prueba
+Total,2024-11-01,302674.076910829,prueba
+Total,2024-12-01,361749.6884796847,prueba
+Total,2025-01-01,289543.5982553855,prueba
+Total,2025-02-01,254428.88643334268,prueba
+Total,2025-03-01,278538.25098417036,prueba
+Total,2025-04-01,300287.6910735994,prueba
+Total,2025-05-01,247981.9259720942,prueba
+Total,2025-06-01,254190.0961535216,prueba
+Total,2025-07-01,283388.6987866118,prueba
+Total,2025-08-01,293780.5243930469,prueba
+Total,2025-09-01,218069.51122057904,prueba
+Total,2025-10-01,255920.93232213068,prueba
+Total,2025-11-01,310585.52010717517,prueba
+Total,2025-12-01,365573.0218067979,prueba
+Total,2026-01-01,300664.07527322107,prueba
+Total,2026-02-01,236844.11361811563,prueba
+Total,2026-03-01,291160.36570034793,prueba
+Total,2026-04-01,260951.04561236833,prueba
+Total,2026-05-01,241312.29525905842,prueba
+Total,2026-06-01,245687.58097717003,prueba
+Vía Aérea,2009-01-01,81693.0,entrenamiento
+Vía Aérea,2009-02-01,70099.0,entrenamiento
+Vía Aérea,2009-03-01,84494.0,entrenamiento
+Vía Aérea,2009-04-01,80618.0,entrenamiento
+Vía Aérea,2009-05-01,64621.0,entrenamiento
+Vía Aérea,2009-06-01,81500.0,entrenamiento
+Vía Aérea,2009-07-01,74818.0,entrenamiento
+Vía Aérea,2009-08-01,76026.0,entrenamiento
+Vía Aérea,2009-09-01,61974.0,entrenamiento
+Vía Aérea,2009-10-01,72950.0,entrenamiento
+Vía Aérea,2009-11-01,82455.0,entrenamiento
+Vía Aérea,2009-12-01,104131.0,entrenamiento
+Vía Aérea,2010-01-01,85216.0,entrenamiento
+Vía Aérea,2010-02-01,69352.0,entrenamiento
+Vía Aérea,2010-03-01,88849.0,entrenamiento
+Vía Aérea,2010-04-01,76466.0,entrenamiento
+Vía Aérea,2010-05-01,65070.0,entrenamiento
+Vía Aérea,2010-06-01,84570.0,entrenamiento
+Vía Aérea,2010-07-01,102317.0,entrenamiento
+Vía Aérea,2010-08-01,79180.0,entrenamiento
+Vía Aérea,2010-09-01,62853.0,entrenamiento
+Vía Aérea,2010-10-01,76272.0,entrenamiento
+Vía Aérea,2010-11-01,84445.0,entrenamiento
+Vía Aérea,2010-12-01,99643.0,entrenamiento
+Vía Aérea,2011-01-01,81827.0,entrenamiento
+Vía Aérea,2011-02-01,69199.0,entrenamiento
+Vía Aérea,2011-03-01,77868.0,entrenamiento
+Vía Aérea,2011-04-01,77120.0,entrenamiento
+Vía Aérea,2011-05-01,68133.0,entrenamiento
+Vía Aérea,2011-06-01,82437.0,entrenamiento
+Vía Aérea,2011-07-01,97679.0,entrenamiento
+Vía Aérea,2011-08-01,77477.0,entrenamiento
+Vía Aérea,2011-09-01,65329.0,entrenamiento
+Vía Aérea,2011-10-01,71644.0,entrenamiento
+Vía Aérea,2011-11-01,86040.0,entrenamiento
+Vía Aérea,2011-12-01,101211.0,entrenamiento
+Vía Aérea,2012-01-01,81067.0,entrenamiento
+Vía Aérea,2012-02-01,70168.0,entrenamiento
+Vía Aérea,2012-03-01,84564.0,entrenamiento
+Vía Aérea,2012-04-01,75122.0,entrenamiento
+Vía Aérea,2012-05-01,71959.0,entrenamiento
+Vía Aérea,2012-06-01,87824.0,entrenamiento
+Vía Aérea,2012-07-01,96204.0,entrenamiento
+Vía Aérea,2012-08-01,72237.0,entrenamiento
+Vía Aérea,2012-09-01,65651.0,entrenamiento
+Vía Aérea,2012-10-01,75434.0,entrenamiento
+Vía Aérea,2012-11-01,87872.0,entrenamiento
+Vía Aérea,2012-12-01,102428.0,entrenamiento
+Vía Aérea,2013-01-01,80051.0,entrenamiento
+Vía Aérea,2013-02-01,69139.0,entrenamiento
+Vía Aérea,2013-03-01,90893.0,entrenamiento
+Vía Aérea,2013-04-01,72202.0,entrenamiento
+Vía Aérea,2013-05-01,71046.0,entrenamiento
+Vía Aérea,2013-06-01,89180.0,entrenamiento
+Vía Aérea,2013-07-01,95206.0,entrenamiento
+Vía Aérea,2013-08-01,77913.0,entrenamiento
+Vía Aérea,2013-09-01,66627.0,entrenamiento
+Vía Aérea,2013-10-01,79527.0,entrenamiento
+Vía Aérea,2013-11-01,92515.0,entrenamiento
+Vía Aérea,2013-12-01,112488.0,entrenamiento
+Vía Aérea,2014-01-01,90200.0,entrenamiento
+Vía Aérea,2014-02-01,78209.0,entrenamiento
+Vía Aérea,2014-03-01,92135.0,entrenamiento
+Vía Aérea,2014-04-01,89600.0,entrenamiento
+Vía Aérea,2014-05-01,80383.0,entrenamiento
+Vía Aérea,2014-06-01,99084.0,entrenamiento
+Vía Aérea,2014-07-01,102729.0,entrenamiento
+Vía Aérea,2014-08-01,86492.0,entrenamiento
+Vía Aérea,2014-09-01,73602.0,entrenamiento
+Vía Aérea,2014-10-01,86265.0,entrenamiento
+Vía Aérea,2014-11-01,95776.0,entrenamiento
+Vía Aérea,2014-12-01,117878.0,entrenamiento
+Vía Aérea,2015-01-01,95064.0,entrenamiento
+Vía Aérea,2015-02-01,79878.0,entrenamiento
+Vía Aérea,2015-03-01,98121.0,entrenamiento
+Vía Aérea,2015-04-01,87540.0,entrenamiento
+Vía Aérea,2015-05-01,84334.0,entrenamiento
+Vía Aérea,2015-06-01,104893.0,entrenamiento
+Vía Aérea,2015-07-01,106927.0,entrenamiento
+Vía Aérea,2015-08-01,90600.0,entrenamiento
+Vía Aérea,2015-09-01,82888.0,entrenamiento
+Vía Aérea,2015-10-01,97243.0,entrenamiento
+Vía Aérea,2015-11-01,110173.0,entrenamiento
+Vía Aérea,2015-12-01,129751.0,entrenamiento
+Vía Aérea,2016-01-01,109052.0,entrenamiento
+Vía Aérea,2016-02-01,90944.0,entrenamiento
+Vía Aérea,2016-03-01,117172.0,entrenamiento
+Vía Aérea,2016-04-01,90938.0,entrenamiento
+Vía Aérea,2016-05-01,96379.0,entrenamiento
+Vía Aérea,2016-06-01,113143.0,entrenamiento
+Vía Aérea,2016-07-01,130062.0,entrenamiento
+Vía Aérea,2016-08-01,100986.0,entrenamiento
+Vía Aérea,2016-09-01,80637.42857142864,entrenamiento
+Vía Aérea,2016-10-01,102214.0,entrenamiento
+Vía Aérea,2016-11-01,111954.0,entrenamiento
+Vía Aérea,2016-12-01,111842.0,entrenamiento
+Vía Aérea,2017-01-01,99217.0,entrenamiento
+Vía Aérea,2017-02-01,94604.0,entrenamiento
+Vía Aérea,2017-03-01,106339.0,entrenamiento
+Vía Aérea,2017-04-01,110230.00000000001,entrenamiento
+Vía Aérea,2017-05-01,89750.0,entrenamiento
+Vía Aérea,2017-06-01,114128.0,entrenamiento
+Vía Aérea,2017-07-01,134449.0,entrenamiento
+Vía Aérea,2017-08-01,100536.0,entrenamiento
+Vía Aérea,2017-09-01,91091.0,entrenamiento
+Vía Aérea,2017-10-01,109105.00000000001,entrenamiento
+Vía Aérea,2017-11-01,121392.0,entrenamiento
+Vía Aérea,2017-12-01,142949.0,entrenamiento
+Vía Aérea,2018-01-01,117446.0,entrenamiento
+Vía Aérea,2018-02-01,96337.0,entrenamiento
+Vía Aérea,2018-03-01,124266.0,entrenamiento
+Vía Aérea,2018-04-01,104951.0,entrenamiento
+Vía Aérea,2018-05-01,103815.0,entrenamiento
+Vía Aérea,2018-06-01,120718.00000000068,entrenamiento
+Vía Aérea,2018-07-01,134933.0,entrenamiento
+Vía Aérea,2018-08-01,110568.00000000073,entrenamiento
+Vía Aérea,2018-09-01,94931.29173150647,entrenamiento
+Vía Aérea,2018-10-01,115003.99628460119,entrenamiento
+Vía Aérea,2018-11-01,135409.36194730835,entrenamiento
+Vía Aérea,2018-12-01,156607.3959668107,entrenamiento
+Vía Aérea,2019-01-01,126566.13349998859,entrenamiento
+Vía Aérea,2019-02-01,106574.12156398408,entrenamiento
+Vía Aérea,2019-03-01,118895.93695089713,entrenamiento
+Vía Aérea,2019-04-01,125309.99999999897,entrenamiento
+Vía Aérea,2019-05-01,109523.99999999949,entrenamiento
+Vía Aérea,2019-06-01,127604.99999999904,entrenamiento
+Vía Aérea,2019-07-01,138562.64109759167,entrenamiento
+Vía Aérea,2019-08-01,115044.99999999999,entrenamiento
+Vía Aérea,2019-09-01,101240.07692307641,entrenamiento
+Vía Aérea,2019-10-01,119128.99999999866,entrenamiento
+Vía Aérea,2019-11-01,137092.00000000227,entrenamiento
+Vía Aérea,2019-12-01,157842.00000000003,entrenamiento
+Vía Aérea,2020-01-01,130697.00219828535,entrenamiento
+Vía Aérea,2020-02-01,112885.99999999996,entrenamiento
+Vía Aérea,2020-03-01,54830.992130115425,entrenamiento
+Vía Aérea,2020-04-01,489.0,entrenamiento
+Vía Aérea,2020-05-01,610.0,entrenamiento
+Vía Aérea,2020-06-01,1418.0,entrenamiento
+Vía Aérea,2020-07-01,1047.0,entrenamiento
+Vía Aérea,2020-08-01,1259.0,entrenamiento
+Vía Aérea,2020-09-01,5606.0,entrenamiento
+Vía Aérea,2020-10-01,5307.932304319845,entrenamiento
+Vía Aérea,2020-11-01,38994.0,entrenamiento
+Vía Aérea,2020-12-01,50380.0,entrenamiento
+Vía Aérea,2021-01-01,40805.0,entrenamiento
+Vía Aérea,2021-02-01,28784.0,entrenamiento
+Vía Aérea,2021-03-01,58807.13961892685,entrenamiento
+Vía Aérea,2021-04-01,33048.102901499005,prueba
+Vía Aérea,2021-05-01,58366.0,prueba
+Vía Aérea,2021-06-01,73416.0,prueba
+Vía Aérea,2021-07-01,70340.0,prueba
+Vía Aérea,2021-08-01,50329.0,prueba
+Vía Aérea,2021-09-01,45550.99999999996,prueba
+Vía Aérea,2021-10-01,53420.0,prueba
+Vía Aérea,2021-11-01,68351.0,prueba
+Vía Aérea,2021-12-01,122254.0,prueba
+Vía Aérea,2022-01-01,97752.0,prueba
+Vía Aérea,2022-02-01,80539.0,prueba
+Vía Aérea,2022-03-01,106141.0,prueba
+Vía Aérea,2022-04-01,121028.0,prueba
+Vía Aérea,2022-05-01,111839.0,prueba
+Vía Aérea,2022-06-01,123396.0,prueba
+Vía Aérea,2022-07-01,124663.0,prueba
+Vía Aérea,2022-08-01,108896.0,prueba
+Vía Aérea,2022-09-01,103209.0,prueba
+Vía Aérea,2022-10-01,122939.0,prueba
+Vía Aérea,2022-11-01,131410.0,prueba
+Vía Aérea,2022-12-01,158463.0,prueba
+Vía Aérea,2023-01-01,76401.0,prueba
+Vía Aérea,2023-02-01,75406.0,prueba
+Vía Aérea,2023-03-01,92733.0,prueba
+Vía Aérea,2023-04-01,79354.0,prueba
+Vía Aérea,2023-05-01,71802.0,prueba
+Vía Aérea,2023-06-01,87780.0,prueba
+Vía Aérea,2023-07-01,99032.0,prueba
+Vía Aérea,2023-08-01,79152.0,prueba
+Vía Aérea,2023-09-01,67306.0,prueba
+Vía Aérea,2023-10-01,59326.0,prueba
+Vía Aérea,2023-11-01,89140.0,prueba
+Vía Aérea,2023-12-01,108408.0,prueba
+Vía Aérea,2024-01-01,96039.0,prueba
+Vía Aérea,2024-02-01,98871.0,prueba
+Vía Aérea,2024-03-01,108491.0,prueba
+Vía Aérea,2024-04-01,87857.0,prueba
+Vía Aérea,2024-05-01,87997.0,prueba
+Vía Aérea,2024-06-01,104464.0,prueba
+Vía Aérea,2024-07-01,110379.0,prueba
+Vía Aérea,2024-08-01,88635.0,prueba
+Vía Aérea,2024-09-01,69269.0,prueba
+Vía Aérea,2024-10-01,81187.0,prueba
+Vía Aérea,2024-11-01,97137.0,prueba
+Vía Aérea,2024-12-01,113027.0,prueba
+Vía Aérea,2025-01-01,101124.0,prueba
+Vía Aérea,2025-02-01,92703.0,prueba
+Vía Aérea,2025-03-01,107244.0,prueba
+Vía Aérea,2025-04-01,93466.0,prueba
+Vía Aérea,2025-05-01,87753.0,prueba
+Vía Aérea,2025-06-01,99411.0,prueba
+Vía Aérea,2025-07-01,117361.0,prueba
+Vía Aérea,2025-08-01,90643.0,prueba
+Vía Aérea,2025-09-01,70416.0,prueba
+Vía Aérea,2025-10-01,90000.0,prueba
+Vía Aérea,2025-11-01,111567.0,prueba
+Vía Aérea,2025-12-01,127283.0,prueba
+Vía Aérea,2026-01-01,113435.0,prueba
+Vía Aérea,2026-02-01,106821.0,prueba
+Vía Aérea,2026-03-01,127540.0,prueba
+Vía Aérea,2026-04-01,102029.0,prueba
+Vía Aérea,2026-05-01,95804.0,prueba
+Vía Aérea,2026-06-01,98211.0,prueba
+Vía Terrestre,2009-01-01,67442.02934517288,entrenamiento
+Vía Terrestre,2009-02-01,56266.69220337751,entrenamiento
+Vía Terrestre,2009-03-01,73111.67381860285,entrenamiento
+Vía Terrestre,2009-04-01,89897.46769401644,entrenamiento
+Vía Terrestre,2009-05-01,58898.52435069307,entrenamiento
+Vía Terrestre,2009-06-01,69100.80337827274,entrenamiento
+Vía Terrestre,2009-07-01,61683.951742219506,entrenamiento
+Vía Terrestre,2009-08-01,102144.0418037644,entrenamiento
+Vía Terrestre,2009-09-01,70046.13353560158,entrenamiento
+Vía Terrestre,2009-10-01,79357.60978686891,entrenamiento
+Vía Terrestre,2009-11-01,90295.27295869161,entrenamiento
+Vía Terrestre,2009-12-01,114201.65119713946,entrenamiento
+Vía Terrestre,2010-01-01,75945.26551165637,entrenamiento
+Vía Terrestre,2010-02-01,62145.460226024756,entrenamiento
+Vía Terrestre,2010-03-01,73213.09275954103,entrenamiento
+Vía Terrestre,2010-04-01,93049.90530317114,entrenamiento
+Vía Terrestre,2010-05-01,75182.6089476861,entrenamiento
+Vía Terrestre,2010-06-01,69955.9470746268,entrenamiento
+Vía Terrestre,2010-07-01,96362.83285998115,entrenamiento
+Vía Terrestre,2010-08-01,103549.03061629568,entrenamiento
+Vía Terrestre,2010-09-01,67193.34969839198,entrenamiento
+Vía Terrestre,2010-10-01,80576.12432122677,entrenamiento
+Vía Terrestre,2010-11-01,94155.33569674406,entrenamiento
+Vía Terrestre,2010-12-01,126547.04636668903,entrenamiento
+Vía Terrestre,2011-01-01,86590.5572270153,entrenamiento
+Vía Terrestre,2011-02-01,69655.86559086668,entrenamiento
+Vía Terrestre,2011-03-01,91059.79100865728,entrenamiento
+Vía Terrestre,2011-04-01,113079.76499508986,entrenamiento
+Vía Terrestre,2011-05-01,76689.54778125991,entrenamiento
+Vía Terrestre,2011-06-01,79665.4687259049,entrenamiento
+Vía Terrestre,2011-07-01,101582.00470178174,entrenamiento
+Vía Terrestre,2011-08-01,96080.49370458008,entrenamiento
+Vía Terrestre,2011-09-01,75213.83971974195,entrenamiento
+Vía Terrestre,2011-10-01,79613.08059590786,entrenamiento
+Vía Terrestre,2011-11-01,100328.07790124381,entrenamiento
+Vía Terrestre,2011-12-01,141223.11067073603,entrenamiento
+Vía Terrestre,2012-01-01,94835.95776830107,entrenamiento
+Vía Terrestre,2012-02-01,76560.44219831318,entrenamiento
+Vía Terrestre,2012-03-01,100496.2082521481,entrenamiento
+Vía Terrestre,2012-04-01,106470.2362626656,entrenamiento
+Vía Terrestre,2012-05-01,79112.5120438028,entrenamiento
+Vía Terrestre,2012-06-01,84451.56422688226,entrenamiento
+Vía Terrestre,2012-07-01,101978.37067282856,entrenamiento
+Vía Terrestre,2012-08-01,97403.40324038261,entrenamiento
+Vía Terrestre,2012-09-01,81377.52798648954,entrenamiento
+Vía Terrestre,2012-10-01,91640.43749676358,entrenamiento
+Vía Terrestre,2012-11-01,106361.06831855707,entrenamiento
+Vía Terrestre,2012-12-01,135041.75250727762,entrenamiento
+Vía Terrestre,2013-01-01,89526.69653542402,entrenamiento
+Vía Terrestre,2013-02-01,69954.89946159556,entrenamiento
+Vía Terrestre,2013-03-01,124549.5553629627,entrenamiento
+Vía Terrestre,2013-04-01,106290.03722270243,entrenamiento
+Vía Terrestre,2013-05-01,107062.65691496404,entrenamiento
+Vía Terrestre,2013-06-01,107041.99485562296,entrenamiento
+Vía Terrestre,2013-07-01,115142.0172646677,entrenamiento
+Vía Terrestre,2013-08-01,118249.93916965791,entrenamiento
+Vía Terrestre,2013-09-01,96529.06187134661,entrenamiento
+Vía Terrestre,2013-10-01,87345.46888297105,entrenamiento
+Vía Terrestre,2013-11-01,109333.0230046185,entrenamiento
+Vía Terrestre,2013-12-01,148648.40193935842,entrenamiento
+Vía Terrestre,2014-01-01,128136.34667639041,entrenamiento
+Vía Terrestre,2014-02-01,93971.24586474686,entrenamiento
+Vía Terrestre,2014-03-01,106756.33022266922,entrenamiento
+Vía Terrestre,2014-04-01,138262.1331489176,entrenamiento
+Vía Terrestre,2014-05-01,108539.56475260793,entrenamiento
+Vía Terrestre,2014-06-01,100072.47330128694,entrenamiento
+Vía Terrestre,2014-07-01,133752.594805903,entrenamiento
+Vía Terrestre,2014-08-01,137453.63196751618,entrenamiento
+Vía Terrestre,2014-09-01,113264.78059355928,entrenamiento
+Vía Terrestre,2014-10-01,136667.87089512649,entrenamiento
+Vía Terrestre,2014-11-01,151336.60998571018,entrenamiento
+Vía Terrestre,2014-12-01,206354.73464960407,entrenamiento
+Vía Terrestre,2015-01-01,147874.9512092014,entrenamiento
+Vía Terrestre,2015-02-01,116414.24754449066,entrenamiento
+Vía Terrestre,2015-03-01,150369.40803931904,entrenamiento
+Vía Terrestre,2015-04-01,158665.50812161784,entrenamiento
+Vía Terrestre,2015-05-01,141074.60772244775,entrenamiento
+Vía Terrestre,2015-06-01,139595.68691700848,entrenamiento
+Vía Terrestre,2015-07-01,145112.1771321548,entrenamiento
+Vía Terrestre,2015-08-01,153964.15541175148,entrenamiento
+Vía Terrestre,2015-09-01,123150.77080266396,entrenamiento
+Vía Terrestre,2015-10-01,129911.27882344542,entrenamiento
+Vía Terrestre,2015-11-01,134124.0101002201,entrenamiento
+Vía Terrestre,2015-12-01,198336.23853178963,entrenamiento
+Vía Terrestre,2016-01-01,151890.6293521066,entrenamiento
+Vía Terrestre,2016-02-01,122700.72979089251,entrenamiento
+Vía Terrestre,2016-03-01,203725.33266050773,entrenamiento
+Vía Terrestre,2016-04-01,119589.92035013388,entrenamiento
+Vía Terrestre,2016-05-01,126769.92774985194,entrenamiento
+Vía Terrestre,2016-06-01,112416.2952819879,entrenamiento
+Vía Terrestre,2016-07-01,138086.23955853496,entrenamiento
+Vía Terrestre,2016-08-01,156987.92772352407,entrenamiento
+Vía Terrestre,2016-09-01,105519.87974597144,entrenamiento
+Vía Terrestre,2016-10-01,146177.26446227162,entrenamiento
+Vía Terrestre,2016-11-01,138776.9805278988,entrenamiento
+Vía Terrestre,2016-12-01,208484.1886656979,entrenamiento
+Vía Terrestre,2017-01-01,160424.60794906894,entrenamiento
+Vía Terrestre,2017-02-01,139114.22885076454,entrenamiento
+Vía Terrestre,2017-03-01,188105.47511360855,entrenamiento
+Vía Terrestre,2017-04-01,267598.7289698364,entrenamiento
+Vía Terrestre,2017-05-01,153991.78519639446,entrenamiento
+Vía Terrestre,2017-06-01,133725.40796743412,entrenamiento
+Vía Terrestre,2017-07-01,157125.27301642345,entrenamiento
+Vía Terrestre,2017-08-01,173757.59321544986,entrenamiento
+Vía Terrestre,2017-09-01,122605.60197929587,entrenamiento
+Vía Terrestre,2017-10-01,129950.67001993403,entrenamiento
+Vía Terrestre,2017-11-01,154301.41578931193,entrenamiento
+Vía Terrestre,2017-12-01,213160.49892152505,entrenamiento
+Vía Terrestre,2018-01-01,186373.2179742683,entrenamiento
+Vía Terrestre,2018-02-01,155329.99157049917,entrenamiento
+Vía Terrestre,2018-03-01,268754.78296043223,entrenamiento
+Vía Terrestre,2018-04-01,203288.861353772,entrenamiento
+Vía Terrestre,2018-05-01,173935.08211555931,entrenamiento
+Vía Terrestre,2018-06-01,190562.35050851022,entrenamiento
+Vía Terrestre,2018-07-01,202367.58994755434,entrenamiento
+Vía Terrestre,2018-08-01,241748.57173999088,entrenamiento
+Vía Terrestre,2018-09-01,177845.77673603187,entrenamiento
+Vía Terrestre,2018-10-01,167168.2164132066,entrenamiento
+Vía Terrestre,2018-11-01,174278.274713741,entrenamiento
+Vía Terrestre,2018-12-01,237122.09534740122,entrenamiento
+Vía Terrestre,2019-01-01,231079.6163163532,entrenamiento
+Vía Terrestre,2019-02-01,178776.78606791448,entrenamiento
+Vía Terrestre,2019-03-01,240862.05339171574,entrenamiento
+Vía Terrestre,2019-04-01,263228.54816249857,entrenamiento
+Vía Terrestre,2019-05-01,189773.34011314565,entrenamiento
+Vía Terrestre,2019-06-01,205556.55536598503,entrenamiento
+Vía Terrestre,2019-07-01,226771.04987434752,entrenamiento
+Vía Terrestre,2019-08-01,250467.75428666285,entrenamiento
+Vía Terrestre,2019-09-01,197010.00031988014,entrenamiento
+Vía Terrestre,2019-10-01,175374.9913642538,entrenamiento
+Vía Terrestre,2019-11-01,198691.92607853384,entrenamiento
+Vía Terrestre,2019-12-01,291272.0705001674,entrenamiento
+Vía Terrestre,2020-01-01,257525.60046332626,entrenamiento
+Vía Terrestre,2020-02-01,205031.97651759212,entrenamiento
+Vía Terrestre,2020-03-01,100584.58396194897,entrenamiento
+Vía Terrestre,2020-04-01,9550.0,entrenamiento
+Vía Terrestre,2020-05-01,9169.0,entrenamiento
+Vía Terrestre,2020-06-01,10399.0,entrenamiento
+Vía Terrestre,2020-07-01,12437.0,entrenamiento
+Vía Terrestre,2020-08-01,14098.0,entrenamiento
+Vía Terrestre,2020-09-01,6966.49268292683,entrenamiento
+Vía Terrestre,2020-10-01,11372.852044635285,entrenamiento
+Vía Terrestre,2020-11-01,13871.0,entrenamiento
+Vía Terrestre,2020-12-01,5240.0,entrenamiento
+Vía Terrestre,2021-01-01,49155.0,entrenamiento
+Vía Terrestre,2021-02-01,23821.0,entrenamiento
+Vía Terrestre,2021-03-01,26210.2567144905,entrenamiento
+Vía Terrestre,2021-04-01,26695.087319965296,prueba
+Vía Terrestre,2021-05-01,15507.0,prueba
+Vía Terrestre,2021-06-01,21730.0,prueba
+Vía Terrestre,2021-07-01,27254.664333592562,prueba
+Vía Terrestre,2021-08-01,21998.0,prueba
+Vía Terrestre,2021-09-01,21472.0,prueba
+Vía Terrestre,2021-10-01,30108.0,prueba
+Vía Terrestre,2021-11-01,30227.0,prueba
+Vía Terrestre,2021-12-01,101315.12780119659,prueba
+Vía Terrestre,2022-01-01,36551.0,prueba
+Vía Terrestre,2022-02-01,113364.6,prueba
+Vía Terrestre,2022-03-01,121745.0,prueba
+Vía Terrestre,2022-04-01,171620.0,prueba
+Vía Terrestre,2022-05-01,148174.0,prueba
+Vía Terrestre,2022-06-01,145970.0,prueba
+Vía Terrestre,2022-07-01,181583.0,prueba
+Vía Terrestre,2022-08-01,188706.0,prueba
+Vía Terrestre,2022-09-01,143255.0,prueba
+Vía Terrestre,2022-10-01,158999.0,prueba
+Vía Terrestre,2022-11-01,187283.0,prueba
+Vía Terrestre,2022-12-01,241803.0,prueba
+Vía Terrestre,2023-01-01,181765.18821264658,prueba
+Vía Terrestre,2023-02-01,123345.8576692794,prueba
+Vía Terrestre,2023-03-01,159106.50267324003,prueba
+Vía Terrestre,2023-04-01,203825.25565578465,prueba
+Vía Terrestre,2023-05-01,141389.03891840694,prueba
+Vía Terrestre,2023-06-01,136800.17382775573,prueba
+Vía Terrestre,2023-07-01,158594.95044792976,prueba
+Vía Terrestre,2023-08-01,185362.08794636687,prueba
+Vía Terrestre,2023-09-01,151180.4781049799,prueba
+Vía Terrestre,2023-10-01,105173.38846570507,prueba
+Vía Terrestre,2023-11-01,166754.27623440052,prueba
+Vía Terrestre,2023-12-01,218689.61316611952,prueba
+Vía Terrestre,2024-01-01,196692.86680673156,prueba
+Vía Terrestre,2024-02-01,167119.67321318097,prueba
+Vía Terrestre,2024-03-01,213819.39400228957,prueba
+Vía Terrestre,2024-04-01,153131.81729405138,prueba
+Vía Terrestre,2024-05-01,150810.9548151027,prueba
+Vía Terrestre,2024-06-01,130317.22686199368,prueba
+Vía Terrestre,2024-07-01,156595.95506929053,prueba
+Vía Terrestre,2024-08-01,193466.83101094453,prueba
+Vía Terrestre,2024-09-01,146389.8098341591,prueba
+Vía Terrestre,2024-10-01,168478.70083733913,prueba
+Vía Terrestre,2024-11-01,205537.07691082897,prueba
+Vía Terrestre,2024-12-01,248722.6884796847,prueba
+Vía Terrestre,2025-01-01,188419.59825538553,prueba
+Vía Terrestre,2025-02-01,161725.88643334268,prueba
+Vía Terrestre,2025-03-01,171294.25098417036,prueba
+Vía Terrestre,2025-04-01,206821.69107359942,prueba
+Vía Terrestre,2025-05-01,160228.9259720942,prueba
+Vía Terrestre,2025-06-01,154779.0961535216,prueba
+Vía Terrestre,2025-07-01,166027.69878661176,prueba
+Vía Terrestre,2025-08-01,203137.52439304692,prueba
+Vía Terrestre,2025-09-01,147653.51122057904,prueba
+Vía Terrestre,2025-10-01,165920.93232213068,prueba
+Vía Terrestre,2025-11-01,199018.5201071752,prueba
+Vía Terrestre,2025-12-01,238290.0218067979,prueba
+Vía Terrestre,2026-01-01,187229.07527322107,prueba
+Vía Terrestre,2026-02-01,130023.11361811563,prueba
+Vía Terrestre,2026-03-01,163620.36570034793,prueba
+Vía Terrestre,2026-04-01,158922.04561236833,prueba
+Vía Terrestre,2026-05-01,145508.29525905842,prueba
+Vía Terrestre,2026-06-01,147476.58097717003,prueba
+Vía Marítima,2009-01-01,13379.0,entrenamiento
+Vía Marítima,2009-02-01,11674.000000000002,entrenamiento
+Vía Marítima,2009-03-01,11522.0,entrenamiento
+Vía Marítima,2009-04-01,9289.999999999998,entrenamiento
+Vía Marítima,2009-05-01,6517.0,entrenamiento
+Vía Marítima,2009-06-01,842.0,entrenamiento
+Vía Marítima,2009-07-01,1115.0,entrenamiento
+Vía Marítima,2009-08-01,8699.0,entrenamiento
+Vía Marítima,2009-09-01,771.0,entrenamiento
+Vía Marítima,2009-10-01,846.0,entrenamiento
+Vía Marítima,2009-11-01,12913.0,entrenamiento
+Vía Marítima,2009-12-01,16135.999999999998,entrenamiento
+Vía Marítima,2010-01-01,14333.0,entrenamiento
+Vía Marítima,2010-02-01,7233.0,entrenamiento
+Vía Marítima,2010-03-01,10280.0,entrenamiento
+Vía Marítima,2010-04-01,6692.0,entrenamiento
+Vía Marítima,2010-05-01,2228.0,entrenamiento
+Vía Marítima,2010-06-01,943.0,entrenamiento
+Vía Marítima,2010-07-01,988.0,entrenamiento
+Vía Marítima,2010-08-01,7463.0,entrenamiento
+Vía Marítima,2010-09-01,714.0,entrenamiento
+Vía Marítima,2010-10-01,5218.0,entrenamiento
+Vía Marítima,2010-11-01,11566.0,entrenamiento
+Vía Marítima,2010-12-01,17505.0,entrenamiento
+Vía Marítima,2011-01-01,6649.0,entrenamiento
+Vía Marítima,2011-02-01,8579.0,entrenamiento
+Vía Marítima,2011-03-01,8008.0,entrenamiento
+Vía Marítima,2011-04-01,17334.0,entrenamiento
+Vía Marítima,2011-05-01,7765.0,entrenamiento
+Vía Marítima,2011-06-01,2270.0,entrenamiento
+Vía Marítima,2011-07-01,1260.0,entrenamiento
+Vía Marítima,2011-08-01,11698.0,entrenamiento
+Vía Marítima,2011-09-01,641.0,entrenamiento
+Vía Marítima,2011-10-01,4729.0,entrenamiento
+Vía Marítima,2011-11-01,6434.0,entrenamiento
+Vía Marítima,2011-12-01,9952.0,entrenamiento
+Vía Marítima,2012-01-01,7250.0,entrenamiento
+Vía Marítima,2012-02-01,6226.0,entrenamiento
+Vía Marítima,2012-03-01,5185.0,entrenamiento
+Vía Marítima,2012-04-01,8096.0,entrenamiento
+Vía Marítima,2012-05-01,9779.0,entrenamiento
+Vía Marítima,2012-06-01,965.0,entrenamiento
+Vía Marítima,2012-07-01,1937.0,entrenamiento
+Vía Marítima,2012-08-01,15710.0,entrenamiento
+Vía Marítima,2012-09-01,819.0,entrenamiento
+Vía Marítima,2012-10-01,3023.0,entrenamiento
+Vía Marítima,2012-11-01,10062.0,entrenamiento
+Vía Marítima,2012-12-01,17076.0,entrenamiento
+Vía Marítima,2013-01-01,9974.0,entrenamiento
+Vía Marítima,2013-02-01,7927.0,entrenamiento
+Vía Marítima,2013-03-01,15859.0,entrenamiento
+Vía Marítima,2013-04-01,10752.0,entrenamiento
+Vía Marítima,2013-05-01,5056.0,entrenamiento
+Vía Marítima,2013-06-01,943.0,entrenamiento
+Vía Marítima,2013-07-01,1998.0,entrenamiento
+Vía Marítima,2013-08-01,3058.0,entrenamiento
+Vía Marítima,2013-09-01,1339.0,entrenamiento
+Vía Marítima,2013-10-01,1890.0,entrenamiento
+Vía Marítima,2013-11-01,13151.0,entrenamiento
+Vía Marítima,2013-12-01,12985.0,entrenamiento
+Vía Marítima,2014-01-01,13722.0,entrenamiento
+Vía Marítima,2014-02-01,8477.0,entrenamiento
+Vía Marítima,2014-03-01,12836.0,entrenamiento
+Vía Marítima,2014-04-01,13576.0,entrenamiento
+Vía Marítima,2014-05-01,4306.0,entrenamiento
+Vía Marítima,2014-06-01,937.0,entrenamiento
+Vía Marítima,2014-07-01,1077.0,entrenamiento
+Vía Marítima,2014-08-01,3015.0,entrenamiento
+Vía Marítima,2014-09-01,818.0,entrenamiento
+Vía Marítima,2014-10-01,718.0,entrenamiento
+Vía Marítima,2014-11-01,12851.0,entrenamiento
+Vía Marítima,2014-12-01,11524.0,entrenamiento
+Vía Marítima,2015-01-01,7194.0,entrenamiento
+Vía Marítima,2015-02-01,8514.0,entrenamiento
+Vía Marítima,2015-03-01,12673.0,entrenamiento
+Vía Marítima,2015-04-01,21743.0,entrenamiento
+Vía Marítima,2015-05-01,8664.0,entrenamiento
+Vía Marítima,2015-06-01,2029.0,entrenamiento
+Vía Marítima,2015-07-01,2001.0,entrenamiento
+Vía Marítima,2015-08-01,7790.0,entrenamiento
+Vía Marítima,2015-09-01,662.0,entrenamiento
+Vía Marítima,2015-10-01,3225.0,entrenamiento
+Vía Marítima,2015-11-01,6780.0,entrenamiento
+Vía Marítima,2015-12-01,7801.0,entrenamiento
+Vía Marítima,2016-01-01,8953.0,entrenamiento
+Vía Marítima,2016-02-01,11708.0,entrenamiento
+Vía Marítima,2016-03-01,14234.0,entrenamiento
+Vía Marítima,2016-04-01,12028.0,entrenamiento
+Vía Marítima,2016-05-01,9518.0,entrenamiento
+Vía Marítima,2016-06-01,1366.0,entrenamiento
+Vía Marítima,2016-07-01,1708.0,entrenamiento
+Vía Marítima,2016-08-01,11894.000000000002,entrenamiento
+Vía Marítima,2016-09-01,662.0,entrenamiento
+Vía Marítima,2016-10-01,3017.0,entrenamiento
+Vía Marítima,2016-11-01,16219.000000000002,entrenamiento
+Vía Marítima,2016-12-01,22983.0,entrenamiento
+Vía Marítima,2017-01-01,18286.0,entrenamiento
+Vía Marítima,2017-02-01,12864.999999999998,entrenamiento
+Vía Marítima,2017-03-01,11212.0,entrenamiento
+Vía Marítima,2017-04-01,20271.000000000004,entrenamiento
+Vía Marítima,2017-05-01,5908.0,entrenamiento
+Vía Marítima,2017-06-01,1460.0,entrenamiento
+Vía Marítima,2017-07-01,1543.0,entrenamiento
+Vía Marítima,2017-08-01,0.0,entrenamiento
+Vía Marítima,2017-09-01,4268.0,entrenamiento
+Vía Marítima,2017-10-01,12419.0,entrenamiento
+Vía Marítima,2017-11-01,15268.0,entrenamiento
+Vía Marítima,2017-12-01,25563.0,entrenamiento
+Vía Marítima,2018-01-01,29506.0,entrenamiento
+Vía Marítima,2018-02-01,16491.0,entrenamiento
+Vía Marítima,2018-03-01,17604.0,entrenamiento
+Vía Marítima,2018-04-01,19374.000000000004,entrenamiento
+Vía Marítima,2018-05-01,8936.0,entrenamiento
+Vía Marítima,2018-06-01,2020.0,entrenamiento
+Vía Marítima,2018-07-01,0.0,entrenamiento
+Vía Marítima,2018-08-01,743.0,entrenamiento
+Vía Marítima,2018-09-01,2149.0,entrenamiento
+Vía Marítima,2018-10-01,14864.000000000002,entrenamiento
+Vía Marítima,2018-11-01,17760.0,entrenamiento
+Vía Marítima,2018-12-01,20945.000000000004,entrenamiento
+Vía Marítima,2019-01-01,23513.0,entrenamiento
+Vía Marítima,2019-02-01,13685.0,entrenamiento
+Vía Marítima,2019-03-01,20991.000000000004,entrenamiento
+Vía Marítima,2019-04-01,17393.0,entrenamiento
+Vía Marítima,2019-05-01,1992.0,entrenamiento
+Vía Marítima,2019-06-01,0.0,entrenamiento
+Vía Marítima,2019-07-01,1966.0,entrenamiento
+Vía Marítima,2019-08-01,0.0,entrenamiento
+Vía Marítima,2019-09-01,1294.0,entrenamiento
+Vía Marítima,2019-10-01,17004.0,entrenamiento
+Vía Marítima,2019-11-01,23599.0,entrenamiento
+Vía Marítima,2019-12-01,9352.0,entrenamiento
+Vía Marítima,2020-01-01,19028.0,entrenamiento
+Vía Marítima,2020-02-01,16419.0,entrenamiento
+Vía Marítima,2020-03-01,6545.0,entrenamiento
+Vía Marítima,2020-04-01,0.0,entrenamiento
+Vía Marítima,2020-05-01,0.0,entrenamiento
+Vía Marítima,2020-06-01,0.0,entrenamiento
+Vía Marítima,2020-07-01,0.0,entrenamiento
+Vía Marítima,2020-08-01,0.0,entrenamiento
+Vía Marítima,2020-09-01,0.0,entrenamiento
+Vía Marítima,2020-10-01,0.0,entrenamiento
+Vía Marítima,2020-11-01,0.0,entrenamiento
+Vía Marítima,2020-12-01,0.0,entrenamiento
+Vía Marítima,2021-01-01,0.0,entrenamiento
+Vía Marítima,2021-02-01,0.0,entrenamiento
+Vía Marítima,2021-03-01,0.0,entrenamiento
+Vía Marítima,2021-04-01,0.0,prueba
+Vía Marítima,2021-05-01,0.0,prueba
+Vía Marítima,2021-06-01,0.0,prueba
+Vía Marítima,2021-07-01,0.0,prueba
+Vía Marítima,2021-08-01,0.0,prueba
+Vía Marítima,2021-09-01,0.0,prueba
+Vía Marítima,2021-10-01,0.0,prueba
+Vía Marítima,2021-11-01,1313.0,prueba
+Vía Marítima,2021-12-01,2595.0,prueba
+Vía Marítima,2022-01-01,676.0,prueba
+Vía Marítima,2022-02-01,448.0,prueba
+Vía Marítima,2022-03-01,852.0,prueba
+Vía Marítima,2022-04-01,3902.0,prueba
+Vía Marítima,2022-05-01,897.0,prueba
+Vía Marítima,2022-06-01,0.0,prueba
+Vía Marítima,2022-07-01,0.0,prueba
+Vía Marítima,2022-08-01,0.0,prueba
+Vía Marítima,2022-09-01,0.0,prueba
+Vía Marítima,2022-10-01,2975.0,prueba
+Vía Marítima,2022-11-01,6238.0,prueba
+Vía Marítima,2022-12-01,10042.0,prueba
+Vía Marítima,2023-01-01,682.0,prueba
+Vía Marítima,2023-02-01,529.0,prueba
+Vía Marítima,2023-03-01,705.0,prueba
+Vía Marítima,2023-04-01,674.0,prueba
+Vía Marítima,2023-05-01,545.0,prueba
+Vía Marítima,2023-06-01,598.0,prueba
+Vía Marítima,2023-07-01,624.0,prueba
+Vía Marítima,2023-08-01,592.0,prueba
+Vía Marítima,2023-09-01,346.0,prueba
+Vía Marítima,2023-10-01,279.0,prueba
+Vía Marítima,2023-11-01,538.0,prueba
+Vía Marítima,2023-12-01,505.0,prueba
+Vía Marítima,2024-01-01,572.0,prueba
+Vía Marítima,2024-02-01,635.0,prueba
+Vía Marítima,2024-03-01,717.0,prueba
+Vía Marítima,2024-04-01,552.0,prueba
+Vía Marítima,2024-05-01,523.0,prueba
+Vía Marítima,2024-06-01,555.0,prueba
+Vía Marítima,2024-07-01,537.0,prueba
+Vía Marítima,2024-08-01,560.0,prueba
+Vía Marítima,2024-09-01,321.0,prueba
+Vía Marítima,2024-10-01,386.0,prueba
+Vía Marítima,2024-11-01,601.0,prueba
+Vía Marítima,2024-12-01,646.0,prueba
+Vía Marítima,2025-01-01,603.0,prueba
+Vía Marítima,2025-02-01,612.0,prueba
+Vía Marítima,2025-03-01,595.0,prueba
+Vía Marítima,2025-04-01,937.0,prueba
+Vía Marítima,2025-05-01,576.0,prueba
+Vía Marítima,2025-06-01,492.0,prueba
+Vía Marítima,2025-07-01,606.0,prueba
+Vía Marítima,2025-08-01,566.0,prueba
+Vía Marítima,2025-09-01,366.0,prueba
+Vía Marítima,2025-10-01,393.0,prueba
+Vía Marítima,2025-11-01,534.0,prueba
+Vía Marítima,2025-12-01,664.0,prueba
+Vía Marítima,2026-01-01,644.0,prueba
+Vía Marítima,2026-02-01,758.0,prueba
+Vía Marítima,2026-03-01,672.0,prueba
+Vía Marítima,2026-04-01,720.0,prueba
+Vía Marítima,2026-05-01,603.0,prueba
+Vía Marítima,2026-06-01,576.0,prueba
+América del Centro,2009-01-01,93848.08764638269,entrenamiento
+América del Centro,2009-02-01,73988.38726361323,entrenamiento
+América del Centro,2009-03-01,96398.15089958302,entrenamiento
+América del Centro,2009-04-01,114286.68210111491,entrenamiento
+América del Centro,2009-05-01,83304.46991481968,entrenamiento
+América del Centro,2009-06-01,95701.16345514706,entrenamiento
+América del Centro,2009-07-01,96269.46908603169,entrenamiento
+América del Centro,2009-08-01,125733.14353015932,entrenamiento
+América del Centro,2009-09-01,98025.43176153029,entrenamiento
+América del Centro,2009-10-01,111261.15331887046,entrenamiento
+América del Centro,2009-11-01,125806.13586866151,entrenamiento
+América del Centro,2009-12-01,157418.3972692784,entrenamiento
+América del Centro,2010-01-01,106483.00864475268,entrenamiento
+América del Centro,2010-02-01,81072.35634648062,entrenamiento
+América del Centro,2010-03-01,95843.31992274322,entrenamiento
+América del Centro,2010-04-01,119646.12130044593,entrenamiento
+América del Centro,2010-05-01,97354.13690504673,entrenamiento
+América del Centro,2010-06-01,99435.3180438589,entrenamiento
+América del Centro,2010-07-01,125130.32973600173,entrenamiento
+América del Centro,2010-08-01,127001.82976361034,entrenamiento
+América del Centro,2010-09-01,95456.26841146746,entrenamiento
+América del Centro,2010-10-01,114303.65364534994,entrenamiento
+América del Centro,2010-11-01,129744.65774227306,entrenamiento
+América del Centro,2010-12-01,166536.38986866781,entrenamiento
+América del Centro,2011-01-01,115145.08491200685,entrenamiento
+América del Centro,2011-02-01,88483.13519497334,entrenamiento
+América del Centro,2011-03-01,111569.58910726917,entrenamiento
+América del Centro,2011-04-01,138143.3940879542,entrenamiento
+América del Centro,2011-05-01,102170.69393194425,entrenamiento
+América del Centro,2011-06-01,108360.53593042374,entrenamiento
+América del Centro,2011-07-01,131289.94151871614,entrenamiento
+América del Centro,2011-08-01,124097.07098620424,entrenamiento
+América del Centro,2011-09-01,105097.67675853525,entrenamiento
+América del Centro,2011-10-01,110734.98800635971,entrenamiento
+América del Centro,2011-11-01,136002.00359961748,entrenamiento
+América del Centro,2011-12-01,181883.34268717706,entrenamiento
+América del Centro,2012-01-01,122214.34001954578,entrenamiento
+América del Centro,2012-02-01,93819.68012200746,entrenamiento
+América del Centro,2012-03-01,122296.00249908665,entrenamiento
+América del Centro,2012-04-01,132244.41918745663,entrenamiento
+América del Centro,2012-05-01,105871.61299981305,entrenamiento
+América del Centro,2012-06-01,112976.84376978572,entrenamiento
+América del Centro,2012-07-01,129027.92988085591,entrenamiento
+América del Centro,2012-08-01,119927.49277007497,entrenamiento
+América del Centro,2012-09-01,109162.6607248607,entrenamiento
+América del Centro,2012-10-01,122678.05912848748,entrenamiento
+América del Centro,2012-11-01,140790.3067351314,entrenamiento
+América del Centro,2012-12-01,169915.19576479474,entrenamiento
+América del Centro,2013-01-01,114928.74041598607,entrenamiento
+América del Centro,2013-02-01,85722.28016658731,entrenamiento
+América del Centro,2013-03-01,146822.4160904498,entrenamiento
+América del Centro,2013-04-01,127787.30788467008,entrenamiento
+América del Centro,2013-05-01,130523.20483401864,entrenamiento
+América del Centro,2013-06-01,132740.34480074816,entrenamiento
+América del Centro,2013-07-01,137555.7589169652,entrenamiento
+América del Centro,2013-08-01,141829.5591873795,entrenamiento
+América del Centro,2013-09-01,124275.23640795665,entrenamiento
+América del Centro,2013-10-01,120207.06656201315,entrenamiento
+América del Centro,2013-11-01,145363.06099637237,entrenamiento
+América del Centro,2013-12-01,192030.9442146995,entrenamiento
+América del Centro,2014-01-01,155004.11886466408,entrenamiento
+América del Centro,2014-02-01,113013.19120402806,entrenamiento
+América del Centro,2014-03-01,128988.10570149668,entrenamiento
+América del Centro,2014-04-01,165710.43832628604,entrenamiento
+América del Centro,2014-05-01,135521.2386593173,entrenamiento
+América del Centro,2014-06-01,134941.00196309466,entrenamiento
+América del Centro,2014-07-01,162582.84589978974,entrenamiento
+América del Centro,2014-08-01,164237.67883810677,entrenamiento
+América del Centro,2014-09-01,144345.0918924419,entrenamiento
+América del Centro,2014-10-01,170965.76141273646,entrenamiento
+América del Centro,2014-11-01,187794.5418497074,entrenamiento
+América del Centro,2014-12-01,249672.1901061336,entrenamiento
+América del Centro,2015-01-01,177363.789305937,entrenamiento
+América del Centro,2015-02-01,132327.29557642978,entrenamiento
+América del Centro,2015-03-01,172026.6485562247,entrenamiento
+América del Centro,2015-04-01,184946.43581212885,entrenamiento
+América del Centro,2015-05-01,169508.94081668655,entrenamiento
+América del Centro,2015-06-01,173969.44256763888,entrenamiento
+América del Centro,2015-07-01,176548.67229525387,entrenamiento
+América del Centro,2015-08-01,182715.76114240257,entrenamiento
+América del Centro,2015-09-01,159367.91214107058,entrenamiento
+América del Centro,2015-10-01,172803.78183515833,entrenamiento
+América del Centro,2015-11-01,180825.69110129538,entrenamiento
+América del Centro,2015-12-01,250276.65700783863,entrenamiento
+América del Centro,2016-01-01,192937.115527317,entrenamiento
+América del Centro,2016-02-01,147150.87814481193,entrenamiento
+América del Centro,2016-03-01,238870.44667783802,entrenamiento
+América del Centro,2016-04-01,157651.36618051215,entrenamiento
+América del Centro,2016-05-01,169370.96893511314,entrenamiento
+América del Centro,2016-06-01,159050.22385501658,entrenamiento
+América del Centro,2016-07-01,188728.40315524102,entrenamiento
+América del Centro,2016-08-01,200565.55700648308,entrenamiento
+América del Centro,2016-09-01,143338.3982360568,entrenamiento
+América del Centro,2016-10-01,194543.07647134515,entrenamiento
+América del Centro,2016-11-01,191532.65548609028,entrenamiento
+América del Centro,2016-12-01,262265.6604966652,entrenamiento
+América del Centro,2017-01-01,197417.31572475474,entrenamiento
+América del Centro,2017-02-01,166979.10573019806,entrenamiento
+América del Centro,2017-03-01,219075.70534685743,entrenamiento
+América del Centro,2017-04-01,309634.008422462,entrenamiento
+América del Centro,2017-05-01,189615.35754693896,entrenamiento
+América del Centro,2017-06-01,177782.05194330736,entrenamiento
+América del Centro,2017-07-01,202947.73817983808,entrenamiento
+América del Centro,2017-08-01,210649.62302464846,entrenamiento
+América del Centro,2017-09-01,166138.01439936445,entrenamiento
+América del Centro,2017-10-01,180227.87774458498,entrenamiento
+América del Centro,2017-11-01,209690.9267201701,entrenamiento
+América del Centro,2017-12-01,277928.6630660552,entrenamiento
+América del Centro,2018-01-01,229847.23340657077,entrenamiento
+América del Centro,2018-02-01,185100.07677973848,entrenamiento
+América del Centro,2018-03-01,308231.15638934495,entrenamiento
+América del Centro,2018-04-01,244258.98755994975,entrenamiento
+América del Centro,2018-05-01,216959.07423047256,entrenamiento
+América del Centro,2018-06-01,234902.6045682296,entrenamiento
+América del Centro,2018-07-01,248852.39995325293,entrenamiento
+América del Centro,2018-08-01,280768.6206049612,entrenamiento
+América del Centro,2018-09-01,222892.34701733154,entrenamiento
+América del Centro,2018-10-01,218947.531641446,entrenamiento
+América del Centro,2018-11-01,234351.36219900285,entrenamiento
+América del Centro,2018-12-01,301254.13414134795,entrenamiento
+América del Centro,2019-01-01,281061.70492855995,entrenamiento
+América del Centro,2019-02-01,215845.97483533187,entrenamiento
+América del Centro,2019-03-01,278723.46848,entrenamiento
+América del Centro,2019-04-01,316516.9999999992,entrenamiento
+América del Centro,2019-05-01,235948.99999999924,entrenamiento
+América del Centro,2019-06-01,253202.99999999886,entrenamiento
+América del Centro,2019-07-01,274104.24383442267,entrenamiento
+América del Centro,2019-08-01,293027.99999999977,entrenamiento
+América del Centro,2019-09-01,247174.99999999942,entrenamiento
+América del Centro,2019-10-01,232198.9999999987,entrenamiento
+América del Centro,2019-11-01,260704.00000000247,entrenamiento
+América del Centro,2019-12-01,359173.0000000001,entrenamiento
+América del Centro,2020-01-01,307939.5517241379,entrenamiento
+América del Centro,2020-02-01,239370.0,entrenamiento
+América del Centro,2020-03-01,121339.25,entrenamiento
+América del Centro,2020-04-01,10039.0,entrenamiento
+América del Centro,2020-05-01,9779.0,entrenamiento
+América del Centro,2020-06-01,11817.0,entrenamiento
+América del Centro,2020-07-01,13484.0,entrenamiento
+América del Centro,2020-08-01,15357.0,entrenamiento
+América del Centro,2020-09-01,11220.49268292683,entrenamiento
+América del Centro,2020-10-01,14208.773559687135,entrenamiento
+América del Centro,2020-11-01,36164.0,entrenamiento
+América del Centro,2020-12-01,39679.0,entrenamiento
+América del Centro,2021-01-01,71529.0,entrenamiento
+América del Centro,2021-02-01,42917.0,entrenamiento
+América del Centro,2021-03-01,53656.37897633462,entrenamiento
+América del Centro,2021-04-01,37903.0,prueba
+América del Centro,2021-05-01,49645.0,prueba
+América del Centro,2021-06-01,60745.0,prueba
+América del Centro,2021-07-01,64960.0,prueba
+América del Centro,2021-08-01,51192.0,prueba
+América del Centro,2021-09-01,48794.0,prueba
+América del Centro,2021-10-01,59170.0,prueba
+América del Centro,2021-11-01,64724.0,prueba
+América del Centro,2021-12-01,149703.0,prueba
+América del Centro,2022-01-01,86499.0,prueba
+América del Centro,2022-02-01,146716.6,prueba
+América del Centro,2022-03-01,163872.0,prueba
+América del Centro,2022-04-01,223294.0,prueba
+América del Centro,2022-05-01,198203.0,prueba
+América del Centro,2022-06-01,198702.0,prueba
+América del Centro,2022-07-01,231554.0,prueba
+América del Centro,2022-08-01,232241.0,prueba
+América del Centro,2022-09-01,195304.0,prueba
+América del Centro,2022-10-01,218504.0,prueba
+América del Centro,2022-11-01,244172.0,prueba
+América del Centro,2022-12-01,310516.0,prueba
+América del Centro,2023-01-01,178469.32493866165,prueba
+América del Centro,2023-02-01,119271.23096515842,prueba
+América del Centro,2023-03-01,153935.42964046483,prueba
+América del Centro,2023-04-01,198941.59208471162,prueba
+América del Centro,2023-05-01,138774.22764908767,prueba
+América del Centro,2023-06-01,135248.71404810695,prueba
+América del Centro,2023-07-01,166137.9578242136,prueba
+América del Centro,2023-08-01,182500.9684217889,prueba
+América del Centro,2023-09-01,154869.7513074363,prueba
+América del Centro,2023-10-01,109570.68390564105,prueba
+América del Centro,2023-11-01,167001.90696512978,prueba
+América del Centro,2023-12-01,221296.68974899902,prueba
+América del Centro,2024-01-01,197656.39235007428,prueba
+América del Centro,2024-02-01,160647.301921617,prueba
+América del Centro,2024-03-01,206697.74679208134,prueba
+América del Centro,2024-04-01,152614.55714114258,prueba
+América del Centro,2024-05-01,152267.11845642317,prueba
+América del Centro,2024-06-01,130714.24281410879,prueba
+América del Centro,2024-07-01,157324.79808869044,prueba
+América del Centro,2024-08-01,191992.30000509688,prueba
+América del Centro,2024-09-01,151186.9140386449,prueba
+América del Centro,2024-10-01,170604.37848348546,prueba
+América del Centro,2024-11-01,201390.66899286208,prueba
+América del Centro,2024-12-01,242238.76669915067,prueba
+América del Centro,2025-01-01,187170.21490193796,prueba
+América del Centro,2025-02-01,155564.88401069562,prueba
+América del Centro,2025-03-01,167729.99481481058,prueba
+América del Centro,2025-04-01,203524.058390878,prueba
+América del Centro,2025-05-01,160973.28389823987,prueba
+América del Centro,2025-06-01,155037.64178094812,prueba
+América del Centro,2025-07-01,165620.43786941576,prueba
+América del Centro,2025-08-01,199695.16911306878,prueba
+América del Centro,2025-09-01,154323.22999085515,prueba
+América del Centro,2025-10-01,168768.28081863796,prueba
+América del Centro,2025-11-01,194775.19206550196,prueba
+América del Centro,2025-12-01,230511.15194255428,prueba
+América del Centro,2026-01-01,188957.17965209973,prueba
+América del Centro,2026-02-01,129776.30345186002,prueba
+América del Centro,2026-03-01,157705.69437418517,prueba
+América del Centro,2026-04-01,157872.58450827387,prueba
+América del Centro,2026-05-01,146233.21372086005,prueba
+América del Centro,2026-06-01,146093.47989936126,prueba
+América del Norte,2009-01-01,36033.941698790186,entrenamiento
+América del Norte,2009-02-01,33970.304939764275,entrenamiento
+América del Norte,2009-03-01,41482.52291901983,entrenamiento
+América del Norte,2009-04-01,39595.78559290153,entrenamiento
+América del Norte,2009-05-01,29239.054435873386,entrenamiento
+América del Norte,2009-06-01,42017.63992312568,entrenamiento
+América del Norte,2009-07-01,29178.482656187807,entrenamiento
+América del Norte,2009-08-01,36449.89827360508,entrenamiento
+América del Norte,2009-09-01,22160.70177407129,entrenamiento
+América del Norte,2009-10-01,27973.456467998454,entrenamiento
+América del Norte,2009-11-01,30074.137090030097,entrenamiento
+América del Norte,2009-12-01,46425.25392786106,entrenamiento
+América del Norte,2010-01-01,37862.25686690369,entrenamiento
+América del Norte,2010-02-01,33685.103879544135,entrenamiento
+América del Norte,2010-03-01,48435.772836797805,entrenamiento
+América del Norte,2010-04-01,34912.7840027252,entrenamiento
+América del Norte,2010-05-01,30032.47204263936,entrenamiento
+América del Norte,2010-06-01,42844.6290307679,entrenamiento
+América del Norte,2010-07-01,54110.503123979426,entrenamiento
+América del Norte,2010-08-01,37421.200852685346,entrenamiento
+América del Norte,2010-09-01,21925.081286924524,entrenamiento
+América del Norte,2010-10-01,27855.470675876837,entrenamiento
+América del Norte,2010-11-01,31066.677954471008,entrenamiento
+América del Norte,2010-12-01,44218.65649802123,entrenamiento
+América del Norte,2011-01-01,35403.47231500847,entrenamiento
+América del Norte,2011-02-01,32746.73039589335,entrenamiento
+América del Norte,2011-03-01,39814.20190138811,entrenamiento
+América del Norte,2011-04-01,37249.370907135686,entrenamiento
+América del Norte,2011-05-01,30125.85384931567,entrenamiento
+América del Norte,2011-06-01,41325.93279548117,entrenamiento
+América del Norte,2011-07-01,51321.06318306561,entrenamiento
+América del Norte,2011-08-01,33741.422718375834,entrenamiento
+América del Norte,2011-09-01,23078.162961206715,entrenamiento
+América del Norte,2011-10-01,26427.092589548163,entrenamiento
+América del Norte,2011-11-01,31803.074301626315,entrenamiento
+América del Norte,2011-12-01,45546.767983558966,entrenamiento
+América del Norte,2012-01-01,36525.61774875529,entrenamiento
+América del Norte,2012-02-01,35615.76207630571,entrenamiento
+América del Norte,2012-03-01,44971.20575306145,entrenamiento
+América del Norte,2012-04-01,34347.81707520896,entrenamiento
+América del Norte,2012-05-01,32340.899043989753,entrenamiento
+América del Norte,2012-06-01,46108.72045709654,entrenamiento
+América del Norte,2012-07-01,52488.44079197266,entrenamiento
+América del Norte,2012-08-01,34261.910470307645,entrenamiento
+América del Norte,2012-09-01,25049.86726162883,entrenamiento
+América del Norte,2012-10-01,30033.3783682761,entrenamiento
+América del Norte,2012-11-01,34753.761583425694,entrenamiento
+América del Norte,2012-12-01,50497.55674248289,entrenamiento
+América del Norte,2013-01-01,36342.95611943795,entrenamiento
+América del Norte,2013-02-01,35378.61929500824,entrenamiento
+América del Norte,2013-03-01,50680.1392725129,entrenamiento
+América del Norte,2013-04-01,33933.729338032346,entrenamiento
+América del Norte,2013-05-01,33675.4520809454,entrenamiento
+América del Norte,2013-06-01,49276.65005487481,entrenamiento
+América del Norte,2013-07-01,54852.25834770249,entrenamiento
+América del Norte,2013-08-01,37092.379982278406,entrenamiento
+América del Norte,2013-09-01,24513.825463389963,entrenamiento
+América del Norte,2013-10-01,30397.4023209579,entrenamiento
+América del Norte,2013-11-01,34869.96200824615,entrenamiento
+América del Norte,2013-12-01,51340.45772465891,entrenamiento
+América del Norte,2014-01-01,41127.227811726334,entrenamiento
+América del Norte,2014-02-01,37720.0546607188,entrenamiento
+América del Norte,2014-03-01,48389.224521172524,entrenamiento
+América del Norte,2014-04-01,43212.69482263157,entrenamiento
+América del Norte,2014-05-01,36616.32609329061,entrenamiento
+América del Norte,2014-06-01,49299.47133819226,entrenamiento
+América del Norte,2014-07-01,53891.748906113266,entrenamiento
+América del Norte,2014-08-01,39134.95312940939,entrenamiento
+América del Norte,2014-09-01,26058.688701117357,entrenamiento
+América del Norte,2014-10-01,32218.109482390017,entrenamiento
+América del Norte,2014-11-01,36831.06813600278,entrenamiento
+América del Norte,2014-12-01,53132.544543470445,entrenamiento
+América del Norte,2015-01-01,41163.161903264365,entrenamiento
+América del Norte,2015-02-01,40762.951968060894,entrenamiento
+América del Norte,2015-03-01,52359.75948309433,entrenamiento
+América del Norte,2015-04-01,40574.072309488976,entrenamiento
+América del Norte,2015-05-01,38338.66690576121,entrenamiento
+América del Norte,2015-06-01,53259.244349369605,entrenamiento
+América del Norte,2015-07-01,55031.504836900924,entrenamiento
+América del Norte,2015-08-01,40773.39426934888,entrenamiento
+América del Norte,2015-09-01,28826.858661593367,entrenamiento
+América del Norte,2015-10-01,35099.496988287094,entrenamiento
+América del Norte,2015-11-01,40229.31899892471,entrenamiento
+América del Norte,2015-12-01,56265.581523951,entrenamiento
+América del Norte,2016-01-01,42564.51382478961,entrenamiento
+América del Norte,2016-02-01,41660.85164608057,entrenamiento
+América del Norte,2016-03-01,56246.885982669715,entrenamiento
+América del Norte,2016-04-01,34139.55416962172,entrenamiento
+América del Norte,2016-05-01,36422.958814738806,entrenamiento
+América del Norte,2016-06-01,50353.07142697131,entrenamiento
+América del Norte,2016-07-01,57301.836403293935,entrenamiento
+América del Norte,2016-08-01,37053.37071704102,entrenamiento
+América del Norte,2016-09-01,25812.897222970292,entrenamiento
+América del Norte,2016-10-01,33765.187990926475,entrenamiento
+América del Norte,2016-11-01,35331.32504180851,entrenamiento
+América del Norte,2016-12-01,40939.52816903266,entrenamiento
+América del Norte,2017-01-01,35958.0594554757,entrenamiento
+América del Norte,2017-02-01,40764.34532734305,entrenamiento
+América del Norte,2017-03-01,48536.34855180859,entrenamiento
+América del Norte,2017-04-01,44296.686508325016,entrenamiento
+América del Norte,2017-05-01,34824.89388502458,entrenamiento
+América del Norte,2017-06-01,52114.105624126765,entrenamiento
+América del Norte,2017-07-01,62265.321436585386,entrenamiento
+América del Norte,2017-08-01,40281.477990801424,entrenamiento
+América del Norte,2017-09-01,28514.537579931428,entrenamiento
+América del Norte,2017-10-01,37063.30387534907,entrenamiento
+América del Norte,2017-11-01,40241.03651914181,entrenamiento
+América del Norte,2017-12-01,56120.835855469835,entrenamiento
+América del Norte,2018-01-01,45420.92776769754,entrenamiento
+América del Norte,2018-02-01,41350.9147907607,entrenamiento
+América del Norte,2018-03-01,58272.6265710873,entrenamiento
+América del Norte,2018-04-01,41174.77879382227,entrenamiento
+América del Norte,2018-05-01,40062.185485086746,entrenamiento
+América del Norte,2018-06-01,58332.449940271144,entrenamiento
+América del Norte,2018-07-01,63754.189994301414,entrenamiento
+América del Norte,2018-08-01,46511.95113503041,entrenamiento
+América del Norte,2018-09-01,31230.721450206787,entrenamiento
+América del Norte,2018-10-01,40830.30135561978,entrenamiento
+América del Norte,2018-11-01,47376.27446204648,entrenamiento
+América del Norte,2018-12-01,65049.604659914854,entrenamiento
+América del Norte,2019-01-01,47828.00000000001,entrenamiento
+América del Norte,2019-02-01,45015.99999999999,entrenamiento
+América del Norte,2019-03-01,55370.0,entrenamiento
+América del Norte,2019-04-01,48777.99999999985,entrenamiento
+América del Norte,2019-05-01,43339.00000000024,entrenamiento
+América del Norte,2019-06-01,61958.00000000015,entrenamiento
+América del Norte,2019-07-01,66272.0,entrenamiento
+América del Norte,2019-08-01,48254.00000000019,entrenamiento
+América del Norte,2019-09-01,32571.000000000084,entrenamiento
+América del Norte,2019-10-01,41435.0,entrenamiento
+América del Norte,2019-11-01,47094.99999999975,entrenamiento
+América del Norte,2019-12-01,64640.999999999935,entrenamiento
+América del Norte,2020-01-01,51644.0,entrenamiento
+América del Norte,2020-02-01,51210.0,entrenamiento
+América del Norte,2020-03-01,23675.0,entrenamiento
+América del Norte,2020-04-01,0.0,entrenamiento
+América del Norte,2020-05-01,0.0,entrenamiento
+América del Norte,2020-06-01,0.0,entrenamiento
+América del Norte,2020-07-01,0.0,entrenamiento
+América del Norte,2020-08-01,0.0,entrenamiento
+América del Norte,2020-09-01,1144.0,entrenamiento
+América del Norte,2020-10-01,1831.278443106,entrenamiento
+América del Norte,2020-11-01,12742.0,entrenamiento
+América del Norte,2020-12-01,13549.0,entrenamiento
+América del Norte,2021-01-01,13870.0,entrenamiento
+América del Norte,2021-02-01,7313.0,entrenamiento
+América del Norte,2021-03-01,25250.0,entrenamiento
+América del Norte,2021-04-01,17564.0,prueba
+América del Norte,2021-05-01,19349.0,prueba
+América del Norte,2021-06-01,28504.0,prueba
+América del Norte,2021-07-01,26905.0,prueba
+América del Norte,2021-08-01,15939.0,prueba
+América del Norte,2021-09-01,13003.0,prueba
+América del Norte,2021-10-01,16873.0,prueba
+América del Norte,2021-11-01,22724.0,prueba
+América del Norte,2021-12-01,57595.0,prueba
+América del Norte,2022-01-01,31451.0,prueba
+América del Norte,2022-02-01,31340.0,prueba
+América del Norte,2022-03-01,44999.0,prueba
+América del Norte,2022-04-01,48861.0,prueba
+América del Norte,2022-05-01,45596.0,prueba
+América del Norte,2022-06-01,56586.0,prueba
+América del Norte,2022-07-01,54309.0,prueba
+América del Norte,2022-08-01,42553.0,prueba
+América del Norte,2022-09-01,33194.0,prueba
+América del Norte,2022-10-01,40404.0,prueba
+América del Norte,2022-11-01,41749.0,prueba
+América del Norte,2022-12-01,62274.0,prueba
+América del Norte,2023-01-01,52108.60115686782,prueba
+América del Norte,2023-02-01,51865.9519356297,prueba
+América del Norte,2023-03-01,66572.55963862414,prueba
+América del Norte,2023-04-01,55382.23160902609,prueba
+América del Norte,2023-05-01,51272.85906832217,prueba
+América del Norte,2023-06-01,68588.03777387677,prueba
+América del Norte,2023-07-01,70692.99262371616,prueba
+América del Norte,2023-08-01,55583.138067283595,prueba
+América del Norte,2023-09-01,41730.119457500514,prueba
+América del Norte,2023-10-01,35869.926806526804,prueba
+América del Norte,2023-11-01,54451.45000323226,prueba
+América del Norte,2023-12-01,79127.06209514003,prueba
+América del Norte,2024-01-01,63914.014986960305,prueba
+América del Norte,2024-02-01,69065.90921193836,prueba
+América del Norte,2024-03-01,81207.71720844385,prueba
+América del Norte,2024-04-01,60460.321312080916,prueba
+América del Norte,2024-05-01,61292.18036441695,prueba
+América del Norte,2024-06-01,82320.16713048855,prueba
+América del Norte,2024-07-01,82205.10073409877,prueba
+América del Norte,2024-08-01,61032.010210578876,prueba
+América del Norte,2024-09-01,41562.9957955142,prueba
+América del Norte,2024-10-01,50582.22449190525,prueba
+América del Norte,2024-11-01,63735.577115699765,prueba
+América del Norte,2024-12-01,87399.59165771572,prueba
+América del Norte,2025-01-01,68397.96450108268,prueba
+América del Norte,2025-02-01,63957.000584805966,prueba
+América del Norte,2025-03-01,75852.92901828368,prueba
+América del Norte,2025-04-01,66079.27932998464,prueba
+América del Norte,2025-05-01,62372.21123519666,prueba
+América del Norte,2025-06-01,77123.91941036285,prueba
+América del Norte,2025-07-01,86624.7694980845,prueba
+América del Norte,2025-08-01,64687.51798660194,prueba
+América del Norte,2025-09-01,43141.46955528722,prueba
+América del Norte,2025-10-01,58936.753242921244,prueba
+América del Norte,2025-11-01,73826.48112406474,prueba
+América del Norte,2025-12-01,98379.80523723102,prueba
+América del Norte,2026-01-01,73593.52143810508,prueba
+América del Norte,2026-02-01,70561.89285714286,prueba
+América del Norte,2026-03-01,91979.38491444387,prueba
+América del Norte,2026-04-01,69651.81522507363,prueba
+América del Norte,2026-05-01,67069.11018582762,prueba
+América del Norte,2026-06-01,74834.618172677,prueba
+Europa,2009-01-01,12061.0,entrenamiento
+Europa,2009-02-01,12642.0,entrenamiento
+Europa,2009-03-01,13676.0,entrenamiento
+Europa,2009-04-01,10562.0,entrenamiento
+Europa,2009-05-01,6245.0,entrenamiento
+Europa,2009-06-01,6653.0,entrenamiento
+Europa,2009-07-01,6326.0,entrenamiento
+Europa,2009-08-01,10170.0,entrenamiento
+Europa,2009-09-01,6324.0,entrenamiento
+Europa,2009-10-01,7377.0,entrenamiento
+Europa,2009-11-01,10931.0,entrenamiento
+Europa,2009-12-01,9223.0,entrenamiento
+Europa,2010-01-01,9873.0,entrenamiento
+Europa,2010-02-01,10714.0,entrenamiento
+Europa,2010-03-01,11484.0,entrenamiento
+Europa,2010-04-01,8727.0,entrenamiento
+Europa,2010-05-01,7041.0,entrenamiento
+Europa,2010-06-01,6520.0,entrenamiento
+Europa,2010-07-01,12284.0,entrenamiento
+Europa,2010-08-01,11594.0,entrenamiento
+Europa,2010-09-01,6155.0,entrenamiento
+Europa,2010-10-01,7993.0,entrenamiento
+Europa,2010-11-01,11268.0,entrenamiento
+Europa,2010-12-01,9704.0,entrenamiento
+Europa,2011-01-01,10214.0,entrenamiento
+Europa,2011-02-01,10924.0,entrenamiento
+Europa,2011-03-01,10649.0,entrenamiento
+Europa,2011-04-01,9218.0,entrenamiento
+Europa,2011-05-01,6639.0,entrenamiento
+Europa,2011-06-01,6452.0,entrenamiento
+Europa,2011-07-01,10530.0,entrenamiento
+Europa,2011-08-01,10035.0,entrenamiento
+Europa,2011-09-01,5963.0,entrenamiento
+Europa,2011-10-01,7459.0,entrenamiento
+Europa,2011-11-01,11263.0,entrenamiento
+Europa,2011-12-01,9261.0,entrenamiento
+Europa,2012-01-01,9565.0,entrenamiento
+Europa,2012-02-01,10801.0,entrenamiento
+Europa,2012-03-01,11173.0,entrenamiento
+Europa,2012-04-01,8251.0,entrenamiento
+Europa,2012-05-01,6557.0,entrenamiento
+Europa,2012-06-01,6124.0,entrenamiento
+Europa,2012-07-01,9777.0,entrenamiento
+Europa,2012-08-01,9099.0,entrenamiento
+Europa,2012-09-01,5878.0,entrenamiento
+Europa,2012-10-01,7802.0,entrenamiento
+Europa,2012-11-01,12078.0,entrenamiento
+Europa,2012-12-01,10324.0,entrenamiento
+Europa,2013-01-01,10470.0,entrenamiento
+Europa,2013-02-01,11147.0,entrenamiento
+Europa,2013-03-01,10944.0,entrenamiento
+Europa,2013-04-01,8564.0,entrenamiento
+Europa,2013-05-01,6666.0,entrenamiento
+Europa,2013-06-01,6918.0,entrenamiento
+Europa,2013-07-01,10078.0,entrenamiento
+Europa,2013-08-01,9376.0,entrenamiento
+Europa,2013-09-01,6461.0,entrenamiento
+Europa,2013-10-01,8507.0,entrenamiento
+Europa,2013-11-01,12817.0,entrenamiento
+Europa,2013-12-01,10265.0,entrenamiento
+Europa,2014-01-01,12665.0,entrenamiento
+Europa,2014-02-01,13163.0,entrenamiento
+Europa,2014-03-01,13155.0,entrenamiento
+Europa,2014-04-01,10732.0,entrenamiento
+Europa,2014-05-01,8130.0,entrenamiento
+Europa,2014-06-01,6933.0,entrenamiento
+Europa,2014-07-01,10928.0,entrenamiento
+Europa,2014-08-01,11304.0,entrenamiento
+Europa,2014-09-01,7332.0,entrenamiento
+Europa,2014-10-01,9954.0,entrenamiento
+Europa,2014-11-01,12941.0,entrenamiento
+Europa,2014-12-01,12146.0,entrenamiento
+Europa,2015-01-01,13347.0,entrenamiento
+Europa,2015-02-01,13323.0,entrenamiento
+Europa,2015-03-01,13703.0,entrenamiento
+Europa,2015-04-01,10582.0,entrenamiento
+Europa,2015-05-01,7884.0,entrenamiento
+Europa,2015-06-01,7389.0,entrenamiento
+Europa,2015-07-01,10932.0,entrenamiento
+Europa,2015-08-01,11590.0,entrenamiento
+Europa,2015-09-01,7652.0,entrenamiento
+Europa,2015-10-01,9191.0,entrenamiento
+Europa,2015-11-01,12986.0,entrenamiento
+Europa,2015-12-01,11856.0,entrenamiento
+Europa,2016-01-01,13150.0,entrenamiento
+Europa,2016-02-01,13890.0,entrenamiento
+Europa,2016-03-01,14293.0,entrenamiento
+Europa,2016-04-01,9405.0,entrenamiento
+Europa,2016-05-01,7526.0,entrenamiento
+Europa,2016-06-01,6683.0,entrenamiento
+Europa,2016-07-01,11278.0,entrenamiento
+Europa,2016-08-01,10319.0,entrenamiento
+Europa,2016-09-01,7501.768294305017,entrenamiento
+Europa,2016-10-01,9028.0,entrenamiento
+Europa,2016-11-01,12814.0,entrenamiento
+Europa,2016-12-01,9499.0,entrenamiento
+Europa,2017-01-01,13566.181203015478,entrenamiento
+Europa,2017-02-01,14561.081627321388,entrenamiento
+Europa,2017-03-01,15015.58866638628,entrenamiento
+Europa,2017-04-01,11567.855572090974,entrenamiento
+Europa,2017-05-01,8172.053579174342,entrenamiento
+Europa,2017-06-01,7149.947400000001,entrenamiento
+Europa,2017-07-01,13228.9684,entrenamiento
+Europa,2017-08-01,12124.683999999994,entrenamiento
+Europa,2017-09-01,8198.3282,entrenamiento
+Europa,2017-10-01,10459.014500000003,entrenamiento
+Europa,2017-11-01,13871.606100000014,entrenamiento
+Europa,2017-12-01,11078.999999999995,entrenamiento
+Europa,2018-01-01,14512.3104,entrenamiento
+Europa,2018-02-01,14219.000000000005,entrenamiento
+Europa,2018-03-01,13939.000000000007,entrenamiento
+Europa,2018-04-01,11243.095,entrenamiento
+Europa,2018-05-01,8852.0,entrenamiento
+Europa,2018-06-01,7649.000000017012,entrenamiento
+Europa,2018-07-01,13359.000000000005,entrenamiento
+Europa,2018-08-01,14017.00000000001,entrenamiento
+Europa,2018-09-01,7702.999999999996,entrenamiento
+Europa,2018-10-01,10687.371700216832,entrenamiento
+Europa,2018-11-01,15213.999999999995,entrenamiento
+Europa,2018-12-01,14125.35798443276,entrenamiento
+Europa,2019-01-01,14724.708446837318,entrenamiento
+Europa,2019-02-01,13868.24474340032,entrenamiento
+Europa,2019-03-01,13904.083808471225,entrenamiento
+Europa,2019-04-01,11110.610124178693,entrenamiento
+Europa,2019-05-01,8259.68955145634,entrenamiento
+Europa,2019-06-01,7212.748080928468,entrenamiento
+Europa,2019-07-01,12848.090689428765,entrenamiento
+Europa,2019-08-01,12647.026976547048,entrenamiento
+Europa,2019-09-01,7419.009860079071,entrenamiento
+Europa,2019-10-01,9658.169718389043,entrenamiento
+Europa,2019-11-01,15912.171799593107,entrenamiento
+Europa,2019-12-01,13673.411952743774,entrenamiento
+Europa,2020-01-01,15121.596391368887,entrenamiento
+Europa,2020-02-01,16224.10861737468,entrenamiento
+Europa,2020-03-01,5748.307240338709,entrenamiento
+Europa,2020-04-01,0.0,entrenamiento
+Europa,2020-05-01,0.0,entrenamiento
+Europa,2020-06-01,0.0,entrenamiento
+Europa,2020-07-01,0.0,entrenamiento
+Europa,2020-08-01,0.0,entrenamiento
+Europa,2020-09-01,22.0,entrenamiento
+Europa,2020-10-01,202.14656290102596,entrenamiento
+Europa,2020-11-01,1461.0,entrenamiento
+Europa,2020-12-01,1008.0,entrenamiento
+Europa,2021-01-01,2128.0,entrenamiento
+Europa,2021-02-01,946.0,entrenamiento
+Europa,2021-03-01,2511.1132655151227,entrenamiento
+Europa,2021-04-01,1957.1727574750762,prueba
+Europa,2021-05-01,2150.0,prueba
+Europa,2021-06-01,2099.0,prueba
+Europa,2021-07-01,2456.0,prueba
+Europa,2021-08-01,2367.0,prueba
+Europa,2021-09-01,1816.0,prueba
+Europa,2021-10-01,3245.0,prueba
+Europa,2021-11-01,5746.0,prueba
+Europa,2021-12-01,8958.21739130434,prueba
+Europa,2022-01-01,8829.0,prueba
+Europa,2022-02-01,9011.0,prueba
+Europa,2022-03-01,10288.0,prueba
+Europa,2022-04-01,11837.0,prueba
+Europa,2022-05-01,7827.0,prueba
+Europa,2022-06-01,5841.0,prueba
+Europa,2022-07-01,10376.0,prueba
+Europa,2022-08-01,11412.0,prueba
+Europa,2022-09-01,6998.0,prueba
+Europa,2022-10-01,9073.0,prueba
+Europa,2022-11-01,20420.0,prueba
+Europa,2022-12-01,12829.0,prueba
+Europa,2023-01-01,13967.67045045045,prueba
+Europa,2023-02-01,15507.741078651703,prueba
+Europa,2023-03-01,17234.144163381854,prueba
+Europa,2023-04-01,14254.783529445063,prueba
+Europa,2023-05-01,9737.398565443464,prueba
+Europa,2023-06-01,7405.357142857143,prueba
+Europa,2023-07-01,9324.0,prueba
+Europa,2023-08-01,12202.287448233263,prueba
+Europa,2023-09-01,6954.275298758103,prueba
+Europa,2023-10-01,8852.71942020386,prueba
+Europa,2023-11-01,16684.333029931116,prueba
+Europa,2023-12-01,13745.922191545675,prueba
+Europa,2024-01-01,15782.69696969697,prueba
+Europa,2024-02-01,19031.18935235288,prueba
+Europa,2024-03-01,17712.824049383435,prueba
+Europa,2024-04-01,13101.103428950486,prueba
+Europa,2024-05-01,9831.822660929254,prueba
+Europa,2024-06-01,7704.626441205853,prueba
+Europa,2024-07-01,13120.95633530143,prueba
+Europa,2024-08-01,14104.951861028403,prueba
+Europa,2024-09-01,7823.7,prueba
+Europa,2024-10-01,12275.3759571865,prueba
+Europa,2024-11-01,19800.69115285899,prueba
+Europa,2024-12-01,16340.19678948498,prueba
+Europa,2025-01-01,17867.352185698226,prueba
+Europa,2025-02-01,19359.484355323595,prueba
+Europa,2025-03-01,18719.98492418536,prueba
+Europa,2025-04-01,14988.54023056482,prueba
+Europa,2025-05-01,9765.477667851861,prueba
+Europa,2025-06-01,7502.44197975448,prueba
+Europa,2025-07-01,14115.050901149934,prueba
+Europa,2025-08-01,14330.169898699036,prueba
+Europa,2025-09-01,7069.12228049728,prueba
+Europa,2025-10-01,11742.760792540792,prueba
+Europa,2025-11-01,22824.349925127284,prueba
+Europa,2025-12-01,17977.19796034595,prueba
+Europa,2026-01-01,19157.9054083127,prueba
+Europa,2026-02-01,20117.64108533653,prueba
+Europa,2026-03-01,21565.286411718895,prueba
+Europa,2026-04-01,15281.335701002256,prueba
+Europa,2026-05-01,10869.584810481276,prueba
+Europa,2026-06-01,7855.77040513175,prueba

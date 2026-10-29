@@ -1,0 +1,36 @@
+serie,modelo,MAE,RMSE,MAPE_%
+Total,"ARIMA(1, 0, 1)",82001.13,92265.68,34.94
+Total,Seasonal Naive,66759.53,94454.37,32.33
+Total,Prophet,109263.47,114866.56,54.19
+Total,Holt-Winters,269145.03,291018.98,105.51
+Total,Suav. Exp. Simple,165524.95,180882.83,62.85
+Vía Aérea,"ARIMA(1, 0, 1)",25012.08,30116.11,25.79
+Vía Aérea,Seasonal Naive,29433.28,37459.8,34.72
+Vía Aérea,Prophet,41300.16,45687.35,42.97
+Vía Aérea,Holt-Winters,59529.46,64264.44,61.2
+Vía Aérea,Suav. Exp. Simple,36970.6,42141.22,36.75
+Vía Terrestre,"ARIMA(2, 1, 0)",120744.47,133061.66,74.34
+Vía Terrestre,Seasonal Naive,42310.63,64438.38,32.53
+Vía Terrestre,Prophet,47713.26,57657.77,85.08
+Vía Terrestre,Holt-Winters,204286.56,223216.63,131.72
+Vía Terrestre,Suav. Exp. Simple,121716.89,134137.52,74.64
+Vía Marítima,"ARIMA(2, 0, 3)",7357.39,7757.08,1167.53
+Vía Marítima,Seasonal Naive,829.97,2020.88,119.81
+Vía Marítima,Prophet,7268.67,8585.52,1217.14
+Vía Marítima,Holt-Winters,7539.56,8847.71,1258.43
+Vía Marítima,Suav. Exp. Simple,858.37,1731.93,100.0
+América del Centro,"ARIMA(1, 0, 0)",52260.27,64434.89,30.75
+América del Centro,Seasonal Naive,54412.44,75789.04,36.05
+América del Centro,Prophet,62484.76,67837.58,51.73
+América del Centro,Holt-Winters,173307.66,187318.42,102.9
+América del Centro,Suav. Exp. Simple,109866.61,121961.41,62.26
+América del Norte,"ARIMA(3, 0, 0)",22239.4,26405.29,39.55
+América del Norte,Seasonal Naive,13379.19,16064.11,32.23
+América del Norte,Prophet,38533.84,43509.28,63.66
+América del Norte,Holt-Winters,51550.61,56409.8,88.46
+América del Norte,Suav. Exp. Simple,39603.74,44300.52,64.52
+Europa,"ARIMA(4, 1, 2)",4551.92,5761.5,42.79
+Europa,Seasonal Naive,3018.26,4202.66,35.24
+Europa,Prophet,10909.88,12323.74,91.71
+Europa,Holt-Winters,13783.14,14874.23,124.64
+Europa,Suav. Exp. Simple,9571.37,10978.13,73.15
