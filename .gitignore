@@ -5,3 +5,6 @@ data/raw/*
 runs/
 __pycache__/
 .DS_Store
+# registros de MLflow (base sqlite y artefactos); se entregan aparte, no van a Git
+mlflow/
+mlruns/

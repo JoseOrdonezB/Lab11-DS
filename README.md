@@ -75,7 +75,7 @@ python -m pytest tests -q
 
 ## Qué se guarda por ejecución
 
-`runs/<run_id>/`: `controles.csv`, `reporte_controles.md`, `metricas.csv`, `estimaciones.csv`, `backtest_detalle.csv`, `manifest.json` (commit, hashes, dependencias, períodos),
+`runs/<run_id>/`: `controles.csv`, `reporte_controles.md`, `metricas.csv`, `estimaciones.csv`, `backtest_detalle.csv`, `parametros_modelo.json` (coeficientes ARIMA ajustados), `manifest.json` (commit, hashes, dependencias, períodos, run de MLflow),
 `run.log` y `run_summary.json` (inicio, fin, etapas completadas, advertencias y resultado de la publicación).
 Una versión aprobada es una copia inmutable de esos archivos en `published/versions/`.
 
@@ -85,7 +85,39 @@ Una versión aprobada es una copia inmutable de esos archivos en `published/vers
 python -m pipeline.run --restaurar v2026.10.29-01
 ```
 
+## Registro en MLflow
+
+Cada ejecución de `python -m pipeline.run` es un run del experimento `observatorio-turismo-guatemala`.
+Por defecto se guarda en `mlflow/` (base `mlflow/mlflow.db` y artefactos en `mlflow/artifacts/`); la variable `MLFLOW_TRACKING_URI` cambia el destino.
+`mlflow/` no va a Git: los registros se entregan aparte.
+
+| Qué pide el lab (4.1) | Dónde queda en el run |
+|---|---|
+| Identificador y fecha | nombre del run = `run_id` local; tags `inicio` y `fin`; `mlflow_run_id` también va en `estimaciones.csv`, `metricas.csv` y `manifest.json` |
+| Versión del código | tags `commit_git` y `mlflow.source.git.commit` |
+| Fuentes y su huella | params `fuente_archivo`, `fuente_sha256`, `fuente_filas`, `config_sha256` |
+| Períodos de ajuste y evaluación | params `periodo_cobertura`, `periodo_ajuste_base`, `periodo_backtest`, `periodo_pronostico`... |
+| Parámetros del procedimiento | params `arima_<serie>`, `log_<serie>`, `referencia`, umbrales `aceptacion_*`, `semilla`, versiones `dep_*` |
+| Métricas de evaluación | métricas `<serie>_MAE`, `_RMSE`, `_MAPE_pct`, `_n_obs`, `_ref_MAE`, `_ref_RMSE`, `_cumple_regla` |
+| Resultado de los controles | tags `control_C1` a `control_C6` y `controles_resultado`; métricas `controles_ok/warn/fail`; artefactos `controles/` |
+| Estimaciones y configuración | artefactos `candidato/` y `configuracion/` |
+| Modelo o parámetros para reproducirlo | artefacto `modelo/parametros_modelo.json` (orden, transformación log y coeficientes por serie) |
+
+Estado del run: `FINISHED` si llegó a la decisión (publicado o rechazado) y `FAILED` si se detuvo (control crítico o error),
+con la causa en el tag `causa`. Una ejecución detenida antes de la evaluación **no** tiene métricas de error.
+
+```bash
+mlflow ui --backend-store-uri sqlite:///mlflow/mlflow.db --port 5000      # abrir http://localhost:5000
+python scripts/consultar_mlflow.py listar --salida docs/mlflow_ejecuciones.csv   # tabla de ejecuciones y causas de fallo
+python scripts/consultar_mlflow.py comparar                                      # dos últimas ejecuciones evaluadas (4.2)
+```
+
+`comparar` revisa que tengan la misma fuente y configuración (hashes) y compara estimaciones y métricas con
+`reproducibilidad.tolerancia_abs` (1e-6 viajeros/mes). En la misma máquina dos ejecuciones dan diferencia 0: ARIMA no tiene
+componentes aleatorios. Entre computadoras con otras versiones de las librerías sí puede cambiar, sobre todo en Europa y Marítima,
+donde ARIMA no converge y el optimizador se detiene en puntos distintos; por eso la comparación se hace con el mismo entorno.
+
 ## Pendiente para la entrega final
 
-Registro en MLflow, tablero leyendo `published/current.json` (hoy sigue leyendo `data/`), tres verificaciones de monitoreo, Docker/Compose,
+Tablero leyendo `published/current.json` (hoy sigue leyendo `data/`), tres verificaciones de monitoreo, Docker/Compose,
 prueba de fallo y recuperación documentada, y congelar los umbrales de aceptación (sección 5). Los de `config/pipeline.yaml` son provisionales.

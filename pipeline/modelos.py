@@ -17,8 +17,9 @@ def usar_log(train, cfg):
     return bool((cv.max() - cv.min()) > cfg["modelo"]["transformacion_log"]["diferencia_cv_min"])
 
 
-def ajustar_pronosticar(train, orden, pasos, cfg):
-    """Ajusta ARIMA con la información de `train` (puede tener NaN) y pronostica `pasos` meses."""
+def ajustar_pronosticar(train, orden, pasos, cfg, devolver_ajuste=False):
+    """Ajusta ARIMA con la información de `train` (puede tener NaN) y pronostica `pasos` meses.
+    Con devolver_ajuste=True también devuelve los coeficientes estimados (para guardarlos en MLflow)."""
     log = usar_log(train, cfg)
     y = np.log(train) if log else train
     with warnings.catch_warnings(record=True) as avisos:
@@ -27,6 +28,11 @@ def ajustar_pronosticar(train, orden, pasos, cfg):
         p = np.asarray(fit.forecast(pasos), dtype=float)
     p = np.exp(p) if log else p
     convergio = not any("converge" in str(a.message).lower() for a in avisos)
+    if devolver_ajuste:
+        ajuste = {"coeficientes": {k: float(v) for k, v in fit.params.items()},
+                  "aic": float(fit.aic), "bic": float(fit.bic), "n_obs_usadas": int(train.notna().sum()),
+                  "ultimo_mes_ajuste": train.index.max().strftime("%Y-%m")}
+        return p, log, convergio, ajuste
     return p, log, convergio
 
 
@@ -113,12 +119,14 @@ def pronosticar(series, cfg, run_id, ts, version, hashes):
     """Etapa 7: ajusta con todo el histórico hasta el corte y estima el período publicado."""
     pr = cfg["periodos"]["pronostico"]
     fechas = pd.date_range(pr["inicio"] + "-01", pr["fin"] + "-01", freq="MS")
-    filas = []
+    filas, parametros = [], {}
     for nombre, s in series.items():
-        p, uso_log, conv = ajustar_pronosticar(s, cfg["series"][nombre]["arima"], len(fechas), cfg)
+        p, uso_log, conv, ajuste = ajustar_pronosticar(s, cfg["series"][nombre]["arima"], len(fechas), cfg, devolver_ajuste=True)
+        parametros[nombre] = {"modelo": cfg["modelo"]["nombre"], "orden": list(cfg["series"][nombre]["arima"]),
+                              "transformacion_log": uso_log, "convergio": conv, **ajuste}
         for h, (f, v) in enumerate(zip(fechas, p), start=1):
             filas.append({"destino": cfg["destino"], "serie": nombre, "periodo": f.strftime("%Y-%m-%d"), "valor": float(v),
                           "unidad": cfg["unidad"], "modelo": f"{cfg['modelo']['nombre']}{tuple(cfg['series'][nombre]['arima'])}",
                           "conjunto": "pronostico", "horizonte": h, "run_id": run_id, "fecha_generacion": ts,
                           "version_procedimiento": version, "fuente_hash": hashes["fuente"], "config_hash": hashes["config"]})
-    return pd.DataFrame(filas)
+    return pd.DataFrame(filas), parametros

@@ -1,0 +1,4 @@
+run_local,mlflow_run_id,estado_mlflow,inicio,resultado,codigo,etapa_final,controles,causa,fuente_sha256,config_sha256,commit,version,total_MAE,total_ref_MAE,total_cumple
+20261031-115215-ad14ef,0666aea8f7d248fbb24bb8c8043a068d,FAILED,2026-10-31 11:52:19,error: fuente no encontrada,1,ninguna,,fuente no encontrada: no_existe.xlsx,,,18ed42e8f829,,,,
+20261031-115039-a4d83b,9bc884f3604b42ae87e461f39dee5171,FINISHED,2026-10-31 11:50:43,candidato rechazado; resultados vigentes intactos,3,8_candidato,WARN,,cdaba77918ae,f54343e11c8b,18ed42e8f829,,40387.3,12027.4,0.0
+20261031-114947-77d421,4566e28f38834823b02ccd7809768a36,FINISHED,2026-10-31 11:49:53,candidato rechazado; resultados vigentes intactos,3,8_candidato,WARN,,cdaba77918ae,f54343e11c8b,18ed42e8f829,,40387.3,12027.4,0.0

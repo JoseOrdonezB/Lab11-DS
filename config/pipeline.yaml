@@ -11,6 +11,17 @@ rutas:
   corridas: runs                                       # candidatos y registros de cada ejecución
   publicacion: published                               # versiones aprobadas + current.json
 
+# Registro de ejecuciones (ejercicio 4). Un run de MLflow por ejecución del pipeline.
+mlflow:
+  habilitado: true
+  tracking_uri: sqlite:///mlflow/mlflow.db   # si existe la variable MLFLOW_TRACKING_URI, se usa esa (Docker)
+  artefactos: mlflow/artifacts               # carpeta donde MLflow guarda los archivos de cada run
+  experimento: observatorio-turismo          # se le agrega el destino: observatorio-turismo-guatemala
+
+# Comparación de dos ejecuciones con los mismos datos y configuración (ejercicio 4.2).
+reproducibilidad:
+  tolerancia_abs: 1.0e-6     # viajeros/mes. Las estimaciones se guardan con decimales; diferencias por debajo de esto son redondeo
+
 fuente:
   columnas:                       # columnas indispensables y tipo esperado
     Año: entero
