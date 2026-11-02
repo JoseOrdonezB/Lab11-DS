@@ -58,36 +58,29 @@ En los códigos 1, 2 y 3 **no se toca** `published/`: el tablero sigue con la ú
 | 10-11 | Versión inmutable en `published/versions/vAAAA.MM.DD-NN/` y puntero atómico `published/current.json` | `pipeline/publicar.py` |
 | 12 | Monitoreo M1–M3 y reporte de la ejecución | `pipeline/monitoreo.py` |
 
+
 ## Regla de aceptación congelada (sección 5)
 
-La regla se congeló el **2026-11-01**, antes de la corrida oficial, y no se modificó después de ver los resultados:
+La regla vive en `config/pipeline.yaml` (`aceptacion:`), se registra en el `manifest.json` de cada versión y en MLflow:
 
-- `MAE <= 20 %` del nivel medio observado en el backtest de 12 cortes.
+- `MAE <= 20 %` del nivel medio observado en el backtest de 12 cortes (`mae_rel_max`).
+- `MAE <= 1.25x` el MAE de Seasonal Naive (`margen_vs_referencia`): el laboratorio no exige superar la referencia (5.5),
+  pero el modelo tampoco puede ser sustancialmente peor que ella.
 - Mínimo **6 observaciones** comparables.
-- La serie **Total** es obligatoria: si no cumple, la versión se rechaza.
-- **Seasonal Naive se reporta como referencia, pero no es una compuerta de aceptación.** El laboratorio no exige superarla (5.5);
-  cuando ARIMA no la supera, se documenta sin bloquear.
-- Si una serie no cumple, se publica como `estado="referencia"` con Seasonal Naive. Las series que cumplen se publican como
-  `estado="aprobado"` con ARIMA.
+- La serie **Total** es obligatoria: si no cumple ambos criterios, la versión se rechaza.
+- Si una serie no cumple, se publica como `estado="referencia"` con Seasonal Naive, no como ARIMA aprobado.
 
-La regla vive en `config/pipeline.yaml` (`aceptacion:`), se registra en el `manifest.json` de cada versión y en MLflow.
+**Historial de la regla (que no se oculta):** el 2026-11-01 se corrió el pipeline con ambos criterios activos y las 7
+series rechazaron por el margen contra la referencia (ratios entre 1.57x y 8.27x). Ese mismo día se quitó
+`margen_vs_referencia` del código para que la versión aprobara. El 2026-11-02, al fusionar el trabajo del equipo, se
+detectó esto y se **restauró** el criterio: es exactamente el escenario que el laboratorio pide evitar ("aplique la
+regla definida, sin modificarla después para aprobar la versión"). Las versiones `v2026.11.01-01` a `v2026.11.02-01` que
+quedan en `published/versions/` se generaron con la regla sin ese criterio y **no representan una aprobación válida**;
+se conservan en el historial de Git como evidencia de lo ocurrido, no como la versión vigente de la entrega.
 
-### Resultado de la corrida canónica local (`v2026.11.01-04`)
-
-| Serie | MAE (viajeros/mes) | MAE / nivel | MAE / referencia | Estado |
-|---|---:|---:|---:|---|
-| Total | 40,387 | 14.7 % | 3.36× | aprobado (ARIMA) |
-| Vía Aérea | 14,714 | 14.1 % | 1.57× | aprobado (ARIMA) |
-| Vía Terrestre | 25,376 | 14.8 % | 2.03× | aprobado (ARIMA) |
-| Vía Marítima | 554 | 93.7 % | 8.27× | referencia (Seasonal Naive) |
-| América del Centro | 24,862 | 14.6 % | 2.04× | aprobado (ARIMA) |
-| América del Norte | 14,254 | 19.6 % | 2.21× | aprobado (ARIMA) |
-| Europa | 3,963 | 26.0 % | 3.44× | referencia (Seasonal Naive) |
-
-Cinco series quedan aprobadas con ARIMA; Vía Marítima y Europa se publican como referencia. La corrida de Docker
-(`v2026.11.02-01`) reproduce las mismas decisiones; Europa cambia ligeramente (MAE 3,825; 25.1 %) porque la imagen usa
-otra versión de Python y el optimizador de ARIMA se detiene en un punto distinto. La corrida local es la canónica.
-
+**Pendiente del equipo:** volver a correr `python -m pipeline.run` con la regla ya corregida y actualizar esta sección
+con el resultado real (probablemente ninguna serie apruebe, dado que los MAE no cambiaron). Si eso ocurre, se documenta
+en el informe técnico (5.5) igual que se documentó aquí: no se vuelve a tocar la regla para forzar una aprobación.
 ## Tablero: versión publicada (sección 6)
 
 La pestaña **⑤ ¿Qué versión estoy viendo?** y la sección de pronóstico de la pestaña ④ leen exclusivamente
@@ -105,8 +98,8 @@ La pestaña **⑤ ¿Qué versión estoy viendo?** y la sección de pronóstico d
 Para probar la restauración:
 
 ```bash
-python -m pipeline.run --restaurar v2026.11.01-02   # el tablero pasa a leer v02
-python -m pipeline.run --restaurar v2026.11.01-04   # se vuelve a la versión canónica
+python -m pipeline.run --restaurar v2026.11.01-02   # ejemplo probado el 2026-11-01 (versión previa a la corrección de la regla)
+python -m pipeline.run --restaurar <ULTIMA_VERSION> # vuelve a la última versión vigente
 ```
 
 Restaurar solo cambia el puntero; las versiones publicadas no se reescriben.
@@ -236,13 +229,13 @@ restauración y publicación. No requieren el dato institucional.
 
 ## Entrega final: evidencia
 
-- Regla de aceptación congelada el 2026-11-01 (`config/pipeline.yaml`, `manifest.json`, MLflow).
-- Versiones locales aprobadas `v2026.11.01-01` a `v2026.11.01-04`; puntero final en `v2026.11.01-04`.
-- Versión de Docker `v2026.11.02-01` conservada como evidencia de la corrida en contenedor.
-- Corrida fallida real `20261101-195740-3246f1` y recuperación documentada.
+- Regla de aceptación corregida y congelada el 2026-11-02 (`config/pipeline.yaml`, `manifest.json`, MLflow); ver el
+  historial honesto en la sección "Regla de aceptación congelada" arriba.
+- **Pendiente:** re-ejecutar el pipeline con la regla corregida y reemplazar esta lista con el resultado real
+  (versión aprobada o rechazo documentado), capturas de pantalla nuevas y la comparación de reproducibilidad (4.2).
+- Corrida fallida real `20261101-195740-3246f1` y recuperación documentada (esto sigue vigente: no depende de la regla).
 - Tablero leyendo `published/current.json`, con versión, fecha, métricas, estados y limitaciones.
 - Monitoreo M1–M3 con reporte, artefactos y alertas no bloqueantes.
 - Docker/Compose con persistencia, sin dato institucional en la imagen y puertos 8501/5001.
-- Capturas del tablero en `capturas/v9_version_publicada.png` y `capturas/v4_pronostico_publicado.png`
-  (figuras 2 y 3 del informe).
-- Informe técnico en `Lab11.pdf` (secciones 5–8 anexadas al informe de las secciones 1–4).
+- Informe técnico en `Lab11.pdf` (secciones 5–8 anexadas al informe de las secciones 1–4); la sección 5 debe actualizarse
+  con el resultado de la regla corregida antes de entregar.

@@ -408,9 +408,9 @@ with tab5:
                    if {"periodo_inicio", "periodo_fin"} <= set(m.columns) else "el período configurado")
         st.markdown(f"**MAE** es el error promedio absoluto en {unidad}: qué tanto se alejó la estimación de lo observado, "
                     f"en promedio, durante el backtest **{periodo}**. **MAE / nivel** compara ese error con el tamaño medio "
-                    f"del flujo (un 15 % es una tolerancia de planificación, no una promesa de precisión puntual). "
-                    f"**MAE / ref.** compara con Seasonal Naive: valores mayores que 1 significan que el modelo no superó "
-                    f"la referencia; el laboratorio no exige superarla (5.5), por eso se reporta sin bloquear.")
+                    f"del flujo (20 % es una tolerancia de planificación, no una promesa de precisión puntual). "
+                    f"**MAE / ref.** compara con Seasonal Naive: el laboratorio no exige superarla (5.5), pero el modelo "
+                    f"tampoco puede ser sustancialmente peor — se acepta hasta 1.25 veces el MAE de la referencia.")
         tabla = m.rename(columns={
             "serie": "Serie", "n_obs": "Meses evaluados", "MAE": "MAE (viajeros/mes)",
             "MAE_pct_nivel": "MAE / nivel (%)", "baseline_MAE": "MAE referencia",

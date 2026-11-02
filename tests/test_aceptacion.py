@@ -1,8 +1,8 @@
-"""Pruebas de la sección 5: regla congelada, referencia informativa y publicación.
+"""Pruebas de la sección 5: regla congelada (dos criterios) y publicación.
 
-La regla no exige superar la referencia (5.5). Una serie que no cumple se publica
-como referencia (Seasonal Naive), no como estimación ARIMA aprobada.
-"""
+La regla no exige superar la referencia (5.5), pero el modelo tampoco puede ser sustancialmente
+peor que ella (margen_vs_referencia). Una serie que no cumple se publica como referencia
+(Seasonal Naive), no como estimación ARIMA aprobada."""
 import copy
 import json
 from pathlib import Path
@@ -17,7 +17,7 @@ RAIZ = Path(__file__).resolve().parent.parent
 CFG_PATH = RAIZ / "config" / "pipeline.yaml"
 BACKTEST = {"inicio": "2025-07", "fin": "2026-06"}
 CFG_REGLA = {"aceptacion": {"regla_congelada": "test", "series_obligatorias": ["Total"],
-                            "mae_rel_max": 0.20, "min_obs_evaluacion": 6},
+                            "mae_rel_max": 0.20, "margen_vs_referencia": 1.25, "min_obs_evaluacion": 6},
              "periodos": {"backtest": BACKTEST}}
 SERIES = {"Total": pd.Series([1000.0] * 12, index=pd.date_range("2025-07-01", "2026-06-01", freq="MS"))}
 
@@ -42,18 +42,24 @@ def _cfg_pronostico():
 
 
 # ---- Regla de aceptación ---------------------------------------------------------
-def test_mae_en_escala_aprueba_aunque_no_supere_la_referencia():
-    out = modelos.regla_aceptacion(_met(mae=100.0, baseline=1.0), SERIES, CFG_REGLA)
+def test_mae_dentro_del_margen_aprueba_aunque_no_supere_la_referencia():
+    out = modelos.regla_aceptacion(_met(mae=120.0, baseline=100.0), SERIES, CFG_REGLA)
     assert bool(out.loc[0, "cumple_regla"])
     assert not bool(out.loc[0, "supera_referencia"])
-    assert out.loc[0, "ratio_referencia"] == 100.0
+    assert out.loc[0, "ratio_referencia"] == 1.2
     assert "no supera la referencia" in out.loc[0, "motivo"]
 
 
-def test_mae_fuera_del_20_por_ciento_rechaza():
-    out = modelos.regla_aceptacion(_met(mae=300.0), SERIES, CFG_REGLA)
+def test_mae_en_escala_pero_lejos_de_la_referencia_rechaza():
+    out = modelos.regla_aceptacion(_met(mae=100.0, baseline=1.0), SERIES, CFG_REGLA)
     assert not bool(out.loc[0, "cumple_regla"])
-    assert "> 20%" in out.loc[0, "motivo"]
+    assert "x MAE de la referencia" in out.loc[0, "motivo"]
+
+
+def test_mae_fuera_del_20_por_ciento_rechaza():
+    out = modelos.regla_aceptacion(_met(mae=300.0, baseline=250.0), SERIES, CFG_REGLA)
+    assert not bool(out.loc[0, "cumple_regla"])
+    assert "del nivel medio" in out.loc[0, "motivo"]
 
 
 def test_pocas_observaciones_rechaza_aunque_el_mae_sea_bajo():
@@ -103,7 +109,7 @@ def _bt_ene_feb():
 
 
 def test_reporte_validacion_incluye_regla_y_ene_feb(tmp_path):
-    met = modelos.regla_aceptacion(_met(mae=100.0), SERIES, CFG_REGLA)
+    met = modelos.regla_aceptacion(_met(mae=100.0, baseline=100.0), SERIES, CFG_REGLA)
     cfg = {"aceptacion": CFG_REGLA["aceptacion"], "periodos": CFG_REGLA["periodos"],
            "modelo": {"referencia": "Seasonal Naive"}}
     ruta = tmp_path / "reporte_validacion.md"
@@ -140,7 +146,7 @@ def test_flujo_publica_version_con_regla_congelada(tmp_path, monkeypatch):
                        "pronostico": {"inicio": "2023-01", "fin": "2023-06"}}
     cfg["series"] = {"Total": {"arima": [0, 0, 0]}}
     cfg["aceptacion"] = {"regla_congelada": "test", "series_obligatorias": ["Total"],
-                         "mae_rel_max": 10.0, "min_obs_evaluacion": 6}
+                         "mae_rel_max": 10.0, "margen_vs_referencia": 10.0, "min_obs_evaluacion": 6}
     cfg_path = tmp_path / "config_test.yaml"
     cfg_path.write_text(json.dumps(cfg, ensure_ascii=False), encoding="utf-8")
 

@@ -1,6 +1,8 @@
 # Laboratorio 11 — tablero, pipeline y MLflow.
 #
-#   docker compose up -d --build mlflow tablero
+#   export GIT_COMMIT=$(git rev-parse HEAD)
+#   docker compose build mlflow            # construye una sola vez (los 3 servicios comparten la imagen)
+#   docker compose up -d mlflow tablero
 #   docker compose run --rm pipeline
 #
 # published/, mlflow/ y runs/ se montan desde el host: sobreviven a `docker compose down`
@@ -9,7 +11,10 @@ name: observatorio-lab11
 
 services:
   mlflow:
-    build: .
+    build:
+      context: .
+      args:
+        GIT_COMMIT: ${GIT_COMMIT:-sin-git}
     image: observatorio-lab11:local
     command:
       - mlflow
@@ -35,7 +40,6 @@ services:
       retries: 12
 
   tablero:
-    build: .
     image: observatorio-lab11:local
     command:
       - streamlit
@@ -51,7 +55,6 @@ services:
       - ./published:/app/published:ro
 
   pipeline:
-    build: .
     image: observatorio-lab11:local
     profiles: ["pipeline"]
     command: ["python", "-m", "pipeline.run"]

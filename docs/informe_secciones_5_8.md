@@ -1,46 +1,70 @@
 # 5. Regla de aceptación congelada y versiones aprobadas
 
-## 5.1 Decisión congelada
+## 5.1 Decisión congelada (corregida el 2026-11-02)
 
-La regla de aceptación se definió y congeló el **2026-11-01**, antes de la corrida oficial, y no se modificó después de ver los resultados. Vive en `config/pipeline.yaml` (`aceptacion:`), se copia al `manifest.json` de cada versión y se registra en MLflow.
+La regla de aceptación vive en `config/pipeline.yaml` (`aceptacion:`), se copia al `manifest.json` de cada versión y se
+registra en MLflow. Su historial, sin ocultar lo que pasó:
 
-Esta sección reemplaza el carácter provisional que tenía la regla en el informe de las secciones 1–4. Las corridas del 31 de octubre quedan como evidencia histórica de intentos rechazados; no se usaron para ajustar la regla final.
+- El 2026-10-31 y el 2026-11-01 se corrió el pipeline con dos criterios activos (`mae_rel_max` y
+  `margen_vs_referencia`) y las 7 series del backtest oficial rechazaron por el margen contra la referencia
+  (razones entre 1.57x y 8.27x el MAE de Seasonal Naive).
+- El 2026-11-01 se eliminó `margen_vs_referencia` del código (`pipeline/modelos.regla_aceptacion`) después de ver
+  esos rechazos, y con eso 5 de 7 series pasaron a "aprobado". Esto es exactamente el escenario que el laboratorio
+  pide evitar: "aplique la regla definida, sin modificarla después para aprobar la versión."
+- El 2026-11-02, al fusionar el trabajo de los integrantes del equipo, se detectó esta secuencia (quedó documentada
+  en el propio comentario del código) y se **restauró** `margen_vs_referencia` como segundo criterio de la regla.
 
-## 5.2 Regla aplicada
+Las versiones `v2026.11.01-01` a `v2026.11.02-01` que existen en `published/versions/` se generaron con la regla sin
+ese criterio: **no representan una aprobación válida** bajo la regla que finalmente se congeló. Se conservan en el
+historial de Git como evidencia de lo ocurrido, no como la versión vigente de la entrega. El equipo debe volver a
+correr el pipeline con la regla corregida antes de entregar y reemplazar la sección 5.3 con el resultado real.
+
+## 5.2 Regla aplicada (vigente)
 
 | Criterio | Valor congelado | Efecto |
 |---|---|---|
 | Error relativo | `MAE <= 20 %` del nivel medio observado en el backtest | Si una serie no cumple, se publica como referencia con Seasonal Naive |
+| Margen vs. referencia | `MAE <= 1.25x` el MAE de Seasonal Naive | Si el modelo es sustancialmente peor que la referencia, no cumple |
 | Observaciones mínimas | 6 observaciones comparables | Menos de 6: no se evalúa por desempeño |
-| Serie obligatoria | `Total` | Si `Total` no cumple, la versión se rechaza |
+| Serie obligatoria | `Total` | Si `Total` no cumple ambos criterios, la versión se rechaza |
 | Controles críticos | C1–C6 en OK (los WARN se documentan) | Un FAIL crítico detiene el pipeline antes de publicar |
 | Salidas | Finitas, no negativas y dentro del rango plausible | Si falla, el candidato se rechaza |
-| Referencia | Seasonal Naive se calcula y se reporta | **No es una compuerta de aceptación** (laboratorio, 5.5) |
 
-El umbral de 20 % es una tolerancia de planificación, no una promesa de precisión puntual. La referencia se conserva porque ayuda a interpretar el error, pero el laboratorio no exige superarla; cuando ARIMA no la supera, se documenta sin bloquear la publicación.
+El 20 % y el 1.25x son dos exigencias independientes: la primera liga el error a la escala de la variable; la
+segunda evita aprobar un modelo que, aunque esté dentro de esa escala, sea mucho peor que simplemente repetir el
+mismo mes del año anterior. El laboratorio no exige **superar** la referencia (5.5), pero sí que no sea
+sustancialmente peor — por eso el margen es 1.25x y no 1.0x.
 
-## 5.3 Resultado del backtest
+## 5.3 Resultado del backtest (con la regla sin corregir — pendiente de repetir)
 
-El backtest usa origen expansivo y un paso hacia adelante, con 12 cortes mensuales de **julio 2025 a junio 2026**. En cada corte el modelo se ajusta solo con información anterior al mes evaluado.
+Esta tabla corresponde a la corrida del 2026-11-01/02, **antes** de restaurar `margen_vs_referencia`. Se conserva
+porque documenta el `MAE` real de cada serie (esos números no cambian al corregir la regla, solo cambia si
+"cumple" o no); lo que cambia es la columna "Estado publicado", que con la regla vigente sería **referencia en las 7
+series** (todas superan 1.25x el MAE de la referencia).
 
-| Serie | MAE (viajeros/mes) | MAE / nivel | MAE / referencia | Estado publicado |
-|---|---:|---:|---:|---|
-| Total | 40,387 | 14.7 % | 3.36× | aprobado (ARIMA) |
-| Vía Aérea | 14,714 | 14.1 % | 1.57× | aprobado (ARIMA) |
-| Vía Terrestre | 25,376 | 14.8 % | 2.03× | aprobado (ARIMA) |
-| Vía Marítima | 554 | 93.7 % | 8.27× | referencia (Seasonal Naive) |
-| América del Centro | 24,862 | 14.6 % | 2.04× | aprobado (ARIMA) |
-| América del Norte | 14,254 | 19.6 % | 2.21× | aprobado (ARIMA) |
-| Europa | 3,963 | 26.0 % | 3.44× | referencia (Seasonal Naive) |
+| Serie | MAE (viajeros/mes) | MAE / nivel | MAE / referencia | Estado con la regla sin corregir | Estado con la regla vigente |
+|---|---:|---:|---:|---|---|
+| Total | 40,387 | 14.7 % | 3.36× | aprobado (ARIMA) | referencia |
+| Vía Aérea | 14,714 | 14.1 % | 1.57× | aprobado (ARIMA) | referencia |
+| Vía Terrestre | 25,376 | 14.8 % | 2.03× | aprobado (ARIMA) | referencia |
+| Vía Marítima | 554 | 93.7 % | 8.27× | referencia (Seasonal Naive) | referencia |
+| América del Centro | 24,862 | 14.6 % | 2.04× | aprobado (ARIMA) | referencia |
+| América del Norte | 14,254 | 19.6 % | 2.21× | aprobado (ARIMA) | referencia |
+| Europa | 3,963 | 26.0 % | 3.44× | referencia (Seasonal Naive) | referencia |
 
-Cinco series cumplen y se publican con ARIMA. Vía Marítima y Europa no cumplen el 20 %: sus valores se publican como **referencia** con Seasonal Naive y el tablero lo indica. No se presenta como aprobado un modelo que no cumple la regla.
+Como `Total` es obligatoria y con la regla vigente queda en "referencia" (no cumple), **la versión se rechazaría
+por completo**: `published/` quedaría sin ninguna versión aprobada, salvo que una corrida nueva (con otros datos o
+tras una revisión del modelo) cambie este resultado. Esto no es obligatorio evitarlo (5.5): se documenta y se aplica
+la regla tal como quedó definida, sin volver a modificarla para forzar una aprobación.
 
 ## 5.4 Versiones y reproducibilidad
 
-Se generaron las versiones locales `v2026.11.01-01` a `v2026.11.01-04`. Las versiones `-03` y `-04` incluyen monitoreo y son equivalentes: `scripts/consultar_mlflow.py comparar` reportó **126 estimaciones y 79 métricas comparadas con diferencia máxima `0.000e+00`**. ARIMA no tiene componentes aleatorios; la reproducibilidad se evalúa en el mismo entorno.
-
-El puntero final de la entrega local apunta a **`v2026.11.01-04`**. La corrida de Docker generó además `v2026.11.02-01`, que se conserva como evidencia de la ejecución en contenedor. Sus decisiones son las mismas; Europa cambia de 3,963 a 3,825 de MAE porque la imagen usa otra versión de Python y el optimizador de ARIMA se detiene en un punto distinto cuando no converge. La corrida local es la canónica.
-
+Se generaron las versiones locales `v2026.11.01-01` a `v2026.11.01-04` y, en Docker, `v2026.11.02-01` y
+`v2026.11.02-02` — todas con la regla **sin corregir**. Entre ellas, `scripts/consultar_mlflow.py comparar` sí
+confirmó reproducibilidad real: `-03` y `-04` dieron diferencia máxima `0.000e+00` en 126 estimaciones y 79
+métricas (ARIMA no tiene componentes aleatorios). Esa evidencia de reproducibilidad sigue siendo válida —no depende
+de si la regla estaba corregida—, pero las versiones en sí deben regenerarse con `margen_vs_referencia` activo
+antes de fijar cuál es la versión vigente de la entrega.
 # 6. Tablero integrado con la versión publicada
 
 ## 6.1 Contrato de lectura
@@ -156,12 +180,12 @@ La base local `mlflow/mlflow.db` conserva una ruta de artefactos específica del
 
 | Requisito | Evidencia |
 |---|---|
-| Regla de aceptación congelada | `config/pipeline.yaml`, `manifest.json` y MLflow; fecha 2026-11-01 |
-| Versiones aprobadas | `v2026.11.01-01` a `v2026.11.01-04`; puntero final en `-04` |
+| Regla de aceptación congelada | `config/pipeline.yaml`, `manifest.json` y MLflow; corregida y congelada el 2026-11-02 (ver 5.1) |
+| Versiones aprobadas | **Pendiente**: `v2026.11.01-01` a `v2026.11.02-02` se generaron con la regla sin corregir y no son válidas; falta correr el pipeline con la regla vigente |
 | Tablero integrado | Pestaña ⑤ y pronóstico publicado; lectura de `current.json`; pruebas de versión ausente, incompleta y restauración |
 | Monitoreo | M1–M3 en `monitoreo.csv/json` y `reporte_monitoreo.md`; alertas no bloqueantes |
-| Fallo y recuperación | Run `20261101-195740-3246f1` con código 2; recuperación a `-03`/`-04`; restauración a `-02` y vuelta a `-04` |
-| Docker | `Dockerfile`, `docker-compose.yml`, persistencia tras `down`, sin `.xlsx` en la imagen, copia limpia con `v2026.11.02-02` |
-| Registro de ejecuciones | `docs/mlflow_ejecuciones.csv` con 3 corridas históricas, `v01`–`v04` y la corrida fallida; bases y artefactos en `mlflow/`, entregados aparte |
+| Fallo y recuperación | Run `20261101-195740-3246f1` con código 2; recuperación documentada (no depende de la regla de aceptación) |
+| Docker | `Dockerfile`, `docker-compose.yml`, persistencia tras `down`, sin `.xlsx` en la imagen, copia limpia; commit de Git trazado vía `GIT_COMMIT` |
+| Registro de ejecuciones | `docs/mlflow_ejecuciones.csv` con las corridas históricas; bases y artefactos en `mlflow/`, entregados aparte |
 
 El flujo cumple el objetivo del laboratorio: actualizar estimaciones de forma controlada, identificar qué datos, código y configuración produjeron cada resultado y no reemplazar la versión vigente cuando un control o la regla de aceptación falla.

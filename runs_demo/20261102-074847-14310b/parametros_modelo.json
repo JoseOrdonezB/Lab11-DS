@@ -1,0 +1,147 @@
+{
+  "Total": {
+    "modelo": "ARIMA",
+    "orden": [
+      1,
+      0,
+      1
+    ],
+    "transformacion_log": true,
+    "convergio": true,
+    "coeficientes": {
+      "const": 12.2048827662221,
+      "ar.L1": 0.865933281324764,
+      "ma.L1": 0.09314451531792345,
+      "sigma2": 0.08692297668329202
+    },
+    "aic": 92.53718394205558,
+    "bic": 105.92561406492545,
+    "n_obs_usadas": 210,
+    "ultimo_mes_ajuste": "2026-06"
+  },
+  "Vía Aérea": {
+    "modelo": "ARIMA",
+    "orden": [
+      1,
+      0,
+      1
+    ],
+    "transformacion_log": true,
+    "convergio": true,
+    "coeficientes": {
+      "const": 11.283229045564974,
+      "ar.L1": 0.811613800502748,
+      "ma.L1": 0.16796773031467724,
+      "sigma2": 0.1640816363893476
+    },
+    "aic": 225.7645226761379,
+    "bic": 239.15295279900775,
+    "n_obs_usadas": 210,
+    "ultimo_mes_ajuste": "2026-06"
+  },
+  "Vía Terrestre": {
+    "modelo": "ARIMA",
+    "orden": [
+      2,
+      1,
+      0
+    ],
+    "transformacion_log": true,
+    "convergio": true,
+    "coeficientes": {
+      "ar.L1": -0.29375085362769693,
+      "ar.L2": -0.15071506278043542,
+      "sigma2": 0.12409268440421546
+    },
+    "aic": 163.1092096062246,
+    "bic": 173.13621236211904,
+    "n_obs_usadas": 210,
+    "ultimo_mes_ajuste": "2026-06"
+  },
+  "Vía Marítima": {
+    "modelo": "ARIMA",
+    "orden": [
+      2,
+      0,
+      3
+    ],
+    "transformacion_log": true,
+    "convergio": true,
+    "coeficientes": {
+      "const": 8.047312580175003,
+      "ar.L1": 1.3563409433161748,
+      "ar.L2": -0.629336040784994,
+      "ma.L1": -0.8037359662729768,
+      "ma.L2": 0.27280020934297355,
+      "ma.L3": 0.4279516745080568,
+      "sigma2": 0.738602749360808
+    },
+    "aic": 486.043035960947,
+    "bic": 509.4727886759693,
+    "n_obs_usadas": 183,
+    "ultimo_mes_ajuste": "2026-06"
+  },
+  "América del Centro": {
+    "modelo": "ARIMA",
+    "orden": [
+      1,
+      0,
+      0
+    ],
+    "transformacion_log": true,
+    "convergio": true,
+    "coeficientes": {
+      "const": 11.829281584548735,
+      "ar.L1": 0.8784064087455548,
+      "sigma2": 0.08470834100674589
+    },
+    "aic": 85.03811395976243,
+    "bic": 95.07943655191482,
+    "n_obs_usadas": 210,
+    "ultimo_mes_ajuste": "2026-06"
+  },
+  "América del Norte": {
+    "modelo": "ARIMA",
+    "orden": [
+      3,
+      0,
+      0
+    ],
+    "transformacion_log": true,
+    "convergio": true,
+    "coeficientes": {
+      "const": 10.595402470353054,
+      "ar.L1": 0.9000081469415263,
+      "ar.L2": -0.28855969975409995,
+      "ar.L3": 0.24807183370033337,
+      "sigma2": 0.09613801306762451
+    },
+    "aic": 114.1343883727845,
+    "bic": 130.86992602637184,
+    "n_obs_usadas": 205,
+    "ultimo_mes_ajuste": "2026-06"
+  },
+  "Europa": {
+    "modelo": "ARIMA",
+    "orden": [
+      4,
+      1,
+      2
+    ],
+    "transformacion_log": true,
+    "convergio": false,
+    "coeficientes": {
+      "ar.L1": 0.16343387662567715,
+      "ar.L2": -0.9181418397375513,
+      "ar.L3": 0.16203723600007144,
+      "ar.L4": 0.08185825814481705,
+      "ma.L1": -0.012349836060734979,
+      "ma.L2": 0.9997072388657914,
+      "sigma2": 0.12859749273297355
+    },
+    "aic": 182.2353482374301,
+    "bic": 205.63168800118376,
+    "n_obs_usadas": 205,
+    "ultimo_mes_ajuste": "2026-06"
+  }
+}

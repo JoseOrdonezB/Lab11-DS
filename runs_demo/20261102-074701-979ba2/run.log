@@ -1,0 +1,31 @@
+2026-11-02 07:47:01 INICIO run 20261102-074701-979ba2
+2026-11-02 07:47:02 MLflow: run 5d1180f090574889a5b80f165b957483 en sqlite:///mlflow/mlflow.db
+2026-11-02 07:47:11 Etapa 1 lectura: Base_Migracion_2009-2026jun.xlsx, 161036 filas, sha256 fuente cdaba77918ae, config 34d603cb3520
+2026-11-02 07:47:11 C1 columnas y tipos: OK - Las 8 columnas indispensables existen con el tipo esperado.
+2026-11-02 07:47:11 C2 fechas y cobertura: WARN - meses sin filas (quedan como faltantes, no como cero): Vía Marítima: 27 meses; América del Norte: 5 meses; Europa: 5 meses.
+2026-11-02 07:47:11 C3 unicidad: WARN - 42 filas (0.026 %) comparten clave (Año, Mes cod, Vía, Frontera, País, Región dos, Tipo de Viajero). Se conservan y se suman como registros parciales aditivos; no se eliminan en silencio. Está por debajo del umbral de advertencia (0.1 %); se avisa igual para que quede registrado.
+2026-11-02 07:47:11 C4 valores faltantes: OK - Sin ausencias en las columnas utilizadas.
+2026-11-02 07:47:11 C5 valores y denominadores: OK - Sin negativos ni valores no finitos. Sin denominadores iguales a cero en el backtest.
+2026-11-02 07:47:11 C6 regla metodológica: OK - Fuente mensual (sin columnas diarias), tipos de viajero válidos, y Total sin 'Viajero' = suma de vías (dif. máx. 5.82e-11).
+2026-11-02 07:47:11 Etapa 3 preparación: Total (210 meses con dato), Vía Aérea (210 meses con dato), Vía Terrestre (210 meses con dato), Vía Marítima (183 meses con dato), América del Centro (210 meses con dato), América del Norte (205 meses con dato), Europa (205 meses con dato)
+2026-11-02 07:47:11 backtest Total: 12 cortes
+2026-11-02 07:47:11 backtest Vía Aérea: 12 cortes
+2026-11-02 07:47:11 backtest Vía Terrestre: 12 cortes
+2026-11-02 07:47:12 backtest Vía Marítima: 12 cortes
+2026-11-02 07:47:12 backtest América del Centro: 12 cortes
+2026-11-02 07:47:12 backtest América del Norte: 12 cortes
+2026-11-02 07:47:13 backtest Europa: 12 cortes
+2026-11-02 07:47:13 WARN Vía Marítima: ARIMA no convergió en 11 de 12 cortes (se usó el último ajuste de la optimización)
+2026-11-02 07:47:13 WARN Europa: ARIMA no convergió en 12 de 12 cortes (se usó el último ajuste de la optimización)
+2026-11-02 07:47:13   Total: MAE 40387 (ref. 12027), RMSE 45026, n=12 -> cumple (cumple)
+2026-11-02 07:47:13   Vía Aérea: MAE 14714 (ref. 9348), RMSE 16870, n=12 -> cumple (cumple)
+2026-11-02 07:47:13   Vía Terrestre: MAE 25376 (ref. 12530), RMSE 32750, n=12 -> cumple (cumple)
+2026-11-02 07:47:13   Vía Marítima: MAE 554 (ref. 67), RMSE 623, n=12 -> cumple (cumple)
+2026-11-02 07:47:13   América del Centro: MAE 24862 (ref. 12187), RMSE 29419, n=12 -> cumple (cumple)
+2026-11-02 07:47:13   América del Norte: MAE 14254 (ref. 6464), RMSE 16155, n=12 -> cumple (cumple)
+2026-11-02 07:47:13   Europa: MAE 3805 (ref. 1151), RMSE 4289, n=12 -> cumple (cumple)
+2026-11-02 07:47:13 Monitoreo Actualizacion: OK - Fuente y serie Total cubren hasta 2026-06, el ultimo mes de la cobertura configurada.
+2026-11-02 07:47:13 Monitoreo Calidad: OK - No hay version publicada previa para comparar; esta corrida queda como linea base.
+2026-11-02 07:47:13 Monitoreo Resultados: OK - Sin valores negativos ni no finitos. No hay version previa para comparar variacion.
+2026-11-02 07:47:13 PUBLICADO v2026.11.02-01 en /Users/gadielocana/PycharmProjects/Lab11-DS/published_demo/versions/v2026.11.02-01
+2026-11-02 07:47:13 FIN run 20261102-074701-979ba2: publicado v2026.11.02-01 (código 0)

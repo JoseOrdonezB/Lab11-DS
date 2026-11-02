@@ -77,6 +77,7 @@ def generar_validacion(met, bt, cfg, ruta, run_id, hashes, aprobado, razones):
     L = [f"# Reporte de validación temporal — corrida {run_id}", "",
          f"- Regla congelada: **{a.get('regla_congelada', 'n/d')}**",
          f"- Criterio de desempeño: MAE ≤ {a['mae_rel_max']:.0%} del nivel medio mensual observado en el backtest.",
+         f"- Margen frente a la referencia: MAE ≤ {a.get('margen_vs_referencia', float('inf')):.2f}x el MAE de Seasonal Naive.",
          f"- Observaciones mínimas: {a['min_obs_evaluacion']} por serie.",
          f"- Series obligatorias: {obligatorias}.",
          f"- Referencia: {m['referencia']} (se calcula y se reporta; **no es un requisito** superarla).",

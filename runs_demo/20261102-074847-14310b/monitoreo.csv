@@ -1,0 +1,4 @@
+verificacion,estado,detalle
+Actualizacion,OK,"Fuente y serie Total cubren hasta 2026-06, el ultimo mes de la cobertura configurada."
+Calidad,OK,"Sin cambios relevantes en faltantes, duplicados o cobertura respecto a la version vigente."
+Resultados,OK,"Sin valores negativos ni no finitos, y ninguna estimacion de pronostico varia mas de 30% respecto a la version vigente."

@@ -1,0 +1,89 @@
+{
+  "version_procedimiento": "v2026.11.02-02",
+  "run_id": "20261102-074847-14310b",
+  "mlflow_run_id": "f111d3dd4f3b4e4fa2f4ef69ae3d81d6",
+  "mlflow_tracking_uri": "sqlite:///mlflow/mlflow.db",
+  "commit_git": "c1ca7395f602169f37b012af669be0e144932299+cambios-sin-commit",
+  "fuente": "Base_Migracion_2009-2026jun.xlsx",
+  "fuente_hash": "cdaba77918ae889c847ba8459503f9cce2441efac41b3d3aa0f05ac9ab283846",
+  "config_hash": "34d603cb3520bd62357ead361671d8199f08b7af87f8f64b37f70175cf17f80d",
+  "periodos": {
+    "cobertura": {
+      "inicio": "2009-01",
+      "fin": "2026-06"
+    },
+    "ajuste_base": {
+      "inicio": "2009-01",
+      "fin": "2021-03"
+    },
+    "evaluacion_historica": {
+      "inicio": "2021-04",
+      "fin": "2026-06"
+    },
+    "backtest": {
+      "inicio": "2025-07",
+      "fin": "2026-06"
+    },
+    "pronostico": {
+      "inicio": "2026-07",
+      "fin": "2026-12"
+    }
+  },
+  "semilla": 20261029,
+  "python": "3.12.4",
+  "dependencias": {
+    "pandas": "3.0.5",
+    "numpy": "2.5.3",
+    "statsmodels": "0.15.0",
+    "PyYAML": "6.0.3",
+    "mlflow": "3.17.2"
+  },
+  "inicio": "2026-11-02T07:48:47",
+  "aprobado": true,
+  "motivos_rechazo": [],
+  "aprobado_en": "2026-11-02T07:49:01",
+  "resumen_metricas": {
+    "Total": {
+      "MAE": 40387.3,
+      "RMSE": 45026.4,
+      "baseline_MAE": 12027.44,
+      "cumple_regla": true
+    },
+    "Vía Aérea": {
+      "MAE": 14714.21,
+      "RMSE": 16869.64,
+      "baseline_MAE": 9347.92,
+      "cumple_regla": true
+    },
+    "Vía Terrestre": {
+      "MAE": 25376.27,
+      "RMSE": 32749.68,
+      "baseline_MAE": 12530.43,
+      "cumple_regla": true
+    },
+    "Vía Marítima": {
+      "MAE": 554.27,
+      "RMSE": 622.72,
+      "baseline_MAE": 67.0,
+      "cumple_regla": true
+    },
+    "América del Centro": {
+      "MAE": 24862.24,
+      "RMSE": 29419.5,
+      "baseline_MAE": 12187.46,
+      "cumple_regla": true
+    },
+    "América del Norte": {
+      "MAE": 14254.22,
+      "RMSE": 16155.22,
+      "baseline_MAE": 6463.74,
+      "cumple_regla": true
+    },
+    "Europa": {
+      "MAE": 3804.95,
+      "RMSE": 4288.93,
+      "baseline_MAE": 1150.95,
+      "cumple_regla": true
+    }
+  }
+}

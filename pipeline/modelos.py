@@ -99,9 +99,10 @@ def tabla_metricas(bt, cfg, run_id):
 def regla_aceptacion(met, series, cfg):
     """Aplica la regla congelada de la sección 5.
 
-    Una serie cumple si tiene suficientes observaciones comparables y su MAE no supera
-    `mae_rel_max` del nivel medio observado en el backtest. La referencia se reporta,
-    pero no es un requisito: el laboratorio no exige superarla (5.5).
+    Una serie cumple si (1) tiene suficientes observaciones comparables, (2) su MAE no supera
+    mae_rel_max del nivel medio observado en el backtest, y (3) su MAE no supera
+    margen_vs_referencia veces el MAE de Seasonal Naive. El criterio (3) no exige superar la
+    referencia (5.5): el modelo puede ser algo peor, pero no sustancialmente peor.
     """
     a = cfg["aceptacion"]
     bt = cfg["periodos"]["backtest"]
@@ -123,13 +124,20 @@ def regla_aceptacion(met, series, cfg):
             motivo = (f"solo {f['n_obs']} observaciones comparables "
                       f"(mínimo {a['min_obs_evaluacion']}); no se aprueba por desempeño")
         else:
-            ok = bool(np.isfinite(pct) and pct <= 100 * a["mae_rel_max"])
+            c_nivel = bool(np.isfinite(pct) and pct <= 100 * a["mae_rel_max"])
+            c_margen = bool((not np.isfinite(ratio)) or ratio <= a["margen_vs_referencia"])
+            ok = c_nivel and c_margen
             if ok:
                 motivo = "cumple"
                 if np.isfinite(ratio) and ratio > 1:
-                    motivo += f"; no supera la referencia ({ratio:.2f}x), se reporta sin bloquear"
+                    motivo += f"; no supera la referencia ({ratio:.2f}x), dentro del margen permitido"
             else:
-                motivo = f"MAE {f['MAE']:.0f} > {a['mae_rel_max']:.0%} del nivel medio ({nivel:.0f})"
+                partes = []
+                if not c_nivel:
+                    partes.append(f"MAE {f['MAE']:.0f} > {a['mae_rel_max']:.0%} del nivel medio ({nivel:.0f})")
+                if not c_margen:
+                    partes.append(f"MAE {f['MAE']:.0f} > {a['margen_vs_referencia']} x MAE de la referencia ({baseline:.0f})")
+                motivo = "; ".join(partes)
 
         cumple.append(ok); motivos.append(motivo); ratios.append(ratio); pcts.append(pct); supera.append(supera_ref)
 

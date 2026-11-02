@@ -134,6 +134,7 @@ def main(argv=None):
                     "aceptacion_series_obligatorias": ",".join(ac["series_obligatorias"]),
                     "aceptacion_regla_congelada": ac.get("regla_congelada", "n/d"),
                     "aceptacion_mae_rel_max": ac["mae_rel_max"],
+                    "aceptacion_margen_vs_referencia": ac["margen_vs_referencia"],
                     "aceptacion_min_obs": ac["min_obs_evaluacion"],
                     "rango_plausible_max_factor": cfg["umbrales"]["rango_plausible_max_factor"],
                     **{f"arima_{slug(n)}": tuple(s["arima"]) for n, s in cfg["series"].items()}})
@@ -220,7 +221,7 @@ def main(argv=None):
                     "fuente": fuente.name, "fuente_hash": hashes["fuente"], "config_hash": hashes["config"],
                     "periodos": cfg["periodos"], "semilla": cfg["semilla"], "python": platform.python_version(), "dependencias": deps,
                     "regla_aceptacion": {k: cfg["aceptacion"][k] for k in
-                                         ("regla_congelada", "series_obligatorias", "mae_rel_max", "min_obs_evaluacion")},
+                                         ("regla_congelada", "series_obligatorias", "mae_rel_max", "margen_vs_referencia", "min_obs_evaluacion")},
                     "monitoreo": {"resultado": "ALERTA" if alertas else "OK",
                                   "alertas": [a["detalle"] for a in alertas]},
                     "inicio": inicio.isoformat(timespec="seconds"), "aprobado": aprobado, "motivos_rechazo": razones,

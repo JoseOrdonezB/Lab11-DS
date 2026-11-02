@@ -1,0 +1,29 @@
+{
+  "run_id": "20261102-074847-14310b",
+  "mlflow_run_id": "f111d3dd4f3b4e4fa2f4ef69ae3d81d6",
+  "inicio": "2026-11-02T07:48:47",
+  "fin": "2026-11-02T07:49:01",
+  "etapas_completadas": [
+    "1_lectura",
+    "2_validacion",
+    "3_preparacion",
+    "4_ajuste",
+    "5_evaluacion",
+    "6_regla_aceptacion",
+    "7_estimaciones",
+    "monitoreo",
+    "8_candidato",
+    "9_autorizacion",
+    "10_version_aprobada",
+    "11_puntero"
+  ],
+  "advertencias": [
+    "C2 fechas y cobertura: meses sin filas (quedan como faltantes, no como cero): Vía Marítima: 27 meses; América del Norte: 5 meses; Europa: 5 meses.",
+    "C3 unicidad: 42 filas (0.026 %) comparten clave (Año, Mes cod, Vía, Frontera, País, Región dos, Tipo de Viajero). Se conservan y se suman como registros parciales aditivos; no se eliminan en silencio. Está por debajo del umbral de advertencia (0.1 %); se avisa igual para que quede registrado.",
+    "WARN Vía Marítima: ARIMA no convergió en 11 de 12 cortes (se usó el último ajuste de la optimización)",
+    "WARN Europa: ARIMA no convergió en 12 de 12 cortes (se usó el último ajuste de la optimización)"
+  ],
+  "resultado_publicacion": "publicado v2026.11.02-02",
+  "codigo_salida": 0,
+  "version": "v2026.11.02-02"
+}
