@@ -5,6 +5,8 @@ Versión FINAL: 8 visualizaciones (V1–V8), V2→V3 enlazadas, 3 modelos del La
 Ejecutar:  streamlit run app/app.py
 """
 from pathlib import Path
+import json
+import os
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
@@ -63,6 +65,30 @@ nombre_corto = lambda m: "ARIMA" if m.startswith("ARIMA") else m
 def fmt(n):
     return f"{n:,.0f}"
 
+PUBLISHED = Path(os.environ.get("PUBLISHED_DIR") or (Path(__file__).resolve().parent.parent / "published"))
+
+
+def cargar_publicado():
+    """Lee published/current.json y los archivos de la versión aprobada vigente (ejercicio 6.1).
+    Devuelve None si todavía no existe ninguna versión aprobada: el tablero no debe inventar datos."""
+    puntero = PUBLISHED / "current.json"
+    if not puntero.exists():
+        return None
+    try:
+        current = json.loads(puntero.read_text(encoding="utf-8"))
+        vdir = PUBLISHED / current["ruta"]
+        estimaciones = pd.read_csv(vdir / "estimaciones.csv", parse_dates=["periodo"])
+        metricas = pd.read_csv(vdir / "metricas.csv")
+        backtest = pd.read_csv(vdir / "backtest_detalle.csv", parse_dates=["periodo"])
+        manifest = json.loads((vdir / "manifest.json").read_text(encoding="utf-8"))
+        return {"current": current, "estimaciones": estimaciones, "metricas": metricas,
+                "backtest": backtest, "manifest": manifest}
+    except (OSError, KeyError, ValueError):
+        return None
+
+
+publicado = cargar_publicado()
+
 
 # ---------------- Encabezado ----------------
 st.title("Observatorio de Turismo Sostenible · Guatemala")
@@ -73,6 +99,20 @@ st.markdown(
     f"<span class='etq-est'>■ Naranja = estimación de un modelo</span> &nbsp;&nbsp; "
     f"<span style='color:{PIZARRA};font-weight:700'>■ Gris = referencia / periodo de pandemia</span>",
     unsafe_allow_html=True)
+
+if publicado:
+    _m = publicado["manifest"]
+    _fecha = (_m.get("aprobado_en") or "")[:16].replace("T", " ")
+    st.markdown(
+        f"<div class=\"nota\">Pronóstico (pestaña ④) desde la versión publicada y aprobada "
+        f"<b>{publicado['current']['version']}</b> del pipeline · ejecución <code>{_m['run_id']}</code> · "
+        f"aprobada el {_fecha} · commit <code>{_m['commit_git'][:12]}</code>. Las demás vistas son descriptivas "
+        f"(todo el historial observado, sin pasar por el flujo de aprobación).</div>", unsafe_allow_html=True)
+else:
+    st.markdown(
+        "<div class=\"nota\"><b>Aviso:</b> todavía no hay una versión aprobada del pipeline de pronóstico "
+        "(Laboratorio 11). La pestaña ④ mostrará «estimaciones no disponibles»; las demás vistas son descriptivas "
+        "y usan los datos observados exportados del Laboratorio 1.</div>", unsafe_allow_html=True)
 
 tab1, tab2, tab3, tab4 = st.tabs(["① ¿Cómo evoluciona el flujo?", "② ¿De dónde vienen los viajeros?",
                                   "③ ¿Por dónde y cuándo?", "④ ¿Qué esperar? (pronósticos)"])
@@ -269,6 +309,62 @@ with tab4:
                 f"Son <span class='etq-est'>estimaciones</span>, no hechos: el periodo de prueba incluye la recuperación posterior a la pandemia, "
                 f"un evento que ningún modelo anticipa, por lo que los errores son altos y no deben usarse como cifras oficiales.</div>",
                 unsafe_allow_html=True)
+
+    st.markdown("---")
+    st.markdown("<div class=\"pregunta\">Pronóstico oficial publicado (pipeline MLOps, Laboratorio 11)</div>", unsafe_allow_html=True)
+    if publicado is None:
+        st.warning("Estimaciones no disponibles: todavía no hay una versión aprobada del pipeline del Laboratorio 11. "
+                   "Esta sección mostrará el pronóstico oficial (ARIMA vs. Seasonal Naive) en cuanto exista una versión publicada.")
+    else:
+        bt_pub, est_pub, met_pub, man_pub = publicado["backtest"], publicado["estimaciones"], publicado["metricas"], publicado["manifest"]
+        serie_pub = st.selectbox("Segmento", sorted(bt_pub["serie"].unique(), key=lambda s: (s != "Total", s)), key="seg_pred_pub")
+        real_hist = series[series["serie"] == serie_pub].set_index("fecha")["real"]
+        bt_s = bt_pub[bt_pub["serie"] == serie_pub].sort_values("periodo")
+        pron_s = est_pub[(est_pub["serie"] == serie_pub) & (est_pub["conjunto"] == "pronostico")].sort_values("periodo")
+        corte = bt_s["periodo"].min()
+        fpub = go.Figure()
+        fpub.add_scatter(x=real_hist[real_hist.index < corte].index, y=real_hist[real_hist.index < corte].values,
+                         mode="lines", line=dict(color=GRIS_CLARO, width=2), name="Observado (histórico)",
+                         hovertemplate="%{x|%b %Y}: %{y:,.0f}<extra></extra>")
+        fpub.add_scatter(x=bt_s["periodo"], y=bt_s["real"], mode="lines", line=dict(color=TEAL, width=3),
+                         name="Observado (backtest)", hovertemplate="%{x|%b %Y}: %{y:,.0f}<extra></extra>")
+        fpub.add_scatter(x=bt_s["periodo"], y=bt_s["pred_modelo"], mode="lines",
+                         line=dict(color=NARANJA, width=2.5), name="Estimación: ARIMA",
+                         hovertemplate="ARIMA %{x|%b %Y}: %{y:,.0f}<extra></extra>")
+        fpub.add_scatter(x=bt_s["periodo"], y=bt_s["pred_referencia"], mode="lines",
+                         line=dict(color=PIZARRA, width=2, dash="dash"), name="Referencia: Seasonal Naive",
+                         hovertemplate="Seasonal Naive %{x|%b %Y}: %{y:,.0f}<extra></extra>")
+        fpub.add_scatter(x=pron_s["periodo"], y=pron_s["valor"], mode="lines",
+                         line=dict(color=NARANJA, width=2.5, dash="dot"), name="Pronóstico publicado: ARIMA",
+                         hovertemplate="Pronóstico %{x|%b %Y}: %{y:,.0f}<extra></extra>")
+        fpub.update_layout(height=430, margin=dict(l=10, r=10, t=10, b=10), plot_bgcolor="white", hovermode="x unified",
+                           yaxis_title="Viajeros por mes", legend=dict(orientation="h", y=-0.15),
+                           font=dict(family="Open Sans", size=14, color=AZUL))
+        fpub.update_yaxes(gridcolor="#E6EBF0", tickformat=",")
+        st.plotly_chart(fpub, width="stretch")
+
+        fila = met_pub[met_pub["serie"] == serie_pub].iloc[0]
+        estado_txt = "aprobada" if fila["cumple_regla"] else "no aprobada por desempeño"
+        pk1, pk2, pk3 = st.columns(3)
+        mae_modelo, mae_ref = fila["MAE"], fila["baseline_MAE"]
+        pk1.markdown(f"<div class=\"kpi\"><div class=\"v\">{mae_modelo:,.0f}</div><div class=\"l\">MAE del modelo (viajeros/mes)</div></div>", unsafe_allow_html=True)
+        pk2.markdown(f"<div class=\"kpi est\"><div class=\"v\">{mae_ref:,.0f}</div><div class=\"l\">MAE de Seasonal Naive (referencia)</div></div>", unsafe_allow_html=True)
+        pk3.markdown(f"<div class=\"kpi\"><div class=\"v\">{estado_txt}</div><div class=\"l\">Resultado de la regla de aceptación</div></div>", unsafe_allow_html=True)
+        aprobado_en_txt = (man_pub.get("aprobado_en") or "")[:16].replace("T", " ")
+        periodo_ini, periodo_fin = fila["periodo_inicio"][:7], fila["periodo_fin"][:7]
+        version_pub, run_id_pub = man_pub["version_procedimiento"], man_pub["run_id"]
+        st.markdown(
+            f"<div class=\"nota\"><b>Qué significa el MAE:</b> error absoluto promedio, en viajeros/mes, entre la estimación y "
+            f"lo observado durante el backtest ({periodo_ini} a {periodo_fin}, origen expansivo, un paso adelante). "
+            f"<b>Versión publicada:</b> {version_pub} · ejecución <code>{run_id_pub}</code> · aprobada el {aprobado_en_txt}.</div>",
+            unsafe_allow_html=True)
+        if not fila["cumple_regla"]:
+            st.markdown(
+                "<div class=\"nota\"><b>Limitación:</b> esta serie no superó la regla de aceptación vigente "
+                "(ver config/pipeline.yaml, sección aceptación). El backtest jul-2025 a jun-2026 coincide con la recuperación "
+                "pos-pandemia: un ARIMA ajustado con datos 2009-2021 no anticipa ese salto estructural, por lo que su error "
+                "puede ser varias veces mayor al de Seasonal Naive. La estimación se conserva como referencia exploratoria, "
+                "no como cifra oficial.</div>", unsafe_allow_html=True)
 
 # =====================================================================================
 # V6 — Recuperación respecto a 2019 (pestaña 1)

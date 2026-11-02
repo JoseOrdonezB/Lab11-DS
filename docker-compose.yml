@@ -1,0 +1,34 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        GIT_COMMIT: ${GIT_COMMIT:-sin-git}
+    image: observatorio-turismo:latest
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./published:/app/published
+      - ./config:/app/config
+    restart: unless-stopped
+
+  pipeline:
+    image: observatorio-turismo:latest
+    entrypoint: ["python", "-m", "pipeline.run"]
+    environment:
+      - MLFLOW_TRACKING_URI=sqlite:////app/mlflow/mlflow.db
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config
+      - ./runs:/app/runs
+      - ./published:/app/published
+      - ./mlflow:/app/mlflow
+
+  mlflow:
+    image: observatorio-turismo:latest
+    entrypoint: ["mlflow", "ui", "--backend-store-uri", "sqlite:////app/mlflow/mlflow.db", "--host", "0.0.0.0", "--port", "5000"]
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlflow:/app/mlflow

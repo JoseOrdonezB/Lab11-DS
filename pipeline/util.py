@@ -14,6 +14,11 @@ def cargar_config(ruta):
         return yaml.safe_load(f)
 
 def commit_git(raiz):
+    """Hash del commit (+sucio si hay cambios sin commitear). En Docker no hay .git ni git instalado:
+    se usa la variable de entorno GIT_COMMIT, fijada al construir la imagen (ver Dockerfile/docker-compose.yml)."""
+    env = os.environ.get("GIT_COMMIT")
+    if env:
+        return env
     try:
         out = subprocess.run(["git", "rev-parse", "HEAD"], cwd=raiz, capture_output=True, text=True, timeout=10)
         sucio = subprocess.run(["git", "status", "--porcelain"], cwd=raiz, capture_output=True, text=True, timeout=10)

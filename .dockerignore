@@ -1,0 +1,11 @@
+.git
+.idea
+__pycache__
+*.pyc
+data/raw
+runs
+mlflow
+mlruns
+published
+capturas
+*.pdf

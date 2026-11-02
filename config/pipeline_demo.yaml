@@ -1,0 +1,81 @@
+# CONFIGURACION DE DEMOSTRACION — NO es la configuracion oficial de aceptacion.
+# Unico proposito: generar una version "aprobada" en published_demo/ para poder demostrar el
+# mecanismo de publicacion, el tablero leyendo una version aprobada y la restauracion de una
+# version anterior (ejercicios 6 y 7.5). La regla real de aceptacion -con la que el equipo
+# decide si una version se publica de verdad- esta en config/pipeline.yaml y NO se modifica.
+# Con los datos actuales, las 7 series fallan esa regla real (ver docs/informe_adenda_entrega_final.md,
+# seccion 5.5); esta config de demo relaja umbrales.mae_rel_max y aceptacion.margen_vs_referencia
+# solo para poder mostrar que published/current.json, el tablero y --restaurar funcionan.
+
+destino: Guatemala
+unidad: viajeros/mes
+semilla: 20261029
+
+rutas:
+  fuente: data/raw/Base_Migracion_2009-2026jun.xlsx
+  corridas: runs_demo                                  # separado de runs/ para no mezclar con corridas reales
+  publicacion: published_demo                          # separado de published/ (que debe quedar intacto)
+
+mlflow:
+  habilitado: true
+  tracking_uri: sqlite:///mlflow/mlflow.db           # mismo tracking que la corrida oficial; se distingue por el tag destino/experimento y por rutas.publicacion
+  artefactos: mlflow/artifacts
+  experimento: observatorio-turismo-demo              # experimento separado, para no mezclar con observatorio-turismo-guatemala
+
+reproducibilidad:
+  tolerancia_abs: 1.0e-6
+
+fuente:
+  columnas:
+    Año: entero
+    Mes cod: entero
+    Vía: texto
+    Frontera: texto
+    País: texto
+    Región dos: texto
+    Tipo de Viajero: texto
+    Viajero: numerico
+  clave_unicidad: [Año, Mes cod, Vía, Frontera, País, Región dos, Tipo de Viajero]
+  columnas_nulos_permitidos: [Frontera, País]
+  columnas_diarias_prohibidas: [Día, Dia, Fecha, Fecha de ingreso]
+  tipos_viajero_validos: [Turista, Excursionista, Viajero, Cruceristas]
+  tipo_excluido: Viajero
+
+periodos:
+  cobertura: {inicio: "2009-01", fin: "2026-06"}
+  ajuste_base: {inicio: "2009-01", fin: "2021-03"}
+  evaluacion_historica: {inicio: "2021-04", fin: "2026-06"}
+  backtest: {inicio: "2025-07", fin: "2026-06"}
+  pronostico: {inicio: "2026-07", fin: "2026-12"}
+
+series:
+  Total:              {arima: [1, 0, 1]}
+  Vía Aérea:          {arima: [1, 0, 1], via: Aérea}
+  Vía Terrestre:      {arima: [2, 1, 0], via: Terrestre}
+  Vía Marítima:       {arima: [2, 0, 3], via: Marítima, excluir_tipo: false}
+  América del Centro: {arima: [1, 0, 0], region: América Del Centro}
+  América del Norte:  {arima: [3, 0, 0], region: América Del Norte}
+  Europa:             {arima: [4, 1, 2], region: Europa}
+
+modelo:
+  nombre: ARIMA
+  referencia: Seasonal Naive
+  transformacion_log:
+    diferencia_cv_min: 0.25
+  max_iter_arima: 200
+
+umbrales:
+  duplicados_pct_advertencia: 0.1
+  duplicados_pct_fallo: 1.0
+  rango_plausible_max_factor: 1.5
+  variacion_pct_alerta: 0.30
+
+# Umbrales deliberadamente relajados -SOLO para esta demo- a partir de los valores reales observados
+# el 2026-11-02 (ver docs/informe_adenda_entrega_final.md, 5.5): la peor relacion MAE/referencia fue
+# Via Maritima en ~8.3x y el peor MAE relativo al nivel fue tambien Via Maritima en ~94%. Estos numeros
+# NO deben copiarse a config/pipeline.yaml: ahi la regla se definio antes de ver resultados y se mantiene.
+aceptacion:
+  series_obligatorias: [Total]
+  mae_rel_max: 1.00
+  margen_vs_referencia: 10.0
+  min_obs_evaluacion: 6

@@ -62,13 +62,21 @@ modelo:
     diferencia_cv_min: 0.25       # se aplica si CV anual máx - mín > 0.25 y todos los valores observados > 0
   max_iter_arima: 200
 
+
 umbrales:
   duplicados_pct_advertencia: 0.1   # % de filas con clave repetida: arriba de esto, WARN
   duplicados_pct_fallo: 1.0         # arriba de esto, FAIL
   rango_plausible_max_factor: 1.5   # una estimación no puede pasar de 1.5 x el máximo mensual observado de su serie
+  variacion_pct_alerta: 0.30        # monitoreo (ejercicio 7.2): alerta si el pronóstico cambia más de esto vs. la versión vigente
 
-# Regla de aceptación. VALORES PROVISIONALES: se congelan en la sección 5 antes de la ejecución final
-# y no se modifican después de ver los resultados.
+# Regla de aceptación. Umbrales congelados para la entrega final (no se modifican después de ejecutar).
+# mae_rel_max y min_obs_evaluacion fijan una exigencia absoluta según la escala de la variable (cientos de
+# miles de viajeros/mes); margen_vs_referencia limita cuánto peor puede ser el modelo frente a Seasonal Naive.
+# Con estos valores, en el backtest jul-2025 a jun-2026 (recuperación pos-pandemia, ya documentada como
+# limitación en la sección 1 del alcance, antes de ejecutar el pipeline) la serie Total no cumple: ARIMA(1,0,1)
+# ajustado con 2009-2021 no anticipa el salto estructural de la recuperación y su MAE supera varias veces al
+# de Seasonal Naive. Se documenta el resultado en el informe técnico (sección 5.5) en vez de relajar el
+# umbral para forzar una aprobación.
 aceptacion:
   series_obligatorias: [Total]      # si alguna no cumple, la versión se rechaza
   mae_rel_max: 0.20                 # MAE <= 20 % del promedio mensual observado en el backtest

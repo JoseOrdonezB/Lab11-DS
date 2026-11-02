@@ -11,7 +11,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from . import controles, modelos, publicar as pub, reporte
+from . import controles, modelos, monitoreo, publicar as pub, reporte
 from .preparar import leer_fuente
 from .registro import Registro, slug
 from .util import cargar_config, sha256, commit_git
@@ -167,6 +167,19 @@ def main(argv=None):
         est["estado"] = ["aprobado" if cumple[s] else "referencia" for s in est["serie"]]
         est["mlflow_run_id"] = reg.run_id
         etapas.append("7_estimaciones")
+
+        # ---- Monitoreo (ejercicio 7.2): tres verificaciones; no deciden la publicación ---------
+        mon = monitoreo.ejecutar(df_ok, cfg, series, ctrl, est, pub_dir, log)
+        mon.to_csv(cand / "monitoreo.csv", index=False)
+        alertas = mon[mon["estado"] == "ALERTA"]
+        for _, r in mon.iterrows():
+            clave = slug(r["verificacion"])
+            reg.tags({f"monitor_{clave}": r["estado"]})
+        reg.metricas({"monitoreo_alertas": len(alertas)})
+        reg.artefacto(cand / "monitoreo.csv", "monitoreo")
+        for _, r in alertas.iterrows():
+            advertencias.append("Monitoreo " + r["verificacion"] + ": " + r["detalle"])
+        etapas.append("monitoreo")
 
         # ---- Etapa 8: candidato inmutable --------------------------------------------------------
         est.to_csv(cand / "estimaciones.csv", index=False)
