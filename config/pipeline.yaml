@@ -88,4 +88,6 @@ aceptacion:
   regla_congelada: "2026-11-01"      # fecha de congelamiento de esta regla (sección 5)
   series_obligatorias: [Total]      # si alguna no cumple, la versión se rechaza
   mae_rel_max: 0.20                 # MAE <= 20 % del nivel medio mensual observado en el backtest
+  # margen_vs_referencia (1.25) se usó en corridas previas y se eliminó el 2026-11-01:
+  # la referencia no es compuerta de aceptación y el código no lee esa clave.
   min_obs_evaluacion: 6             # menos observaciones comparables que esto: no se aprueba por desempeño
