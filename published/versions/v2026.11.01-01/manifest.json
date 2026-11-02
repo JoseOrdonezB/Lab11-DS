@@ -1,0 +1,132 @@
+{
+  "version_procedimiento": "v2026.11.01-01",
+  "run_id": "20261101-195039-6c7039",
+  "mlflow_run_id": "e6e8d34cc62d488ab43275e21983c465",
+  "mlflow_tracking_uri": "sqlite:///mlflow/mlflow.db",
+  "commit_git": "c1ca7395f602169f37b012af669be0e144932299+cambios-sin-commit",
+  "fuente": "Base_Migracion_2009-2026jun.xlsx",
+  "fuente_hash": "cdaba77918ae889c847ba8459503f9cce2441efac41b3d3aa0f05ac9ab283846",
+  "config_hash": "ff8a256d89348fe1a2b314dfb76619aecd992278e126aa7fc8da160326597635",
+  "periodos": {
+    "cobertura": {
+      "inicio": "2009-01",
+      "fin": "2026-06"
+    },
+    "ajuste_base": {
+      "inicio": "2009-01",
+      "fin": "2021-03"
+    },
+    "evaluacion_historica": {
+      "inicio": "2021-04",
+      "fin": "2026-06"
+    },
+    "backtest": {
+      "inicio": "2025-07",
+      "fin": "2026-06"
+    },
+    "pronostico": {
+      "inicio": "2026-07",
+      "fin": "2026-12"
+    }
+  },
+  "semilla": 20261029,
+  "python": "3.14.6",
+  "dependencias": {
+    "pandas": "3.0.5",
+    "numpy": "2.5.1",
+    "statsmodels": "0.14.6",
+    "PyYAML": "6.0.3",
+    "mlflow": "3.17.2"
+  },
+  "regla_aceptacion": {
+    "regla_congelada": "2026-11-01",
+    "series_obligatorias": [
+      "Total"
+    ],
+    "mae_rel_max": 0.2,
+    "min_obs_evaluacion": 6
+  },
+  "inicio": "2026-11-01T19:50:39",
+  "aprobado": true,
+  "motivos_rechazo": [],
+  "aprobado_en": "2026-11-01T19:50:57",
+  "resumen_metricas": {
+    "Total": {
+      "MAE": 40387.3,
+      "RMSE": 45026.4,
+      "nivel_medio": 275328.14,
+      "MAE_pct_nivel": 14.7,
+      "baseline_MAE": 12027.44,
+      "ratio_referencia": 3.36,
+      "supera_referencia": false,
+      "cumple_regla": true,
+      "estado": "aprobado"
+    },
+    "Vía Aérea": {
+      "MAE": 14714.21,
+      "RMSE": 16869.64,
+      "nivel_medio": 104259.17,
+      "MAE_pct_nivel": 14.1,
+      "baseline_MAE": 9347.92,
+      "ratio_referencia": 1.57,
+      "supera_referencia": false,
+      "cumple_regla": true,
+      "estado": "aprobado"
+    },
+    "Vía Terrestre": {
+      "MAE": 25376.27,
+      "RMSE": 32749.68,
+      "nivel_medio": 171068.97,
+      "MAE_pct_nivel": 14.8,
+      "baseline_MAE": 12530.43,
+      "ratio_referencia": 2.03,
+      "supera_referencia": false,
+      "cumple_regla": true,
+      "estado": "aprobado"
+    },
+    "Vía Marítima": {
+      "MAE": 554.29,
+      "RMSE": 622.65,
+      "nivel_medio": 591.83,
+      "MAE_pct_nivel": 93.7,
+      "baseline_MAE": 67.0,
+      "ratio_referencia": 8.27,
+      "supera_referencia": false,
+      "cumple_regla": false,
+      "estado": "referencia"
+    },
+    "América del Centro": {
+      "MAE": 24862.24,
+      "RMSE": 29419.5,
+      "nivel_medio": 170027.66,
+      "MAE_pct_nivel": 14.6,
+      "baseline_MAE": 12187.46,
+      "ratio_referencia": 2.04,
+      "supera_referencia": false,
+      "cumple_regla": true,
+      "estado": "aprobado"
+    },
+    "América del Norte": {
+      "MAE": 14254.22,
+      "RMSE": 16155.22,
+      "nivel_medio": 72773.93,
+      "MAE_pct_nivel": 19.6,
+      "baseline_MAE": 6463.74,
+      "ratio_referencia": 2.21,
+      "supera_referencia": false,
+      "cumple_regla": true,
+      "estado": "aprobado"
+    },
+    "Europa": {
+      "MAE": 3963.2,
+      "RMSE": 4301.99,
+      "nivel_medio": 15242.18,
+      "MAE_pct_nivel": 26.0,
+      "baseline_MAE": 1150.95,
+      "ratio_referencia": 3.44,
+      "supera_referencia": false,
+      "cumple_regla": false,
+      "estado": "referencia"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+control,severidad,estado,n_afectados,detalle,run_id,timestamp
+C1 columnas y tipos,critico,OK,0,Las 8 columnas indispensables existen con el tipo esperado.,20261102-020929-bb05af,2026-11-02T02:09:40
+C2 fechas y cobertura,critico,WARN,37,"meses sin filas (quedan como faltantes, no como cero): Vía Marítima: 27 meses; América del Norte: 5 meses; Europa: 5 meses.",20261102-020929-bb05af,2026-11-02T02:09:40
+C3 unicidad,critico,WARN,42,"42 filas (0.026 %) comparten clave (Año, Mes cod, Vía, Frontera, País, Región dos, Tipo de Viajero). Se conservan y se suman como registros parciales aditivos; no se eliminan en silencio. Está por debajo del umbral de advertencia (0.1 %); se avisa igual para que quede registrado.",20261102-020929-bb05af,2026-11-02T02:09:40
+C4 valores faltantes,critico,OK,0,Sin ausencias en las columnas utilizadas.,20261102-020929-bb05af,2026-11-02T02:09:40
+C5 valores y denominadores,critico,OK,0,Sin negativos ni valores no finitos. Sin denominadores iguales a cero en el backtest.,20261102-020929-bb05af,2026-11-02T02:09:40
+C6 regla metodológica,critico,OK,0,"Fuente mensual (sin columnas diarias), tipos de viajero válidos, y Total sin 'Viajero' = suma de vías (dif. máx. 5.82e-11).",20261102-020929-bb05af,2026-11-02T02:09:40
