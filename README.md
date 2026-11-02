@@ -243,4 +243,6 @@ restauración y publicación. No requieren el dato institucional.
 - Tablero leyendo `published/current.json`, con versión, fecha, métricas, estados y limitaciones.
 - Monitoreo M1–M3 con reporte, artefactos y alertas no bloqueantes.
 - Docker/Compose con persistencia, sin dato institucional en la imagen y puertos 8501/5001.
+- Capturas del tablero en `capturas/v9_version_publicada.png` y `capturas/v4_pronostico_publicado.png`
+  (figuras 2 y 3 del informe).
 - Informe técnico en `Lab11.pdf` (secciones 5–8 anexadas al informe de las secciones 1–4).

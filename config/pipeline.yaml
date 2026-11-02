@@ -85,7 +85,7 @@ monitoreo:
 # La referencia (Seasonal Naive) se calcula y se reporta en todas las series, pero no es un requisito
 # para aprobar: el laboratorio no exige superarla (5.5). Si el modelo no la supera, se documenta.
 aceptacion:
-  regla_congelada: "2026-11-01"      # fecha de congelamiento de esta regla
+  regla_congelada: "2026-11-01"      # fecha de congelamiento de esta regla (sección 5)
   series_obligatorias: [Total]      # si alguna no cumple, la versión se rechaza
   mae_rel_max: 0.20                 # MAE <= 20 % del nivel medio mensual observado en el backtest
   min_obs_evaluacion: 6             # menos observaciones comparables que esto: no se aprueba por desempeño

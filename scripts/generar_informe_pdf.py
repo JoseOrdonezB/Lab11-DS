@@ -18,7 +18,8 @@ from reportlab.lib.enums import TA_JUSTIFY, TA_LEFT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import cm
-from reportlab.platypus import (BaseDocTemplate, Frame, PageTemplate, Paragraph,
+from reportlab.lib.utils import ImageReader
+from reportlab.platypus import (BaseDocTemplate, Frame, Image, PageTemplate, Paragraph,
                                 Preformatted, Spacer, Table, TableStyle)
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -39,6 +40,9 @@ ANCHO_UTIL = ANCHO - 2 * MARGEN
 def _inline(texto):
     """Escapa HTML y convierte **negrita** y `código` a marcado de ReportLab."""
     t = (texto.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
+    # Glifos fuera de WinAnsi: ReportLab los sustituye por basura (|, {, etc.).
+    for original, reemplazo in (("⑤", "5"), ("④", "4"), ("→", "a"), ("≈", "aprox. ")):
+        t = t.replace(original, reemplazo)
     t = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t)
     t = re.sub(r"`(.+?)`", r'<font name="Courier">\1</font>', t)
     return t
@@ -106,6 +110,9 @@ def _estilos():
                                          leading=10, textColor=colors.white),
         "celda": ParagraphStyle("celda", fontName="Helvetica", fontSize=8, leading=10,
                                 textColor=colors.HexColor("#1F2933")),
+        "caption": ParagraphStyle("caption", fontName="Helvetica-Oblique", fontSize=8,
+                                  leading=10.5, textColor=PIZARRA, alignment=TA_LEFT,
+                                  spaceBefore=3, spaceAfter=8),
     }
 
 
@@ -132,6 +139,25 @@ def _bloques(texto, estilos):
                 i += 1
             flujo.append(Preformatted("\n".join(codigo), estilos["codigo"]))
             flujo.append(Spacer(1, 3))
+            i += 1
+            continue
+        if linea.startswith("!["):
+            cerrar_parrafo()
+            m = re.match(r"!\[(.*?)\]\((.*?)\)", linea)
+            if m:
+                ruta = (RAIZ / m.group(2)).resolve()
+                if ruta.exists():
+                    ancho_px, alto_px = ImageReader(str(ruta)).getSize()
+                    ancho = 15 * cm
+                    alto = ancho * alto_px / ancho_px
+                    max_alto = 17 * cm
+                    if alto > max_alto:
+                        alto = max_alto
+                        ancho = alto * ancho_px / alto_px
+                    img = Image(str(ruta), width=ancho, height=alto)
+                    img.hAlign = "LEFT"
+                    flujo.append(img)
+                    flujo.append(Paragraph(_inline(m.group(1)), estilos["caption"]))
             i += 1
             continue
         if linea.startswith("|"):

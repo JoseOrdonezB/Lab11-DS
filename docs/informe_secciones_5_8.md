@@ -58,6 +58,10 @@ El tablero no reajusta modelos ni lee candidatos. `app/publicacion.py` lee `publ
 
 La pestaña ④ también muestra la estimación publicada para julio–diciembre de 2026 y etiqueta si la serie es aprobada o de referencia.
 
+![Figura 2. Pestaña ⑤: versión aprobada, fecha, métricas, estados y limitaciones.](capturas/v9_version_publicada.png)
+
+![Figura 3. Pestaña ④: pronóstico publicado de la versión aprobada.](capturas/v4_pronostico_publicado.png)
+
 ## 6.3 Estimaciones no disponibles
 
 Si `current.json` no existe, está corrupto, la versión está incompleta o no está aprobada, el cargador devuelve `None` con un motivo y la interfaz muestra **«Estimaciones no disponibles»**. No se inventan valores ni se reajusta un modelo. La última versión válida que exista en disco no se modifica; el pipeline solo mueve el puntero cuando publica una versión aprobada.
