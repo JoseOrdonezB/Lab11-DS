@@ -4,8 +4,9 @@ from datetime import datetime
 from pathlib import Path
 from .util import escribir_json_atomico
 
-ARCHIVOS = ["estimaciones.csv", "metricas.csv", "controles.csv", "reporte_controles.md", "backtest_detalle.csv",
-            "parametros_modelo.json", "manifest.json"]
+ARCHIVOS = ["estimaciones.csv", "metricas.csv", "controles.csv", "reporte_controles.md", "reporte_validacion.md",
+            "monitoreo.csv", "monitoreo.json", "reporte_monitoreo.md",
+            "backtest_detalle.csv", "parametros_modelo.json", "manifest.json"]
 
 
 def siguiente_version(pub, hoy=None):

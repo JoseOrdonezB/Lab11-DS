@@ -5,12 +5,16 @@ Versión FINAL: 8 visualizaciones (V1–V8), V2→V3 enlazadas, 3 modelos del La
 Ejecutar:  streamlit run app/app.py
 """
 from pathlib import Path
+import sys
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-DATA = Path(__file__).resolve().parent.parent / "data"
+RAIZ = Path(__file__).resolve().parent.parent
+DATA = RAIZ / "data"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from publicacion import cargar_publicacion, series_publicadas  # noqa: E402
 
 # ---------------- Paleta (significado fijo en toda la aplicación) ----------------
 AZUL = "#1B2A41"      # títulos, texto principal
@@ -57,11 +61,16 @@ def cargar():
 
 
 base, series, preds, mets = cargar()
+publicacion, error_publicacion = cargar_publicacion()
 nombre_corto = lambda m: "ARIMA" if m.startswith("ARIMA") else m
 
 
 def fmt(n):
     return f"{n:,.0f}"
+
+
+def etiqueta_estado(estado):
+    return "Aprobado (ARIMA)" if estado == "aprobado" else "Referencia (Seasonal Naive)"
 
 
 # ---------------- Encabezado ----------------
@@ -74,8 +83,9 @@ st.markdown(
     f"<span style='color:{PIZARRA};font-weight:700'>■ Gris = referencia / periodo de pandemia</span>",
     unsafe_allow_html=True)
 
-tab1, tab2, tab3, tab4 = st.tabs(["① ¿Cómo evoluciona el flujo?", "② ¿De dónde vienen los viajeros?",
-                                  "③ ¿Por dónde y cuándo?", "④ ¿Qué esperar? (pronósticos)"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["① ¿Cómo evoluciona el flujo?", "② ¿De dónde vienen los viajeros?",
+                                        "③ ¿Por dónde y cuándo?", "④ ¿Qué esperar? (pronósticos)",
+                                        "⑤ ¿Qué versión estoy viendo?"])
 
 # =====================================================================================
 # V1 — Serie mensual con nivel de detalle
@@ -323,3 +333,117 @@ with tab4:
     st.markdown(f"<div class='nota'><b>Lo observado:</b> segmentos donde cada modelo tuvo el menor error → {txt}. "
                 "<b>Limitación:</b> Vía Marítima tiene meses con muy pocos viajeros, por eso su error porcentual se dispara y debe leerse con cuidado. Ningún modelo domina en todos los segmentos y el periodo de prueba incluye la recuperación pos-pandemia; "
                 "son <span class='etq-est'>estimaciones</span> para explorar, no cifras oficiales.</div>", unsafe_allow_html=True)
+
+    # ---- Estimación de la versión aprobada (Laboratorio 11) --------------------------
+    if publicacion is not None:
+        st.markdown("---")
+        st.markdown("<div class='pregunta'>Estimación publicada para julio–diciembre de 2026</div>", unsafe_allow_html=True)
+        publicadas = series_publicadas(publicacion)
+        if serie_p not in publicadas:
+            st.info("La versión publicada no incluye este segmento. Elija otro en el selector de arriba.")
+        else:
+            e = publicacion.estimaciones
+            ep = e[(e["serie"] == serie_p) & (e["conjunto"] == "pronostico")].sort_values("periodo")
+            real = series[series["serie"] == serie_p].set_index("fecha")["real"]
+            reciente = real[real.index >= real.index.max() - pd.DateOffset(months=23)]
+            estado = str(ep["estado"].iloc[0])
+            color = NARANJA if estado == "aprobado" else PIZARRA
+            estilo = "solid" if estado == "aprobado" else "dash"
+            fp2 = go.Figure()
+            fp2.add_scatter(x=reciente.index, y=reciente.values, mode="lines", name="Observado",
+                            line=dict(color=TEAL, width=2.5),
+                            hovertemplate="Observado %{x|%b %Y}: %{y:,.0f}<extra></extra>")
+            fp2.add_scatter(x=ep["periodo"], y=ep["valor"], mode="lines+markers",
+                            name=etiqueta_estado(estado), line=dict(color=color, width=2.8, dash=estilo),
+                            marker=dict(size=8), hovertemplate="Estimado %{x|%b %Y}: %{y:,.0f}<extra></extra>")
+            fp2.add_vline(x=reciente.index.max(), line_dash="dot", line_color=GRIS_CLARO,
+                          annotation_text="último dato observado", annotation_position="top left",
+                          annotation_font_color=PIZARRA)
+            fp2.update_layout(height=390, margin=dict(l=10, r=10, t=30, b=10), plot_bgcolor="white",
+                              hovermode="x unified", yaxis_title="Viajeros por mes",
+                              legend=dict(orientation="h", y=-0.18),
+                              font=dict(family="Open Sans", size=14, color=AZUL))
+            fp2.update_yaxes(gridcolor="#E6EBF0", tickformat=",")
+            st.plotly_chart(fp2, width="stretch", key="v9_publicado")
+            st.caption(f"Versión {publicacion.version} · actualizada {publicacion.actualizado_en.replace('T', ' ')} · "
+                       f"serie publicada como {estado}. Los valores de jul–dic 2026 son estimaciones, no observaciones.")
+            st.dataframe(ep.assign(periodo=ep["periodo"].dt.strftime("%Y-%m"))[["periodo", "valor", "unidad", "estado"]]
+                         .rename(columns={"periodo": "Período", "valor": "Valor estimado", "unidad": "Unidad",
+                                          "estado": "Estado"}),
+                         hide_index=True, width="stretch")
+            st.markdown(f"<div class='nota'><b>Cómo leerlo:</b> la línea verde azulada es lo observado. "
+                        f"La línea {'naranja' if estado == 'aprobado' else 'gris discontinua'} es la estimación de la versión aprobada. "
+                        f"Cuando el estado es <b>referencia</b>, la serie no pasó la regla de aceptación y se publica con "
+                        f"Seasonal Naive (el mismo mes del año anterior), no con ARIMA.</div>", unsafe_allow_html=True)
+
+# =====================================================================================
+# V9 — Versión publicada: trazabilidad, métricas y limitaciones (Laboratorio 11)
+# =====================================================================================
+with tab5:
+    st.markdown("<div class='pregunta'>¿Qué versión de resultados está viendo el tablero y qué tan confiable es?</div>",
+                unsafe_allow_html=True)
+    if publicacion is None:
+        st.warning("**Estimaciones no disponibles.** Todavía no existe una versión aprobada que el tablero pueda consultar. "
+                   "El tablero no reajusta modelos ni inventa valores: cuando el pipeline publique una versión aprobada, "
+                   "aparecerá aquí automáticamente.")
+        if error_publicacion:
+            st.caption(f"Detalle técnico: {error_publicacion}")
+    else:
+        p = publicacion
+        n_ok = int(p.metricas["cumple_regla"].astype(bool).sum()) if "cumple_regla" in p.metricas else 0
+        c1, c2, c3, c4 = st.columns(4)
+        c1.markdown(f"<div class='kpi'><div class='v'>{p.version}</div><div class='l'>Versión aprobada que consulta el tablero</div></div>", unsafe_allow_html=True)
+        c2.markdown(f"<div class='kpi'><div class='v'>{p.actualizado_en.replace('T', ' ')}</div><div class='l'>Fecha de actualización</div></div>", unsafe_allow_html=True)
+        c3.markdown(f"<div class='kpi est'><div class='v'>{n_ok} / {len(p.metricas)}</div><div class='l'>Series con ARIMA aprobado (el resto se publica como referencia)</div></div>", unsafe_allow_html=True)
+        c4.markdown(f"<div class='kpi'><div class='v'>{p.run_id}</div><div class='l'>Identificador de la ejecución</div></div>", unsafe_allow_html=True)
+        destino = p.estimaciones["destino"].iloc[0] if "destino" in p.estimaciones else "Guatemala"
+        unidad = p.estimaciones["unidad"].iloc[0] if "unidad" in p.estimaciones else "viajeros/mes"
+        st.caption(f"Destino: {destino} · Unidad: {unidad} · Run de MLflow: {p.mlflow_run_id} · "
+                   f"Fuente SHA-256: {p.fuente_hash}… · Config SHA-256: {p.config_hash}…")
+
+        st.markdown("#### Validación temporal")
+        m = p.metricas.copy()
+        m["Estado"] = np.where(m["cumple_regla"].astype(bool), "aprobado", "referencia")
+        periodo = (f"{m['periodo_inicio'].iloc[0]} a {m['periodo_fin'].iloc[0]}"
+                   if {"periodo_inicio", "periodo_fin"} <= set(m.columns) else "el período configurado")
+        st.markdown(f"**MAE** es el error promedio absoluto en {unidad}: qué tanto se alejó la estimación de lo observado, "
+                    f"en promedio, durante el backtest **{periodo}**. **MAE / nivel** compara ese error con el tamaño medio "
+                    f"del flujo (un 15 % es una tolerancia de planificación, no una promesa de precisión puntual). "
+                    f"**MAE / ref.** compara con Seasonal Naive: valores mayores que 1 significan que el modelo no superó "
+                    f"la referencia; el laboratorio no exige superarla (5.5), por eso se reporta sin bloquear.")
+        tabla = m.rename(columns={
+            "serie": "Serie", "n_obs": "Meses evaluados", "MAE": "MAE (viajeros/mes)",
+            "MAE_pct_nivel": "MAE / nivel (%)", "baseline_MAE": "MAE referencia",
+            "ratio_referencia": "MAE / referencia", "Estado": "Estado"})
+        cols = ["Serie", "Meses evaluados", "MAE (viajeros/mes)", "MAE / nivel (%)", "MAE referencia",
+                "MAE / referencia", "Estado"]
+        st.dataframe(tabla[cols].style.format({
+            "Meses evaluados": "{:,.0f}", "MAE (viajeros/mes)": "{:,.0f}", "MAE / nivel (%)": "{:.1f}%",
+            "MAE referencia": "{:,.0f}", "MAE / referencia": "{:.2f}"}, na_rep="n/d"),
+            hide_index=True, width="stretch")
+
+        mon = p.monitoreo.get("verificaciones", []) if p.monitoreo else []
+        alertas = [v for v in mon if v.get("estado") == "ALERTA"]
+        if mon:
+            if alertas:
+                st.warning("**Monitoreo con alertas para revisión:** " +
+                           "; ".join(f"{v.get('verificacion')}: {v.get('detalle')}" for v in alertas) +
+                           ". Una alerta no demuestra por sí sola pérdida de precisión; el error predictivo solo se "
+                           "actualiza cuando hay observaciones comparables.")
+            else:
+                st.success("Monitoreo de la última ejecución: actualización, calidad y resultados sin alertas.")
+        st.markdown("#### Limitaciones")
+        st.warning("• Los valores de julio–diciembre de 2026 son **estimaciones**, no observaciones; todavía no se pueden "
+                   "calcular errores para esos meses.\n\n"
+                   "• El backtest tiene 12 cortes mensuales: es una muestra corta y retrospectiva, no un experimento "
+                   "pre-registrado.\n\n"
+                   "• Las series marcadas como **referencia** no pasaron la regla de aceptación; se publican con "
+                   "Seasonal Naive para no presentar como aprobado un modelo que no cumple.\n\n"
+                   "• La pandemia, la recuperación y el cambio metodológico 2022–2023 impiden un contrafactual limpio. "
+                   "El modelo no anticipa pandemias, shocks ni revisiones de la fuente.\n\n"
+                   "• Los detalles técnicos de parámetros, ejecuciones y artefactos están en MLflow y en el reporte de "
+                   "validación; esta pestaña está pensada para decisiones, no para depuración.")
+        if p.reporte:
+            with st.expander("Ver el reporte de validación completo (detalle técnico)"):
+                st.markdown(p.reporte)
+

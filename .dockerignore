@@ -1,0 +1,14 @@
+# No se copian datos institucionales ni artefactos locales a la imagen.
+data/raw/*
+!data/raw/.gitkeep
+runs/
+mlflow/
+mlruns/
+.git/
+.gitignore
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/

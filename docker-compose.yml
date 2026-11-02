@@ -1,0 +1,66 @@
+# Laboratorio 11 — tablero, pipeline y MLflow.
+#
+#   docker compose up -d --build mlflow tablero
+#   docker compose run --rm pipeline
+#
+# published/, mlflow/ y runs/ se montan desde el host: sobreviven a `docker compose down`
+# y a la recreación de contenedores. data/raw se monta en solo lectura y nunca entra a la imagen.
+name: observatorio-lab11
+
+services:
+  mlflow:
+    build: .
+    image: observatorio-lab11:local
+    command:
+      - mlflow
+      - server
+      - --backend-store-uri
+      - sqlite:////app/mlflow/mlflow_docker.db
+      - --artifacts-destination
+      - /app/mlflow/artifacts
+      - --host
+      - 0.0.0.0
+      - --port
+      - "5000"
+      - --allowed-hosts
+      - mlflow:5000,localhost:5000,127.0.0.1:5000,localhost:5001,127.0.0.1:5001
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./mlflow:/app/mlflow
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:5000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  tablero:
+    build: .
+    image: observatorio-lab11:local
+    command:
+      - streamlit
+      - run
+      - app/app.py
+      - --server.address=0.0.0.0
+      - --server.port=8501
+      - --server.headless=true
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data:ro
+      - ./published:/app/published:ro
+
+  pipeline:
+    build: .
+    image: observatorio-lab11:local
+    profiles: ["pipeline"]
+    command: ["python", "-m", "pipeline.run"]
+    environment:
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+    volumes:
+      - ./data/raw:/app/data/raw:ro
+      - ./published:/app/published
+      - ./runs:/app/runs
+    depends_on:
+      mlflow:
+        condition: service_healthy

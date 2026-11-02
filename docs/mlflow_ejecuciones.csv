@@ -2,3 +2,8 @@ run_local,mlflow_run_id,estado_mlflow,inicio,resultado,codigo,etapa_final,contro
 20261031-115215-ad14ef,0666aea8f7d248fbb24bb8c8043a068d,FAILED,2026-10-31 11:52:19,error: fuente no encontrada,1,ninguna,,fuente no encontrada: no_existe.xlsx,,,18ed42e8f829,,,,
 20261031-115039-a4d83b,9bc884f3604b42ae87e461f39dee5171,FINISHED,2026-10-31 11:50:43,candidato rechazado; resultados vigentes intactos,3,8_candidato,WARN,,cdaba77918ae,f54343e11c8b,18ed42e8f829,,40387.3,12027.4,0.0
 20261031-114947-77d421,4566e28f38834823b02ccd7809768a36,FINISHED,2026-10-31 11:49:53,candidato rechazado; resultados vigentes intactos,3,8_candidato,WARN,,cdaba77918ae,f54343e11c8b,18ed42e8f829,,40387.3,12027.4,0.0
+20261101-195824-43e3ea,3ba1df5833184e11b7e18483b2e0cb64,FINISHED,2026-11-01 19:58:25,publicado v2026.11.01-04,0,11_puntero,WARN,,cdaba77918ae,7818d835f7ae,8393015e6663,v2026.11.01-04,40387.3,12027.4,1.0
+20261101-195748-a7b63f,a15e95865a96493db16346850190d81c,FINISHED,2026-11-01 19:57:49,publicado v2026.11.01-03,0,11_puntero,WARN,,cdaba77918ae,7818d835f7ae,8393015e6663,v2026.11.01-03,40387.3,12027.4,1.0
+20261101-195740-3246f1,15d5e8e3bea84999a4a957c1248b85b9,FAILED,2026-11-01 19:57:41,detenido por control crítico; resultados vigentes intactos,2,2_validacion,FAIL,C1 columnas y tipos: Faltan columnas indispensables: ['País'],1223220e4c82,7818d835f7ae,8393015e6663,,,,
+20261101-195107-5ca08c,3a7e9817e68e4a0881197031f3936d7a,FINISHED,2026-11-01 19:51:08,publicado v2026.11.01-02,0,11_puntero,WARN,,cdaba77918ae,ff8a256d8934,c1ca7395f602,v2026.11.01-02,40387.3,12027.4,1.0
+20261101-195039-6c7039,e6e8d34cc62d488ab43275e21983c465,FINISHED,2026-11-01 19:50:40,publicado v2026.11.01-01,0,11_puntero,WARN,,cdaba77918ae,ff8a256d8934,c1ca7395f602,v2026.11.01-01,40387.3,12027.4,1.0

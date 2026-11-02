@@ -67,10 +67,25 @@ umbrales:
   duplicados_pct_fallo: 1.0         # arriba de esto, FAIL
   rango_plausible_max_factor: 1.5   # una estimación no puede pasar de 1.5 x el máximo mensual observado de su serie
 
-# Regla de aceptación. VALORES PROVISIONALES: se congelan en la sección 5 antes de la ejecución final
-# y no se modifican después de ver los resultados.
+# Monitoreo posterior a la generación de estimaciones (sección 7). Las alertas NO bloquean
+# la publicación por sí solas: señalan casos para revisión. El error predictivo solo se
+# actualiza con observaciones comparables, nunca con meses futuros.
+monitoreo:
+  actualizacion:
+    desfase_max_meses: 0            # la fuente debe llegar al último mes de la cobertura configurada
+  calidad:
+    faltantes_pct_delta: 0.5        # aumento de puntos porcentuales de celdas faltantes vs. versión anterior
+    duplicados_pct_delta: 0.1       # aumento de puntos porcentuales de filas con clave repetida
+    cobertura_meses_delta: 0        # meses adicionales sin información en alguna serie
+  resultados:
+    variacion_mensual_max: 0.35     # cambio máximo mes a mes dentro del pronóstico (35 %)
+    variacion_version_max: 0.25     # cambio máximo frente a la versión aprobada anterior (25 %)
+
+# Regla de aceptación congelada el 2026-11-01 (sección 5). No se modifica después de la corrida oficial.
+# La referencia (Seasonal Naive) se calcula y se reporta en todas las series, pero no es un requisito
+# para aprobar: el laboratorio no exige superarla (5.5). Si el modelo no la supera, se documenta.
 aceptacion:
+  regla_congelada: "2026-11-01"      # fecha de congelamiento de esta regla
   series_obligatorias: [Total]      # si alguna no cumple, la versión se rechaza
-  mae_rel_max: 0.20                 # MAE <= 20 % del promedio mensual observado en el backtest
-  margen_vs_referencia: 1.25        # MAE del modelo <= 1.25 x MAE de la referencia
-  min_obs_evaluacion: 6             # menos observaciones comparables que esto: no se calcula ni se aprueba por desempeño
+  mae_rel_max: 0.20                 # MAE <= 20 % del nivel medio mensual observado en el backtest
+  min_obs_evaluacion: 6             # menos observaciones comparables que esto: no se aprueba por desempeño

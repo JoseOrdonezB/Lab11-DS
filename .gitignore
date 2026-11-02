@@ -8,3 +8,6 @@ __pycache__/
 # registros de MLflow (base sqlite y artefactos); se entregan aparte, no van a Git
 mlflow/
 mlruns/
+
+# archivo intermedio del generador del informe
+docs/_secciones_5_8.pdf

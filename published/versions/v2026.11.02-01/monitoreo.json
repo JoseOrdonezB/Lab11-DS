@@ -1,0 +1,124 @@
+{
+  "run_id": "20261102-020929-bb05af",
+  "version": "v2026.11.02-01",
+  "inicio": "2026-11-02T02:09:29",
+  "fin": "2026-11-02T02:09:46",
+  "fuente_hash": "cdaba77918ae889c847ba8459503f9cce2441efac41b3d3aa0f05ac9ab283846",
+  "config_hash": "7818d835f7ae2c52133fb8bf9f0b3e8c3119b9be63b47253f598833a5e0f0718",
+  "linea_base": {
+    "faltantes_pct": 0.0,
+    "duplicados_pct": 0.026081124717454482,
+    "cobertura_meses_faltantes": 37,
+    "version_anterior": "v2026.11.01-04",
+    "variaciones": {
+      "variacion_mensual_max": {
+        "América del Centro": 0.006676687049504667,
+        "América del Norte": 0.10229369301457657,
+        "Europa": 0.9436953820625992,
+        "Total": 0.024304451772727647,
+        "Vía Aérea": 0.03361108419432401,
+        "Vía Marítima": 0.35877862595419846,
+        "Vía Terrestre": 0.004758278683637815
+      },
+      "variacion_version_max": {
+        "América del Centro": 4.539835185151991e-11,
+        "América del Norte": 2.0574300985516525e-10,
+        "Europa": 0.0,
+        "Total": 2.9588421001729413e-10,
+        "Vía Aérea": 2.4425787222444926e-10,
+        "Vía Marítima": 0.0,
+        "Vía Terrestre": 7.141986843929915e-13
+      }
+    },
+    "estimaciones": {
+      "América del Centro": {
+        "2026-07": 144983.55,
+        "2026-08": 144015.54,
+        "2026-09": 143170.57,
+        "2026-10": 142432.43,
+        "2026-11": 141787.19,
+        "2026-12": 141222.81
+      },
+      "América del Norte": {
+        "2026-07": 69471.74,
+        "2026-08": 62365.22,
+        "2026-09": 59413.48,
+        "2026-10": 57603.04,
+        "2026-11": 55309.52,
+        "2026-12": 53158.56
+      },
+      "Europa": {
+        "2026-07": 14115.05,
+        "2026-08": 14330.17,
+        "2026-09": 7069.12,
+        "2026-10": 11742.76,
+        "2026-11": 22824.35,
+        "2026-12": 17977.2
+      },
+      "Total": {
+        "2026-07": 240003.41,
+        "2026-08": 234170.26,
+        "2026-09": 229233.8,
+        "2026-10": 225043.3,
+        "2026-11": 221476.56,
+        "2026-12": 218433.69
+      },
+      "Vía Aérea": {
+        "2026-07": 95293.05,
+        "2026-08": 92090.15,
+        "2026-09": 89569.94,
+        "2026-10": 87575.3,
+        "2026-11": 85989.12,
+        "2026-12": 84722.9
+      },
+      "Vía Marítima": {
+        "2026-07": 606.0,
+        "2026-08": 566.0,
+        "2026-09": 366.0,
+        "2026-10": 393.0,
+        "2026-11": 534.0,
+        "2026-12": 664.0
+      },
+      "Vía Terrestre": {
+        "2026-07": 148860.95,
+        "2026-08": 148152.63,
+        "2026-09": 148151.58,
+        "2026-10": 148258.42,
+        "2026-11": 148227.19,
+        "2026-12": 148220.26
+      }
+    }
+  },
+  "verificaciones": [
+    {
+      "verificacion": "M1 actualización",
+      "estado": "OK",
+      "n_afectados": 0,
+      "detalle": "Fuente y estimaciones al día: último mes de la fuente 2026-06 y pronóstico hasta 2026-12.",
+      "umbral": "desfase máximo 0 mes(es)"
+    },
+    {
+      "verificacion": "M2 calidad",
+      "estado": "OK",
+      "n_afectados": 0,
+      "detalle": "Sin cambios relevantes frente a la versión anterior: 0.0000 % faltantes, 0.0261 % duplicados, 37 meses sin información.",
+      "umbral": "faltantes +0.5 pp, duplicados +0.1 pp, cobertura +0 meses"
+    },
+    {
+      "verificacion": "M3 resultados",
+      "estado": "ALERTA",
+      "n_afectados": 2,
+      "detalle": "Sin negativas ni valores no finitos. Variación máxima mes a mes: 94.4%. Variación máxima frente a la versión anterior: 0.0%. Alertas: variación mes a mes sobre el umbral en Europa 94%, Vía Marítima 36%. Una variación alta es una señal para revisión, no una prueba de pérdida de precisión; el error predictivo solo se actualiza con observaciones comparables.",
+      "umbral": "variación mensual ≤ 35%, frente a versión ≤ 25%"
+    }
+  ],
+  "alertas": [
+    {
+      "verificacion": "M3 resultados",
+      "estado": "ALERTA",
+      "n_afectados": 2,
+      "detalle": "Sin negativas ni valores no finitos. Variación máxima mes a mes: 94.4%. Variación máxima frente a la versión anterior: 0.0%. Alertas: variación mes a mes sobre el umbral en Europa 94%, Vía Marítima 36%. Una variación alta es una señal para revisión, no una prueba de pérdida de precisión; el error predictivo solo se actualiza con observaciones comparables.",
+      "umbral": "variación mensual ≤ 35%, frente a versión ≤ 25%"
+    }
+  ]
+}

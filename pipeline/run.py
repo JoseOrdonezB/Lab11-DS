@@ -11,7 +11,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from . import controles, modelos, publicar as pub, reporte
+from . import controles, modelos, monitoreo, publicar as pub, reporte
 from .preparar import leer_fuente
 from .registro import Registro, slug
 from .util import cargar_config, sha256, commit_git
@@ -132,7 +132,8 @@ def main(argv=None):
                     "log_diferencia_cv_min": m["transformacion_log"]["diferencia_cv_min"],
                     "backtest_esquema": "origen expansivo, un paso adelante",
                     "aceptacion_series_obligatorias": ",".join(ac["series_obligatorias"]),
-                    "aceptacion_mae_rel_max": ac["mae_rel_max"], "aceptacion_margen_vs_referencia": ac["margen_vs_referencia"],
+                    "aceptacion_regla_congelada": ac.get("regla_congelada", "n/d"),
+                    "aceptacion_mae_rel_max": ac["mae_rel_max"],
                     "aceptacion_min_obs": ac["min_obs_evaluacion"],
                     "rango_plausible_max_factor": cfg["umbrales"]["rango_plausible_max_factor"],
                     **{f"arima_{slug(n)}": tuple(s["arima"]) for n, s in cfg["series"].items()}})
@@ -144,10 +145,15 @@ def main(argv=None):
         met = modelos.regla_aceptacion(met, series, cfg)
         etapas.append("6_regla_aceptacion")
         for _, r in met.iterrows():
-            log(f"  {r['serie']}: MAE {r['MAE']:.0f} (ref. {r['baseline_MAE']:.0f}), RMSE {r['RMSE']:.0f}, n={r['n_obs']} -> {'cumple' if r['cumple_regla'] else 'NO cumple'} ({r['motivo']})")
+            estado = "aprobado" if r["cumple_regla"] else "referencia"
+            log(f"  {r['serie']}: MAE {r['MAE']:.0f} ({r['MAE_pct_nivel']:.1f}% del nivel), "
+                f"ref. {r['baseline_MAE']:.0f} ({r['ratio_referencia']:.2f}x), RMSE {r['RMSE']:.0f}, "
+                f"n={r['n_obs']} -> {estado} ({r['motivo']})")
             k = slug(r["serie"])
             reg.metricas({f"{k}_MAE": r["MAE"], f"{k}_RMSE": r["RMSE"], f"{k}_MAPE_pct": r["MAPE_pct"], f"{k}_n_obs": r["n_obs"],
+                          f"{k}_nivel_medio": r["nivel_medio"], f"{k}_MAE_pct_nivel": r["MAE_pct_nivel"],
                           f"{k}_ref_MAE": r["baseline_MAE"], f"{k}_ref_RMSE": r["baseline_RMSE"],
+                          f"{k}_ref_ratio": r["ratio_referencia"], f"{k}_supera_referencia": int(bool(r["supera_referencia"])),
                           f"{k}_cumple_regla": int(bool(r["cumple_regla"]))})
         reg.params({f"log_{slug(n)}": bool(g["log"].iloc[-1]) for n, g in bt.groupby("serie", sort=False)})
         met["mlflow_run_id"] = reg.run_id
@@ -155,18 +161,38 @@ def main(argv=None):
 
         # ---- Etapa 7: estimaciones -------------------------------------------------------------
         version = pub.siguiente_version(pub_dir, inicio)
-        est_f, parametros = modelos.pronosticar(series, cfg, run_id, ts, version, hashes)
+        cumple = dict(zip(met["serie"], met["cumple_regla"]))
+        est_f, parametros = modelos.pronosticar(series, cfg, run_id, ts, version, hashes, cumple)
+        aprobada_bt = bt["serie"].map(cumple).fillna(False).astype(bool)
+        modelo_bt = [f"{cfg['modelo']['nombre']}{tuple(cfg['series'][s]['arima'])}" if cumple.get(s)
+                     else cfg["modelo"]["referencia"] for s in bt["serie"]]
         est_b = pd.DataFrame({
             "destino": cfg["destino"], "serie": bt["serie"], "periodo": bt["periodo"].dt.strftime("%Y-%m-%d"),
-            "valor": bt["pred_modelo"], "unidad": cfg["unidad"],
-            "modelo": [f"{cfg['modelo']['nombre']}{tuple(cfg['series'][s]['arima'])}" for s in bt["serie"]],
+            "valor": np.where(aprobada_bt, bt["pred_modelo"], bt["pred_referencia"]), "unidad": cfg["unidad"],
+            "modelo": modelo_bt,
             "conjunto": "evaluacion", "horizonte": 0, "run_id": run_id, "fecha_generacion": ts,
-            "version_procedimiento": version, "fuente_hash": hashes["fuente"], "config_hash": hashes["config"]})
+            "version_procedimiento": version, "fuente_hash": hashes["fuente"], "config_hash": hashes["config"],
+            "estado": np.where(aprobada_bt, "aprobado", "referencia")})
         est = pd.concat([est_b, est_f], ignore_index=True)
-        cumple = dict(zip(met["serie"], met["cumple_regla"]))
-        est["estado"] = ["aprobado" if cumple[s] else "referencia" for s in est["serie"]]
         est["mlflow_run_id"] = reg.run_id
         etapas.append("7_estimaciones")
+
+        # ---- Etapa 12: monitoreo ------------------------------------------------------------------
+        mon, linea_base, alertas = monitoreo.ejecutar(df_ok, ctrl, series, est, cfg, pub_dir, log)
+        mon.to_csv(cand / "monitoreo.csv", index=False)
+        meta_mon = {"run_id": run_id, "version": version, "inicio": inicio.isoformat(timespec="seconds"),
+                    "fin": datetime.now().isoformat(timespec="seconds"), "fuente_hash": hashes["fuente"],
+                    "config_hash": hashes["config"], "linea_base": linea_base}
+        reporte.generar_monitoreo(mon, meta_mon, cand / "reporte_monitoreo.md")
+        (cand / "monitoreo.json").write_text(
+            json.dumps({**meta_mon, "verificaciones": mon.to_dict("records"), "alertas": alertas},
+                       ensure_ascii=False, indent=2), encoding="utf-8")
+        etapas.append("12_monitoreo")
+        reg.metricas({"monitoreo_alertas": len(alertas), "monitoreo_verificaciones": len(mon)})
+        reg.tags({"monitoreo_resultado": "ALERTA" if alertas else "OK",
+                  "monitoreo_alertas": "; ".join(a["detalle"] for a in alertas) or "ninguna"})
+        for f in ("monitoreo.csv", "reporte_monitoreo.md", "monitoreo.json"):
+            reg.artefacto(cand / f, "monitoreo")
 
         # ---- Etapa 8: candidato inmutable --------------------------------------------------------
         est.to_csv(cand / "estimaciones.csv", index=False)
@@ -188,19 +214,30 @@ def main(argv=None):
             if not cumple.get(s, False):
                 razones.append(f"la serie obligatoria {s} no cumple la regla de aceptación")
         aprobado = not razones
+        reporte.generar_validacion(met, bt, cfg, cand / "reporte_validacion.md", run_id, hashes, aprobado, razones)
         manifest = {"version_procedimiento": version, "run_id": run_id, "mlflow_run_id": reg.run_id,
                     "mlflow_tracking_uri": reg.uri, "commit_git": commit,
                     "fuente": fuente.name, "fuente_hash": hashes["fuente"], "config_hash": hashes["config"],
                     "periodos": cfg["periodos"], "semilla": cfg["semilla"], "python": platform.python_version(), "dependencias": deps,
+                    "regla_aceptacion": {k: cfg["aceptacion"][k] for k in
+                                         ("regla_congelada", "series_obligatorias", "mae_rel_max", "min_obs_evaluacion")},
+                    "monitoreo": {"resultado": "ALERTA" if alertas else "OK",
+                                  "alertas": [a["detalle"] for a in alertas]},
                     "inicio": inicio.isoformat(timespec="seconds"), "aprobado": aprobado, "motivos_rechazo": razones,
                     "aprobado_en": datetime.now().isoformat(timespec="seconds") if aprobado else None,
-                    "resumen_metricas": {r["serie"]: {"MAE": round(r["MAE"], 2), "RMSE": round(r["RMSE"], 2),
-                                                      "baseline_MAE": round(r["baseline_MAE"], 2), "cumple_regla": bool(r["cumple_regla"])}
+                    "resumen_metricas": {r["serie"]: {"MAE": _num(r["MAE"]), "RMSE": _num(r["RMSE"]),
+                                                      "nivel_medio": _num(r["nivel_medio"]),
+                                                      "MAE_pct_nivel": _num(r["MAE_pct_nivel"], 1),
+                                                      "baseline_MAE": _num(r["baseline_MAE"]),
+                                                      "ratio_referencia": _num(r["ratio_referencia"], 2),
+                                                      "supera_referencia": bool(r["supera_referencia"]),
+                                                      "cumple_regla": bool(r["cumple_regla"]),
+                                                      "estado": "aprobado" if r["cumple_regla"] else "referencia"}
                                          for _, r in met.iterrows()}}
         (cand / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
         etapas.append("8_candidato")
         # el candidato queda registrado en MLflow ANTES de decidir si se publica
-        for f in ("estimaciones.csv", "metricas.csv", "backtest_detalle.csv", "manifest.json"):
+        for f in ("estimaciones.csv", "metricas.csv", "backtest_detalle.csv", "manifest.json", "reporte_validacion.md"):
             reg.artefacto(cand / f, "candidato")
         reg.artefacto(cand / "parametros_modelo.json", "modelo")
         reg.params({"version_procedimiento": version, "python": platform.python_version(),
@@ -216,11 +253,20 @@ def main(argv=None):
         etapas += ["10_version_aprobada", "11_puntero"]
         reg.tags({"version_publicada": version})
         log(f"PUBLICADO {version} en {pub_dir / 'versions' / version}")
-        return cerrar(0, f"publicado {version}", {"version": version})
+        return cerrar(0, f"publicado {version}",
+                      {"version": version, "monitoreo": "ALERTA" if alertas else "OK"})
     except Exception as e:
         log("ERROR inesperado: " + repr(e))
         log(traceback.format_exc())
         return cerrar(1, "error inesperado; resultados vigentes intactos", {"error": repr(e), "causa": repr(e)[:500]})
+
+
+def _num(x, decimales=2):
+    """Número redondeado para JSON; NaN/inf se guardan como null."""
+    try:
+        return round(float(x), decimales) if np.isfinite(float(x)) else None
+    except (TypeError, ValueError):
+        return None
 
 
 def _tiene(p):

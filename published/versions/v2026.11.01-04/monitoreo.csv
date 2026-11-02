@@ -1,0 +1,4 @@
+verificacion,estado,n_afectados,detalle,umbral
+M1 actualización,OK,0,Fuente y estimaciones al día: último mes de la fuente 2026-06 y pronóstico hasta 2026-12.,desfase máximo 0 mes(es)
+M2 calidad,OK,0,"Sin cambios relevantes frente a la versión anterior: 0.0000 % faltantes, 0.0261 % duplicados, 37 meses sin información.","faltantes +0.5 pp, duplicados +0.1 pp, cobertura +0 meses"
+M3 resultados,ALERTA,2,"Sin negativas ni valores no finitos. Variación máxima mes a mes: 94.4%. Variación máxima frente a la versión anterior: 0.0%. Alertas: variación mes a mes sobre el umbral en Europa 94%, Vía Marítima 36%. Una variación alta es una señal para revisión, no una prueba de pérdida de precisión; el error predictivo solo se actualiza con observaciones comparables.","variación mensual ≤ 35%, frente a versión ≤ 25%"

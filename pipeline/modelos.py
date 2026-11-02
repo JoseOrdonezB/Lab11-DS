@@ -84,49 +84,90 @@ def tabla_metricas(bt, cfg, run_id):
     for nombre, g in bt.groupby("serie", sort=False):
         m = metricas(g["real"], g["pred_modelo"])
         b = metricas(g["real"], g["pred_referencia"])
+        nivel = float(g["real"].mean())
         filas.append({"serie": nombre, "modelo": cfg["modelo"]["nombre"], "periodo_inicio": bti, "periodo_fin": btf,
-                      "n_obs": m["n_obs"], "MAE": m["MAE"], "RMSE": m["RMSE"], "MAPE_pct": m["MAPE_pct"],
+                      "n_obs": m["n_obs"], "nivel_medio": nivel,
+                      "MAE": m["MAE"], "RMSE": m["RMSE"], "MAPE_pct": m["MAPE_pct"],
+                      "MAE_pct_nivel": (100 * m["MAE"] / nivel) if np.isfinite(nivel) and nivel > 0 else np.nan,
                       "n_excl_mape": m["n_excl_mape"], "baseline": cfg["modelo"]["referencia"],
-                      "baseline_n_obs": b["n_obs"], "baseline_MAE": b["MAE"], "baseline_RMSE": b["RMSE"], "run_id": run_id})
+                      "baseline_n_obs": b["n_obs"], "baseline_MAE": b["MAE"], "baseline_RMSE": b["RMSE"],
+                      "baseline_MAE_pct_nivel": (100 * b["MAE"] / nivel) if np.isfinite(nivel) and nivel > 0 else np.nan,
+                      "run_id": run_id})
     return pd.DataFrame(filas)
 
 
 def regla_aceptacion(met, series, cfg):
-    """Marca cumple_regla por serie. Sin observaciones comparables no se aprueba por desempeño."""
+    """Aplica la regla congelada de la sección 5.
+
+    Una serie cumple si tiene suficientes observaciones comparables y su MAE no supera
+    `mae_rel_max` del nivel medio observado en el backtest. La referencia se reporta,
+    pero no es un requisito: el laboratorio no exige superarla (5.5).
+    """
     a = cfg["aceptacion"]
     bt = cfg["periodos"]["backtest"]
     idx = pd.date_range(bt["inicio"] + "-01", bt["fin"] + "-01", freq="MS")
-    cumple, motivos = [], []
-    for _, f in met.iterrows():
-        nivel = series[f["serie"]].reindex(idx).mean()
-        if f["n_obs"] < a["min_obs_evaluacion"]:
-            cumple.append(False); motivos.append(f"solo {f['n_obs']} observaciones comparables (mínimo {a['min_obs_evaluacion']}); no se aprueba por desempeño")
-            continue
-        c1 = f["MAE"] <= a["mae_rel_max"] * nivel
-        c2 = (not np.isfinite(f["baseline_MAE"])) or f["MAE"] <= a["margen_vs_referencia"] * f["baseline_MAE"]
-        cumple.append(bool(c1 and c2))
-        motivos.append("cumple" if (c1 and c2) else
-                       "; ".join(x for x in (
-                           (f"MAE {f['MAE']:.0f} > {a['mae_rel_max']:.0%} del nivel medio ({nivel:.0f})" if not c1 else ""),
-                           (f"MAE {f['MAE']:.0f} > {a['margen_vs_referencia']} x MAE de la referencia ({f['baseline_MAE']:.0f})" if not c2 else "")) if x))
     met = met.copy()
+    cumple, motivos, ratios, pcts, supera, niveles = [], [], [], [], [], []
+    for _, f in met.iterrows():
+        nivel = float(f.get("nivel_medio", np.nan))
+        if not np.isfinite(nivel) or nivel <= 0:
+            nivel = float(series[f["serie"]].reindex(idx).mean())
+        niveles.append(nivel)
+        pct = (100 * f["MAE"] / nivel) if np.isfinite(nivel) and nivel > 0 else np.nan
+        baseline = f.get("baseline_MAE", np.nan)
+        ratio = (f["MAE"] / baseline) if np.isfinite(baseline) and baseline > 0 else np.nan
+        supera_ref = bool(np.isfinite(ratio) and ratio <= 1.0)
+
+        if f["n_obs"] < a["min_obs_evaluacion"]:
+            ok = False
+            motivo = (f"solo {f['n_obs']} observaciones comparables "
+                      f"(mínimo {a['min_obs_evaluacion']}); no se aprueba por desempeño")
+        else:
+            ok = bool(np.isfinite(pct) and pct <= 100 * a["mae_rel_max"])
+            if ok:
+                motivo = "cumple"
+                if np.isfinite(ratio) and ratio > 1:
+                    motivo += f"; no supera la referencia ({ratio:.2f}x), se reporta sin bloquear"
+            else:
+                motivo = f"MAE {f['MAE']:.0f} > {a['mae_rel_max']:.0%} del nivel medio ({nivel:.0f})"
+
+        cumple.append(ok); motivos.append(motivo); ratios.append(ratio); pcts.append(pct); supera.append(supera_ref)
+
+    met["nivel_medio"] = niveles
+    met["MAE_pct_nivel"] = pcts
+    met["ratio_referencia"] = ratios
+    met["supera_referencia"] = supera
     met["cumple_regla"] = cumple
     met["motivo"] = motivos
     return met
 
 
-def pronosticar(series, cfg, run_id, ts, version, hashes):
-    """Etapa 7: ajusta con todo el histórico hasta el corte y estima el período publicado."""
+def pronosticar(series, cfg, run_id, ts, version, hashes, cumple=None):
+    """Etapa 7: estima el período publicado.
+
+    Las series que cumplen la regla se publican con ARIMA y estado "aprobado".
+    Las que no cumplen se publican con la referencia Seasonal Naive y estado "referencia",
+    para no presentar como aprobado un modelo que no pasó la validación.
+    """
     pr = cfg["periodos"]["pronostico"]
     fechas = pd.date_range(pr["inicio"] + "-01", pr["fin"] + "-01", freq="MS")
+    cumple = cumple or {}
     filas, parametros = [], {}
     for nombre, s in series.items():
+        aprobada = bool(cumple.get(nombre, True))
         p, uso_log, conv, ajuste = ajustar_pronosticar(s, cfg["series"][nombre]["arima"], len(fechas), cfg, devolver_ajuste=True)
+        modelo_arima = f"{cfg['modelo']['nombre']}{tuple(cfg['series'][nombre]['arima'])}"
+        modelo_publicado = modelo_arima if aprobada else cfg["modelo"]["referencia"]
+        valores = p if aprobada else np.array([seasonal_naive(s, f) for f in fechas], dtype=float)
+        estado = "aprobado" if aprobada else "referencia"
         parametros[nombre] = {"modelo": cfg["modelo"]["nombre"], "orden": list(cfg["series"][nombre]["arima"]),
-                              "transformacion_log": uso_log, "convergio": conv, **ajuste}
-        for h, (f, v) in enumerate(zip(fechas, p), start=1):
-            filas.append({"destino": cfg["destino"], "serie": nombre, "periodo": f.strftime("%Y-%m-%d"), "valor": float(v),
-                          "unidad": cfg["unidad"], "modelo": f"{cfg['modelo']['nombre']}{tuple(cfg['series'][nombre]['arima'])}",
+                              "transformacion_log": uso_log, "convergio": conv,
+                              "publicado_como": estado, "modelo_publicado": modelo_publicado, **ajuste}
+        for h, (f, v) in enumerate(zip(fechas, valores), start=1):
+            filas.append({"destino": cfg["destino"], "serie": nombre, "periodo": f.strftime("%Y-%m-%d"),
+                          "valor": float(v) if np.isfinite(v) else np.nan,
+                          "unidad": cfg["unidad"], "modelo": modelo_publicado,
                           "conjunto": "pronostico", "horizonte": h, "run_id": run_id, "fecha_generacion": ts,
-                          "version_procedimiento": version, "fuente_hash": hashes["fuente"], "config_hash": hashes["config"]})
+                          "version_procedimiento": version, "fuente_hash": hashes["fuente"],
+                          "config_hash": hashes["config"], "estado": estado})
     return pd.DataFrame(filas), parametros
